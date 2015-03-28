@@ -1,0 +1,10 @@
+#relatedProductsList li
+{
+	max-width:100px !important;
+}
+
+.home-images2 a,
+.home-images2 img
+{
+  max-width: 168px;
+}

@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-product-list">
+        <nav class="nav">
+            <ul id="relatedProductsList">
+                <li ng-repeat="p in relatedProducts" style="{{liwidth}} !important;">
+                    <div class="well">
+                        <div class="row">
+                            <div class="text-center">
+                                <a href="{{subCategoryInteropID ? 'campaigns/' + categoryInteropID + '/' + subCategoryInteropID + '/' + p.InteropID : 'campaigns/' + categoryInteropID + '/' + p.InteropID}}">
+                                    <figure ng-model="active">
+                                        <img ng-src="{{p.SmallImageUrl}}" />
+                                    </figure>
+                                    <div class="empty" ng-hide="p.SmallImageUrl">
+                                        <span class="fa empty"><i class="fa fa-camera"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

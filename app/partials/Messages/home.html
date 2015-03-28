@@ -1,0 +1,110 @@
+<div id="ninja-slider">
+    <ul>
+        <li><div data-image="./js/custom/slider/img/1-b.jpg"></div></li>
+        <li><div data-image="./js/custom/slider/img/2-b.jpg"></div></li>
+        <li><div data-image="./js/custom/slider/img/3-b.jpg"></div></li>
+        <li><div data-image="./js/custom/slider/img/4-b.jpg"></div></li>
+    </ul>
+</div>
+<div class="panel panel-default" style="background:#000;width:102%;margin-top:-15px;margin-left:-20px;padding-bottom:15px">
+	<h1 style="color:#fff; font-size: 30px;text-align: center;line-height: 40px;"><em>
+		Limited Time, Custom Designed Merchandise From Your Favorite
+		<br>
+		Celebrities Supporting Their Favorite Cause.
+		<br>
+		<span style="color:#17BFAF;">REVEAL</span> your heart</em>
+	</h1>
+</div>
+<div class="panel panel-default pattern" ng-show="currentCategory.SubCategories.length">
+    <h1 style="color:#000; font-size: 26px;text-align: center;line-height: 40px;text-transform:uppercase;">
+    Current Campaigns</h1>
+    <div class="well" ng-show="productCount > settings.pageSize">
+        <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"
+                    items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
+    </div>
+    <div class="panel-category-list">
+        <loadingindicator ng-show="categoryLoadingIndicator" title="{{'Please wait while we fetch all categories' | r | xlat}}" />
+        <nav class="nav 451_lbl_subcatlist">
+            <ul class="col-md-offset-2 col-md-10 col-lg-9" style="text-align:center;">
+                <li class="col-md-3 col-xs-12" ng-repeat="c in currentCategory.SubCategories"  style="background:#fff;-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.1); box-shadow: 0 0 5px 0 rgba(0,0,0,.1);margin-right:20px;padding:0;padding-bottom:20px;min-height:380px;height:auto;">
+                    <div class="well" style="border:0;margin:0;">
+                        <a ng-show="c.SubCategories" ng-href="campaigns/{{c.InteropID}}" ng-click="clickCampaign()" style="margin:0;padding:0;">
+                            <figure ng-show="c.Image.URL">
+                                <img class="img-responsive" ng-src="{{c.Image.URL}}" style=
+                                "width:100%;height:auto;" />
+                            </figure>
+                            <div class="empty" ng-show="!c.Image.URL">
+                                <span class="fa empty"><i class="fa fa-camera"></i></span>
+                            </div>
+                            <h4 ng-bind-html="c.Name" style="text-align:center;text-transform:uppercase;color:#000" />
+                        </a>
+                        <a ng-hide="c.SubCategories" ng-href="campaigns/{{c.InteropID}}/{{c.Description}}" ng-click="clickCampaign()" style="margin:0;padding:0;">
+                            <figure ng-show="c.Image.URL">
+                                <img class="img-responsive" ng-src="{{c.Image.URL}}" style=
+                                "width:100%;height:auto;" />
+                            </figure>
+                            <div class="empty" ng-show="!c.Image.URL">
+                                <span class="fa empty"><i class="fa fa-camera"></i></span>
+                            </div>
+                            <h4 ng-bind-html="c.Name" style="text-align:center;text-transform:uppercase;color:#000" />
+                        </a>
+                    </div>
+                    <div style="width:100px;border-top:2px solid #17BFAF;margin:0 auto;height:15px;margin-top:-20px">&nbsp;</div>
+                    <div class="col-md-12">
+                        <div ng-show="c.SubCategories" ng-bind-html="trusted(c.Description)" style="font-size:14px;line-height:16px;"></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="well" ng-show="productCount > settings.pageSize">
+        <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"
+                    items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
+    </div>
+</div>
+<div class="panel panel-default home-images2" style="color:#000;text-align:center;padding-top:10px;height:300px;">
+    <h2 style="font-size:18px">AMAZING CAUSE PARTNERS DOING GREAT WORK AROUND THE WORLD</h2>
+    <div class="row col-md-offset-3 col-md-6">
+        <div class="col-md-4">
+            <a href="http://muttnationfoundation.com/" target="_blank"><img src="//impactgroup.us/clientFiles/revealProject/img/partners/Muttnation.png" alt="Muttnation Foundation" style="max-width:100%;height:auto;"></a>
+
+        </div>
+        <div class="col-md-4">
+        <a href="https://www.foldsofhonor.org/" target="_blank">
+            <img src="//impactgroup.us/clientFiles/revealProject/img/partners/folds.png" alt="Folds of Honor" style="max-width:100%;height:auto;"></a>
+        </div>
+        <div class="col-md-4">
+        <a href="http://www.specialolympics.org/" target="_blank">
+            <img src="//impactgroup.us/clientFiles/revealProject/img/partners/special-olympics.png" alt="Special Olympics" style="max-width:100%;height:auto;">
+            </a>
+        </div>
+    </div>
+    <div class="row col-md-offset-3 col-md-6">
+        <div class="col-md-4">
+        <a href="http://www.la2015.org/" target="_blank">
+            <img src="//impactgroup.us/clientFiles/revealProject/img/partners/worldgames.png" alt="Special Olympics World Games" style="max-width:100%;height:auto;">
+            </a>
+        </div>
+        <div class="col-md-4">
+            &nbsp;
+        </div>
+        <div class="col-md-4">
+        <a href="https://www.acmcountry.com/welcome" target="_blank">
+            <img src="//impactgroup.us/clientFiles/revealProject/img/partners/ACM.png" alt="Academy of COuntry Music" style="max-width:100%;height:auto;"></a>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+<div class="panel panel-default col-md-12 home-images" style="color:#000;text-align:center;background:url(//impactgroup.us/clientFiles/revealProject/img/pattern.jpg);clear:both;padding:35px;margin-top:30px">
+    <div class="col-md-6 col-md-offset-3">
+        <a href="contactus"><h2 style="color:#333;text-align: center;font-size:18px">CONTACT US</h2></a>
+
+    <h2 style="color:#000;text-align: center;"><em>
+    Your <span style="color:#17BFAF;">REVEAL</span> to Good is Helping Our Partners
+    </em>
+    </h2>
+    <img src="//impactgroup.us/clientFiles/revealProject/img/homeLink_2.svg" alt="Reveal Project" class="centered">
+    </div>
+</div>
