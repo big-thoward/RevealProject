@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 four51.app.controller('CheckOutViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'Analytics', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList',
 function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451, Analytics, User, Order, OrderConfig, FavoriteOrder, AddressList) {
 	$scope.errorSection = 'open';
@@ -9,6 +10,12 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 	    $rootScope.guest = true;
 	}
 	
+=======
+four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList', 'GoogleAnalytics',
+function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
+	$scope.errorSection = 'open';
+
+>>>>>>> upstream/master
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
@@ -17,7 +24,11 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 	}
 
 	if (!$scope.currentOrder) {
+<<<<<<< HEAD
         $location.path('projects');
+=======
+        $location.path('catalog');
+>>>>>>> upstream/master
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
@@ -26,6 +37,7 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
     function submitOrder() {
 	    $scope.displayLoadingIndicator = true;
 	    $scope.errorMessage = null;
+<<<<<<< HEAD
 	    $rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
         Order.submit($scope.currentOrder,
@@ -33,6 +45,13 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 //				if ($scope.user.Company.GoogleAnalyticsCode) {
 //					Analytics.trackOrder(data, $scope.user);
 //				}
+=======
+        Order.submit($scope.currentOrder,
+	        function(data) {
+				if ($scope.user.Company.GoogleAnalyticsCode) {
+					GoogleAnalytics.ecommerce(data, $scope.user);
+				}
+>>>>>>> upstream/master
 				$scope.user.CurrentOrderID = null;
 				User.save($scope.user, function(data) {
 			        $scope.user = data;
@@ -81,6 +100,7 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
     };
 
     $scope.continueShopping = function() {
+<<<<<<< HEAD
     	$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
@@ -92,13 +112,22 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
         {
 		    $location.path('campaigns');
         }
+=======
+	    if (confirm('Do you want to save changes to your order before continuing?') == true)
+	        saveChanges(function() { $location.path('catalog') });
+        else
+		    $location.path('catalog');
+>>>>>>> upstream/master
     };
 
     $scope.cancelOrder = function() {
 	    if (confirm('Are you sure you wish to cancel your order?') == true) {
 		    $scope.displayLoadingIndicator = true;
+<<<<<<< HEAD
 		    $rootScope.$broadcast('guest');
 	    	$rootScope.guest = true;
+=======
+>>>>>>> upstream/master
 	        Order.delete($scope.currentOrder,
 		        function() {
 		            $scope.user.CurrentOrderID = null;
@@ -106,9 +135,14 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 			        User.save($scope.user, function(data) {
 				        $scope.user = data;
 				        $scope.displayLoadingIndicator = false;
+<<<<<<< HEAD
 				        $location.path('campaigns');
 			        });
 
+=======
+				        $location.path('catalog');
+			        });
+>>>>>>> upstream/master
 		        },
 		        function(ex) {
 			        $scope.actionMessage = ex.Message;
@@ -132,6 +166,7 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 
 	$scope.cancelEdit = function() {
 		$location.path('order');
+<<<<<<< HEAD
 		$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
 	};
@@ -153,5 +188,7 @@ function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451
 		$scope.shipaddress.IsBilling = true;
 		$scope.currentOrder.copyShipAddress = true;
 		$rootScope.$broadcast('shipChange');
+=======
+>>>>>>> upstream/master
 	};
 }]);

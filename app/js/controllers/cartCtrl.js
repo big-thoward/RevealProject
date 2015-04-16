@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
@@ -10,6 +11,12 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if (isEditforApproval) {
+=======
+four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
+function ($scope, $routeParams, $location, $451, Order, OrderConfig, User) {
+	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
+	if ($scope.isEditforApproval) {
+>>>>>>> upstream/master
 		Order.get($routeParams.id, function(order) {
 			$scope.currentOrder = order;
 			// add cost center if it doesn't exists for the approving user
@@ -33,10 +40,17 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
+<<<<<<< HEAD
 				$scope.saveChanges(function() { $location.path('campaigns') });
 		}
 		else
 			$location.path('campaigns');
+=======
+				$scope.saveChanges(function() { $location.path('catalog') });
+		}
+		else
+			$location.path('catalog');
+>>>>>>> upstream/master
 	};
 
 	$scope.cancelOrder = function() {
@@ -48,7 +62,11 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
+<<<<<<< HEAD
 						$location.path('projects');
+=======
+						$location.path('catalog');
+>>>>>>> upstream/master
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -94,7 +112,11 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
+<<<<<<< HEAD
 							$location.path('projects');
+=======
+							$location.path('catalog');
+>>>>>>> upstream/master
 						});
 					}
 					$scope.displayLoadingIndicator = false;
@@ -110,12 +132,20 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 
 	$scope.checkOut = function() {
 		$scope.displayLoadingIndicator = true;
+<<<<<<< HEAD
 		if (!isEditforApproval)
+=======
+		if (!$scope.isEditforApproval)
+>>>>>>> upstream/master
 			OrderConfig.address($scope.currentOrder, $scope.user);
 		Order.save($scope.currentOrder,
 			function(data) {
 				$scope.currentOrder = data;
+<<<<<<< HEAD
 				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
+=======
+                $location.path($scope.isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
+>>>>>>> upstream/master
 				$scope.displayLoadingIndicator = false;
 			},
 			function(ex) {
@@ -125,6 +155,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 		);
 	};
 
+<<<<<<< HEAD
 	$scope.checkOutGuest = function() {
 		$scope.displayLoadingIndicator = true;
 		if (!isEditforApproval)
@@ -143,6 +174,8 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	};
 
 
+=======
+>>>>>>> upstream/master
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
@@ -173,4 +206,11 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	$scope.cancelEdit = function() {
 		$location.path('order');
 	};
+<<<<<<< HEAD
+=======
+
+    $scope.downloadProof = function(item) {
+        window.location = item.Variant.ProofUrl;
+    };
+>>>>>>> upstream/master
 }]);

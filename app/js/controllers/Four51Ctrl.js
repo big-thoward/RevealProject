@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService',
 function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService) {
 	
@@ -27,6 +28,15 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
     }
 	$scope.Four51User = Security;
 	if ($scope.isAnon && !Security.isAuthenticated()) {
+=======
+four51.app.controller('Four51Ctrl', ['$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService', 'GoogleAnalytics',
+function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
+	$scope.AppConst = AppConst;
+	$scope.scroll = 0;
+	$scope.isAnon = $451.isAnon; //need to know this before we have access to the user object
+	$scope.Four51User = Security;
+	if ($451.isAnon && !Security.isAuthenticated()) {
+>>>>>>> upstream/master
 		User.login(function () {
 			$route.reload();
 		});
@@ -63,7 +73,11 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 					$scope.currentOrder = null;
 
 				if (user.Company.GoogleAnalyticsCode) {
+<<<<<<< HEAD
 					analytics(user.Company.GoogleAnalyticsCode);
+=======
+					GoogleAnalytics.analyticsLogin(user.Company.GoogleAnalyticsCode);
+>>>>>>> upstream/master
 				}
 
 			});
@@ -74,6 +88,7 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 		}
 	}
 
+<<<<<<< HEAD
 	function analytics(id) {
 		if (id.length == 0 || window.ga) return;
 		(function (i, s, o, g, r, a, m) {
@@ -92,6 +107,8 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 		ga('require', 'ecommerce', 'ecommerce.js');
 	}
 
+=======
+>>>>>>> upstream/master
 	try {
 		trackJs.configure({
 			trackAjaxFail: false

@@ -23,7 +23,11 @@
         <span class="text-info">{{'Cost Center' | r | xlat}}</span>
         <span class="pull-right">{{(order.LineItems.length == 1) && order.LineItems[0].CostCenter || null}}</span>
     </p>
+<<<<<<< HEAD
     <p>
+=======
+    <p ng-show="order.PaymentMethod != 'Undetermined'">
+>>>>>>> upstream/master
         <span class="text-info">{{('Payment' | r) + ' ' + ('Method' | r) | xlat}}</span>
         <span class="pull-right">{{order.PaymentMethodText | r | xlat}} <strong ng-show="order.CreditCard.Type">{{':' + order.CreditCard.DisplayName}}</strong> {{order.AmountOnAccount && order.PaymentMethod != 'BudgetAccount' ? "(" + (order.Total - order.AmountOnAccount | currency) + ")" : ""}}</span>
     </p>
@@ -47,7 +51,11 @@
         <div>{{order.ShipAddress.City}}, {{order.ShipAddress.State}} {{order.ShipAddress.Zip}}</div>
         <div ng-if="order.ShipAddress.Country != 'US'">{{order.ShipAddress.Country}}</div>
     </address>
+<<<<<<< HEAD
     <address ng-show="order.BillAddress">
+=======
+    <address ng-show="order.BillAddress && order.BillingEnabled">
+>>>>>>> upstream/master
         <span class="text-primary"><strong>{{'Bill to' | r | xlat}}</strong></span><br />
         <div>
             <span ng-show="order.BillFirstName || order.BillLastName">{{order.BillFirstName}} {{order.BillLastName}}</span>

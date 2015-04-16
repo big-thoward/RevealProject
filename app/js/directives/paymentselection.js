@@ -8,7 +8,11 @@ four51.app.directive('paymentselector', function() {
 
 	       SpendingAccount.query(function(data) {
 		       $scope.SpendingAccounts = data;
+<<<<<<< HEAD
 		       if ($scope.currentOrder.BudgetAccountID)
+=======
+		       if ($scope.currentOrder && $scope.currentOrder.BudgetAccountID)
+>>>>>>> upstream/master
 		            budgetAccountCalculation($scope.currentOrder.BudgetAccountID);
 	       });
 
@@ -90,7 +94,11 @@ four51.app.directive('paymentselector', function() {
 		       var valid = false;
 		       switch (method) {
 			       case 'Undetermined':
+<<<<<<< HEAD
 				       valid = $scope.user.Permissions.contains('SubmitForApproval');
+=======
+				       valid = ($scope.user.Permissions.contains('SubmitForApproval') || !$scope.currentOrder.BillingEnabled);
+>>>>>>> upstream/master
                        valid = valid ? validateAccount() : valid;
                        break;
 			       case 'PurchaseOrder':

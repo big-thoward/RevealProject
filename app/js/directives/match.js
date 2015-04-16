@@ -6,10 +6,17 @@ four51.app.directive('ngMatch', ['$parse', function($parse) {
 			if (!ctrl) return;
 			if (!attrs['ngMatch']) return;
 
+<<<<<<< HEAD
 			var first = $parse(attrs['ngMatch']);
 
 			var validator = function (value) {
 				var temp = first(scope),
+=======
+			var firstPassword = $parse(attrs['ngMatch']);
+
+			var validator = function (value) {
+				var temp = firstPassword(scope),
+>>>>>>> upstream/master
 					v = value === temp;
 				ctrl.$setValidity('match', v);
 				return value;

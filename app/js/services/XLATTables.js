@@ -145,6 +145,10 @@ var XLATTables = {
         'conditions of use': 'condiciones de Uso',
         'confirm password': 'confirmar contraseña',
         'contact us': 'contacto ',
+<<<<<<< HEAD
+=======
+        'continue shopping': 'continuar las compras',
+>>>>>>> upstream/master
         'copyright': 'derecho de autor',
         'copy to all': 'copiar en todo',
         'country': 'país',
@@ -406,6 +410,10 @@ var XLATTables = {
         'shiptozip': 'enviar al código postal',
         'ship to zip': 'enviar al código postal',
         'shipment report':'informe de envíos',
+<<<<<<< HEAD
+=======
+        'shop': 'hacer compras',
+>>>>>>> upstream/master
         'show specification': 'mostrar especificación',
         'hide specification': 'ocultar especificación',
         'single address': 'dirección única',

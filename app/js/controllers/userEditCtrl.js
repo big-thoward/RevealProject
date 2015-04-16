@@ -1,10 +1,23 @@
+<<<<<<< HEAD
 four51.app.controller('UserEditCtrl', ['$rootScope','$scope', '$location', '$sce', 'User',
 function ($rootScope, $scope, $location, $sce, User) {
+=======
+four51.app.controller('UserEditCtrl', ['$scope', '$location', '$sce', '$injector', 'User',
+function ($scope, $location, $sce, $injector, User) {
+    var _AnonRouter;
+    $scope.existingUser = $scope.user.Type != 'TempCustomer';
+    try {
+        _AnonRouter = $injector.get('AnonRouter');
+    }
+    catch(ex){}
+
+>>>>>>> upstream/master
 	User.get(function(user) {
         $scope.user = user;
         $scope.loginasuser = {};
         $scope.actionMessage = null;
         $scope.securityWarning = false;
+<<<<<<< HEAD
         $scope.user.ConfirmEmail = $scope.user.Email;
 
         $scope.$on('logon', function() {
@@ -27,6 +40,11 @@ function ($rootScope, $scope, $location, $sce, User) {
 
         if ($scope.user.Type != 'TempCustomer')
             $scope.user.TempUsername = $scope.user.Username
+=======
+
+        if ($scope.user.Type != 'TempCustomer')
+            $scope.user.TempUsername = $scope.user.Username;
+>>>>>>> upstream/master
         $scope.getToken = function () {
             $scope.loginasuser.SendVerificationCodeByEmail = true;
             $scope.emailResetLoadingIndicator = true;
@@ -45,7 +63,11 @@ function ($rootScope, $scope, $location, $sce, User) {
             $scope.emailResetLoadingIndicator = true;
             User.reset($scope.loginasuser, function (user) {
                     delete $scope.loginasuser;
+<<<<<<< HEAD
                     $location.path('projects');
+=======
+                    $location.path('catalog');
+>>>>>>> upstream/master
                 },
                 function (err) {
                     $scope.emailResetLoadingIndicator = false;
@@ -66,6 +88,10 @@ function ($rootScope, $scope, $location, $sce, User) {
                     $scope.displayLoadingIndicator = false;
                     $scope.actionMessage = 'Your changes have been saved';
                     $scope.user.TempUsername = u.Username;
+<<<<<<< HEAD
+=======
+                    if (_AnonRouter && !$scope.existingUser) _AnonRouter.route();
+>>>>>>> upstream/master
                 },
                 function (ex) {
                     $scope.displayLoadingIndicator = false;
@@ -79,12 +105,17 @@ function ($rootScope, $scope, $location, $sce, User) {
         };
         $scope.loginExisting = function () {
             User.login({Username: $scope.loginasuser.Username, Password: $scope.loginasuser.Password, ID: $scope.user.ID, Type: $scope.user.Type}, function (u) {
+<<<<<<< HEAD
                 $location.path("/projects");
 
+=======
+                if (_AnonRouter) _AnonRouter.route();
+>>>>>>> upstream/master
             }, function (err) {
                 $scope.loginAsExistingError = err.Message;
             });
         };
+<<<<<<< HEAD
 
         $scope.accountToggle = function() {
             $scope.account = !$scope.account;
@@ -101,5 +132,7 @@ function ($rootScope, $scope, $location, $sce, User) {
         $scope.createToggle = function() {
             $scope.create = !$scope.create;
         };
+=======
+>>>>>>> upstream/master
     });
 }]);

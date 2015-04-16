@@ -8,7 +8,15 @@
         <pagination page="settings.currentPage" max-size="10" rotate="false" boundary-links="true" total-items="productCount"
                     items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
     </div>
+<<<<<<< HEAD
     <div class="panel-product-list col-md-12" ng-show="currentCategory.InteropID">
+=======
+    <div class="panel-product-list" ng-show="currentCategory.InteropID">
+        <div ng-show="products" class="alert alert-info text-center hidden-sm hidden-md hidden-lg">
+            <i class="fa fa-arrow-circle-o-left"></i>
+            {{'Swipe product left for more info' | xlat}}
+        </div>
+>>>>>>> upstream/master
         <nav class="nav">
             <loadingindicator ng-show="searchLoading" title="{{'Please wait while we fetch all products' | r | xlat}}" />
             <div class="row view-form-icon" ng-show="currentCategory.SortOptions.length > 0">
@@ -19,9 +27,15 @@
                 </div>
             </div>
             <ul>
+<<<<<<< HEAD
                 <li class="inline minimal" id="451_lst_prod" ng-repeat="product in products | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize | orderBy:sorter:direction">
                     <div class="well">
                         <shortproductviewminimal p="product" user="user" />
+=======
+                <li id="451_lst_prod" ng-repeat="product in products | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize | orderBy:sorter:direction">
+                    <div class="well">
+                        <shortproductview p="product" user="user" />
+>>>>>>> upstream/master
                     </div>
                 </li>
             </ul>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address', 'AddressList', function($rootScope, Order, Shipper, Address, AddressList) {
+=======
+four51.app.directive('orderbilling', ['Address', 'AddressList', function(Address, AddressList) {
+>>>>>>> upstream/master
 	var obj = {
 		restrict: 'AE',
 		templateUrl: 'partials/controls/orderBilling.html',
@@ -6,10 +10,17 @@ four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address
 			AddressList.clear();
 			AddressList.billing(function(list) {
 				$scope.billaddresses = list;
+<<<<<<< HEAD
+=======
+                if (list.length == 1 && !$scope.currentOrder.BillAddressID) {
+                    $scope.currentOrder.BillAddressID = list[0].ID;
+                }
+>>>>>>> upstream/master
 				if ($scope.isEditforApproval) {
 					if (!AddressList.contains($scope.currentOrder.BillAddress))
 						$scope.billaddresses.push($scope.currentOrder.BillAddress);
 				}
+<<<<<<< HEAD
 				if(!$scope.billaddresses)
 				{
 					$scope.billaddresses = $scope.shipaddresses;
@@ -18,6 +29,9 @@ four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address
 
 			$scope.currentOrder.copyShipAddress = true;
 
+=======
+			});
+>>>>>>> upstream/master
 			$scope.billaddress = { Country: 'US', IsShipping: false, IsBilling: true };
 
 			$scope.$on('event:AddressSaved', function(event, address) {
@@ -36,6 +50,7 @@ four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address
 			});
 
 			$scope.$watch('currentOrder.BillAddressID', function(newValue) {
+<<<<<<< HEAD
 			    if (newValue) {
 			        Address.get(newValue, function(add) {
 			            if ($scope.user.Permissions.contains('EditBillToName') && !add.IsCustEditable) {
@@ -48,11 +63,23 @@ four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address
 			        $scope.currentOrder.copyShipAddress = true;
 
 			    }
+=======
+				if (newValue) {
+					Address.get(newValue, function(add) {
+						if ($scope.user.Permissions.contains('EditBillToName') && !add.IsCustEditable) {
+							$scope.currentOrder.BillFirstName = add.FirstName;
+							$scope.currentOrder.BillLastName = add.LastName;
+						}
+						$scope.BillAddress = add;
+					});
+				}
+>>>>>>> upstream/master
 			});
 
 			$scope.$on('event:AddressCancel', function(event) {
 				$scope.billaddressform = false;
 			});
+<<<<<<< HEAD
 
 			$scope.resetBilling = function() {
 			    if ($scope.currentOrder.copyShipAddress == true) {
@@ -72,6 +99,8 @@ four51.app.directive('orderbilling', ['$rootScope', 'Order', 'Shipper', 'Address
 			    $scope.currentOrder.copyShipAddress = !$scope.currentOrder.copyShipAddress;
 			});
 
+=======
+>>>>>>> upstream/master
 		}]
 	};
 	return obj;

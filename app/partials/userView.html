@@ -1,4 +1,5 @@
 <section class="user-view">
+<<<<<<< HEAD
     <div class="hidden-md hidden-lg col-collapse" ng-class="{'panel panel-default':!user.Permissions.contains('ViewSelfAdmin')}">
         <div class="panel-heading" ng-show="!user.Permissions.contains('ViewSelfAdmin')">
             <h3 ng-click="accountToggle()" class="panel-title">
@@ -10,11 +11,19 @@
 			<h3 class="panel-title">{{'My Account' | r | xlat}}</h3>
 		</div>
 		<div ng-class="{'panel-body':!user.Permissions.contains('ViewSelfAdmin')}" collapse="!account">
+=======
+    <div class="hidden-md hidden-lg" ng-class="{'panel panel-default':!user.Permissions.contains('ViewSelfAdmin')}">
+		<div class="panel-heading" ng-show="!user.Permissions.contains('ViewSelfAdmin')">
+			<h3 class="panel-title">{{'My Account' | r | xlat}}</h3>
+		</div>
+		<div ng-class="{'panel-body':!user.Permissions.contains('ViewSelfAdmin')}">
+>>>>>>> upstream/master
             <accountnavigation />
         </div>
 	</div>
     <loadingindicator title="{{'Please wait while we save your changes' | r | xlat}}" ng-show="displayLoadingIndicator"/>
     <identifyusermessage ng-show="user.Type == 'TempCustomer'" />
+<<<<<<< HEAD
 
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'" class="col-collapse">
 		<div class="panel panel-default" id="user_form">
@@ -25,18 +34,31 @@
                 </h3>
             </div>
 			<div class="panel-body" collapse="!logon">
+=======
+	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="login_existing" ng-submit="loginExisting()" ng-if="user.Type == 'TempCustomer'">
+		<div class="panel panel-default" id="user_form">
+			<div class="panel-heading">
+				<h3 class="panel-title">{{('Logon' | r) + ' ' + ('as existing user' | r) | xlat}}</h3>
+			</div>
+			<div class="panel-body">
+>>>>>>> upstream/master
                 <div class="col-md-6 col-md-offset-3">
                     <label>{{'Username' | r | xlat}}</label><input name="username" class="form-control" type="text" ng-model="loginasuser.Username" autocomplete="off" required placeholder="{{'Username' | r | xlat}}" /><br />
                     <label>{{'Password' | r | xlat}}</label><input name="password" class="form-control" type="password" ng-model="loginasuser.Password" autocomplete="off" required placeholder="{{'Password' | r | xlat}}" /><br />
                 </div>
 			</div>
+<<<<<<< HEAD
 			<div class="panel-footer" collapse="!logon">
+=======
+			<div class="panel-footer">
+>>>>>>> upstream/master
 				<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_existing.$invalid" id="451_btn_login_existing" value="{{'Logon' | r | xlat}}" />
 				<inlineerror ng-show="loginAsExistingError" title="{{loginAsExistingError}}" />
 			</div>
 		</div>
 	</form>
 
+<<<<<<< HEAD
 	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="user_form" ng-submit="save()">
         <div class="panel panel-default col-collapse" id="user_form">
             <div class="panel-heading">
@@ -46,6 +68,67 @@
                 </h3>
             </div>
             <div class="panel-body" collapse="!create">
+=======
+	<div ng-show="user.Permissions.contains('ViewSelfAdmin')" ng-if="user.Type == 'TempCustomer'">
+		<form name="login_help" ng-submit="getToken()">
+		<div ng-show="!enterResetToken" class="panel panel-default">
+			<loadingindicator ng-show="emailResetLoadingIndicator" title="{{'Please wait while we email your verification code' | r | xlat}}" />
+			<div class="panel-heading">
+				<h3 class="panel-title">{{'Lost login information' | r | xlat}}</h3>
+			</div>
+			<div class="panel-body">
+					<label>{{'Email' | r | xlat}}</label>
+					<input name="username" required class="form-control" type="text" ng-model="loginasuser.Email" autocomplete="off" placeholder="{{'Email' | r | xlat}}" />
+					<br/>
+					<div class="panel-footer">
+						<input class="btn btn-medium btn-primary" type="submit" ng-disabled="login_help.$invalid" id="451_btn_login_existing" value="{{'Reset' | r | xlat}}" />
+						<div class="view-inline-error" style="text-align: left" ng-show="resetPasswordError" ng-bind-html="resetPasswordError" />
+					</div>
+			</div>
+		</div>
+		</form>
+
+		<form name="resetbytoken" ng-submit="resetWithToken()" >
+			<div class="panel panel-default" ng-show="enterResetToken">
+				<loadingindicator ng-show="emailResetLoadingIndicator" title="{{'Please wait while we reset your password' | r | xlat}}" />
+				<div class="panel-heading">
+					<h3 class="panel-title">{{'Lost login information' | r | xlat}}</h3>
+				</div>
+				<div class="panel-body">
+					<p class="alert-warning">{{'An email was sent with your username and verification code.' | r | xlat}}</p>
+					<div class="row">
+						<label>{{'Username' | r | xlat}}</label>
+						<input required name="username" class="form-control" type="text" ng-model="loginasuser.UserName" autocomplete="off" placeholder="{{'Username' | r | xlat}}" />
+					</div>
+					<div class="row">
+						<label>{{'Verification code from email' | r | xlat}}</label>
+						<input required name="token" class="form-control" type="text" ng-model="loginasuser.PasswordResetToken" autocomplete="off" placeholder="{{'Verification Code' | r | xlat}}" />
+					</div>
+					<div class="row">
+						<label>New {{'Password' | r}}</label>
+						<input required class="form-control" name="new_password" type="password" ng-model="loginasuser.NewPassword" placeholder="New {{'Password' | r}}" />
+					</div>
+					<div class="row">
+						<label>Confirm {{'Password' | r}}</label>
+						<input required class="form-control" name="confirm_password" type="password" ng-model="loginasuser.ConfirmPassword"  placeholder="Confirm {{'Password' | r}}" ng-match="loginasuser.NewPassword" />
+						<inlineerror ng-show="resetbytoken.confirm_password.$error.match" title="{{'Password' | r}}s do not match!" /><br />
+					</div>
+					<div xclass="panel-footer">
+						<input class="btn btn-medium btn-primary" type="submit" ng-disabled="resetbytoken.$invalid" value="{{'Reset' | r | xlat}}" />
+						<div class="view-inline-error" style="text-align: left" ng-show="resetPasswordError" ng-bind-html="resetPasswordError" />
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<form ng-show="user.Permissions.contains('ViewSelfAdmin')" name="user_form" ng-submit="save()">
+        <div class="panel panel-default" id="user_form">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{(user.Type == 'TempCustomer' ? 'Create' : 'My') + ' ' + ('Account' | r) | xlat}}</h3>
+            </div>
+            <div class="panel-body">
+>>>>>>> upstream/master
                 <div class="col-sm-6 view-form-icon">
                     <div>
                         <label ng-show="user.FirstName">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
@@ -68,12 +151,15 @@
                         <i class="fa fa-envelope-o"></i>
                         <inlineerror ng-show="user_form.email.$invalid" title="{{'Please enter a valid' + ' ' +  ('Email' | rl) + ' ' + ('Address' | rl) | xlat}}" />
                     </div>
+<<<<<<< HEAD
                     <div>
                         <label class="required">{{'Confirm Email' | r | xlat}}</label>
                         <input name="confirm_email" ng-match="user.Email" class="form-control" type="email" ng-model="user.ConfirmEmail" ng-required="user.Type == 'TempCustomer' || user.Email || guest" placeholder="{{'Confirm Email' | r | xlat}}" autocomplete="off" />
                         <i class="fa fa-envelope-o"></i>
                         <inlineerror ng-show="user_form.confirm_email.$error.match" title="{{('Email' | r) + 's do not match!' | xlat}}" />
                     </div>
+=======
+>>>>>>> upstream/master
                 </div>
                 <div class="col-sm-6 view-form-icon">
                     <div>
@@ -89,7 +175,11 @@
                     </div>
                     <div>
                         <label ng-show="user.ConfirmPassword">{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}</label>
+<<<<<<< HEAD
                         <input name="confirm_password" ng-match="user.Password" ng-required="user.Type == 'TempCustomer' || user.Password || guest" class="form-control" type="password" ng-model="user.ConfirmPassword" placeholder="{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}" autocomplete="off" />
+=======
+                        <input name="confirm_password" ng-match="user.Password" ng-required="user.Type == 'TempCustomer' || user.Password" class="form-control" type="password" ng-model="user.ConfirmPassword" placeholder="{{('Confirm' | r) + ' ' + ('Password' | r) | xlat}}" autocomplete="off" />
+>>>>>>> upstream/master
                         <i class="fa fa-lock"></i>
                         <inlineerror ng-show="user_form.confirm_password.$error.match" title="{{('Password' | r) + 's do not match!' | xlat}}" />
                     </div>
@@ -116,7 +206,11 @@
                     </span>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="panel-body" collapse="!create">
+=======
+            <div class="panel-body" >
+>>>>>>> upstream/master
                 <div  ng-if="user.CustomFields" class="col-sm-6 view-form-icon">
                     <div ng-repeat="field in user.CustomFields">
                         <customfilefield customfield="field" ng-if="field.ControlType == 'File' && field.DisplayToUser"></customfilefield>
@@ -125,12 +219,17 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="panel-footer text-center" collapse="!create">
+=======
+            <div class="panel-footer text-center">
+>>>>>>> upstream/master
                 <input class="btn btn-primary pull-right" type="submit" ng-disabled="user_form.$invalid" id="451_btn_user" value="{{(user.Type == 'TempCustomer' ? 'Create Account' : 'Save') | xlat}}" />
                 <span class="alert alert-success" ng-show="actionMessage" ng-bind-html="actionMessage | r | xlat"></span>
             </div>
         </div>
     </form>
+<<<<<<< HEAD
 
     <div ng-show="user.Permissions.contains('ViewSelfAdmin')" ng-if="user.Type == 'TempCustomer' || guest">
         <form name="login_help" ng-submit="getToken()">
@@ -189,4 +288,6 @@
             </div>
         </form>
     </div>
+=======
+>>>>>>> upstream/master
 </section>

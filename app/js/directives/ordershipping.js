@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Address', 'AddressList', function($rootScope, Order, Shipper, Address, AddressList) {
+=======
+four51.app.directive('ordershipping', ['Order', 'Shipper', 'Address', 'AddressList', function(Order, Shipper, Address, AddressList) {
+>>>>>>> upstream/master
 	var obj = {
 		restrict: 'AE',
 		templateUrl: 'partials/controls/orderShipping.html',
@@ -6,12 +10,22 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 			AddressList.clear();
 			AddressList.shipping(function(list) {
 				$scope.shipaddresses = list;
+<<<<<<< HEAD
+=======
+                if (list.length == 1 && !$scope.currentOrder.ShipAddressID) {
+                    $scope.currentOrder.ShipAddressID = list[0].ID;
+                }
+>>>>>>> upstream/master
 				if ($scope.isEditforApproval) {
 					if (!AddressList.contains($scope.currentOrder.ShipAddress))
 						$scope.shipaddresses.push($scope.currentOrder.ShipAddress);
 				}
 			});
+<<<<<<< HEAD
 			$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
+=======
+			$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
+>>>>>>> upstream/master
 			$scope.$on('event:AddressCancel', function() {
 				$scope.shipaddressform = false;
 			});
@@ -30,7 +44,11 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 						$scope.shipaddresses.push($scope.currentOrder.BillAddress);
 					}
 				});
+<<<<<<< HEAD
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
+=======
+				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: false };
+>>>>>>> upstream/master
 			});
 
 			var saveChanges = function(callback, error) {
@@ -38,7 +56,14 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				var auto = $scope.currentOrder.autoID;
 				Order.save($scope.currentOrder,
 					function(data) {
+<<<<<<< HEAD
 						$scope.currentOrder = data;
+=======
+                        //Due to order save race condition, BillAddressID was being set to null
+                        var billAddressID = $scope.currentOrder.BillAddressID;
+						$scope.currentOrder = data;
+                        $scope.currentOrder.BillAddressID = billAddressID;
+>>>>>>> upstream/master
 						$scope.displayLoadingIndicator = false;
 						if (auto) {
 							$scope.currentOrder.autoID = true;
@@ -115,6 +140,12 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 						}
 						$scope.orderShipAddress = add;
 					});
+<<<<<<< HEAD
+=======
+                    if (!$scope.currentOrder.IsMultipleShip()) {
+                        $scope.setShipAddressAtOrderLevel();
+                    }
+>>>>>>> upstream/master
 				}
 			});
 
@@ -148,9 +179,12 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					li.Shipper = null;
 					li.ShipperID = null;
 				});
+<<<<<<< HEAD
 
 				$rootScope.$broadcast('shipChange');
 
+=======
+>>>>>>> upstream/master
 				saveChanges(
 					function(order) {
 						Shipper.query(order, function(list) {
@@ -167,7 +201,10 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 				);
 			};
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 			$scope.updateShipper = function(li) {
 				$scope.shippingUpdatingIndicator = true;
 				$scope.shippingFetchIndicator = true;
@@ -201,8 +238,11 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				}
 			};
 
+<<<<<<< HEAD
 			$rootScope.$broadcast('shipChange');
 
+=======
+>>>>>>> upstream/master
 			$scope.$on('event:AddressCancel', function(event) {
 				$scope.addressform = false;
 			});
