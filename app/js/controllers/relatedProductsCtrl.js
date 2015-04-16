@@ -27,4 +27,11 @@ four51.app.controller('RelatedProductsCtrl', ['$rootScope', '$scope', 'Product',
 			if(d) return $sce.trustAsHtml(d);
 		}
 	}
+
+	$scope.changeProduct = function(){
+		var theurl = document.URL;
+		var fixedurl = theurl.replace(/\//g,"%2F");
+		$scope.fixedurl = fixedurl;
+		$scope.theurl = theurl;
+	}
 }]);

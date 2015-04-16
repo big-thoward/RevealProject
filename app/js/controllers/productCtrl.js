@@ -20,6 +20,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
     {
     	$scope.categoryInteropID = $rootScope.categoryInteropID;
     	$scope.subCategoryInteropID = $rootScope.subCategoryInteropID;
+    	$scope.pagetitle = "Reveal Project | "+ $rootScope.categoryInteropID;
     }
     else
     {
@@ -33,8 +34,8 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 
     	$scope.categoryInteropID = $rootScope.categoryInteropID;
     	$scope.subCategoryInteropID = $rootScope.subCategoryInteropID;
+    	$scope.pagetitle = "Reveal Project | "+ $rootScope.categoryInteropID;
     }
-
 
 	$scope.calcVariantLineItems = function(i){
 		$scope.variantLineItemsOrderTotal = 0;
@@ -45,6 +46,12 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 	function setDefaultQty(lineitem) {
 		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
 			$scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
+	}
+	function commaSeparateNumber(val){
+	    while (/(\d+)(\d{3})/.test(val.toString())){
+	      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+	    }
+	    return val;
 	}
 	function init(searchTerm, callback) {
 		ProductDisplayService.getProductAndVariant($routeParams.productInteropID, $routeParams.variantInteropID, function (data) {
@@ -58,16 +65,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 			$scope.setAddToOrderErrors();
 			if (angular.isFunction(callback))
 				callback();
-
-			(function(d, s, id) {
-			      var js, fjs = d.getElementsByTagName(s)[0];
-			      if (d.getElementById(id)) return;
-			      js = d.createElement(s); js.id = id;
-			      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-			      fjs.parentNode.insertBefore(js, fjs);
-			    }(document, 'script', 'facebook-jssdk'));
-
-			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+   			$scope.goal = commaSeparateNumber(data.product.StaticSpecGroups.Goal.Specs.Goal.Value)
 			if(data.product.RelatedProductsGroupID)
 			{
 				Product.search(null, null, data.product.RelatedProductsGroupID, function(products)
@@ -80,6 +78,8 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 						var newsum = goal - quantity;
 						sum = sum + newsum;
 					}
+
+					sum = commaSeparateNumber(sum);
 					$scope.totalSold = sum;
 				});
 			}
@@ -89,6 +89,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 				var quantity = data.product.QuantityAvailable;
 				var goal = data.product.StaticSpecGroups.Goal.Specs.Goal.Value;
 				sum = goal - quantity;
+				sum = commaSeparateNumber(sum);
 				$scope.totalSold = sum;
 			}
 

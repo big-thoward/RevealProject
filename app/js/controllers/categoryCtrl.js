@@ -59,12 +59,13 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 	$scope.setSubCat = function(c)
 	{
 		$rootScope.subCategoryInteropID = c.InteropID;
+		$rootScope.categoryName = c.Name;
 		$routeParams.subCategoryInteropID = c.InteropID;
 		if(!c.InteropID)
 		{
 			$rootScope.subCategoryInteropID = $scope.currentCategory.Description;
 			$routeParams.subCategoryInteropID = $scope.currentCategory.Description;
-			
+			$rootScope.categoryName = c.Name;
 		}
 	};
 	
