@@ -126,6 +126,24 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                         $scope.setShipAddressAtOrderLevel();
                     }
 				}
+				if($scope.shipaddress.Country == "US")
+				{
+					var shipper = $scope.shippers[0];
+					$scope.shippers = [];
+					$scope.shippers.push(shipper);
+				}
+				else if($scope.shipaddress.Country == "CA")
+				{
+					var shipper = $scope.shippers[1];
+					$scope.shippers = [];
+					$scope.shippers.push(shipper);
+				}
+				else
+				{
+					var shipper = $scope.shippers[2];
+					$scope.shippers = [];
+					$scope.shippers.push(shipper);
+				}
 			});
 
 			$scope.setShipAddressAtLineItem = function(item) {
