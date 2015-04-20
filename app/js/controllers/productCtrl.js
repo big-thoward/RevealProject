@@ -43,6 +43,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 			setDefaultQty($scope.LineItem);
 			$scope.$broadcast('ProductGetComplete');
 			$scope.loadingIndicator = false;
+			$scope.loadingImage = false;
 			$scope.setAddToOrderErrors();
 			if (angular.isFunction(callback))
 				callback();
