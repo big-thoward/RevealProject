@@ -124,14 +124,14 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 		);
 	};
 
-	$scope.checkOutGuest = function() {
+	$scope.checkOut = function() {
 		$scope.displayLoadingIndicator = true;
-		if (!$scope.isEditforApproval)
+		if (!isEditforApproval)
 			OrderConfig.address($scope.currentOrder, $scope.user);
 		Order.save($scope.currentOrder,
 			function(data) {
 				$scope.currentOrder = data;
-                $location.path($scope.isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
+				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
 				$scope.displayLoadingIndicator = false;
 			},
 			function(ex) {
@@ -140,6 +140,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 			}
 		);
 	};
+	
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
