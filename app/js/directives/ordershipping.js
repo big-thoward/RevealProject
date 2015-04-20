@@ -129,20 +129,19 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				if($scope.shipaddress.Country == "US")
 				{
 					var shipper = $scope.shippers[0];
-					$scope.shippers = [];
-					$scope.shippers.push(shipper);
+					$scope.shippers = null;
+					$scope.shippers = {0:shipper};
 				}
 				else if($scope.shipaddress.Country == "CA")
 				{
 					var shipper = $scope.shippers[1];
 					$scope.shippers = [];
-					$scope.shippers.push(shipper);
-				}
+					$scope.shippers = {0:shipper};
 				else
 				{
 					var shipper = $scope.shippers[2];
 					$scope.shippers = [];
-					$scope.shippers.push(shipper);
+					$scope.shippers = {0:shipper};
 				}
 			});
 
