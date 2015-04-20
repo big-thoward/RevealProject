@@ -4,10 +4,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	$scope.productInteropID = $rootScope.productInteropID;
 	$scope.shipping = true;
 
-	if($scope.user.Type == "TempCustomer")
+	if($rootScope.guest)
 	{
 		$rootScope.$broadcast('guest');
-	    $rootScope.guest = true;
 	}
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
