@@ -7,6 +7,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	if($rootScope.guest)
 	{
 		$rootScope.$broadcast('guest');
+		$scope.guest = true;
 	}
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
