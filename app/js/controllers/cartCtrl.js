@@ -35,7 +35,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 				$scope.saveChanges(function() { $location.path('campaigns') });
 		}
 		else
-			$location.path('campaigns/projects/$scope.productInteropID');
+			$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
 	};
 
 	$scope.cancelOrder = function() {
@@ -47,7 +47,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('campaigns/projects/$scope.productInteropID');
+						$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -93,7 +93,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('revealproject/campaigns/projects/$scope.productInteropID');
+							$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
