@@ -1,8 +1,32 @@
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
-	$scope.proudctInteropID = $rootScope.productInteropID;
-	$scope.guest = true;
+	$scope.categoryInteropID = $rootScope.categoryInteropID;
+
+	$scope.guest = false;
+
+    $scope.$on('guest', function() {
+        $scope.guest = true;
+    });
+
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
+	if (isEditforApproval) {
+		Order.get($routeParams.id, function(order) {
+			$scope.currentOrder = order;
+			// add cost center if it doesn't exists for the approving user
+			var exists = false;
+			angular.forEach(order.LineItems, function(li) {
+				angular.forEach($scope.user.CostCenters, function(cc) {
+					if (exists) return;
+					exists = cc == li.CostCenter;
+				});
+				if (!exists) {
+					$scope.user.CostCenters.push({
+						'Name': li.CostCenter
+					});
+				}
+			});
+		});
+	}
 
 	$scope.currentDate = new Date();
 	$scope.errorMessage = null;
@@ -105,11 +129,12 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 
 	$scope.checkOutGuest = function() {
 		$scope.displayLoadingIndicator = true;
-		OrderConfig.address($scope.currentOrder, $scope.user);
+		if (!isEditforApproval)
+			OrderConfig.address($scope.currentOrder, $scope.user);
 		Order.save($scope.currentOrder,
 			function(data) {
 				$scope.currentOrder = data;
-				$location.path('checkout');
+				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
 				$scope.displayLoadingIndicator = false;
 			},
 			function(ex) {

@@ -1,11 +1,22 @@
-four51.app.controller('Four51Ctrl', ['$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService', 'GoogleAnalytics',
-function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
+four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService',
+function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService) {
+	slider();
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
-	
-    $scope.guest = true;
-    $scope.isAnon = $451.isAnon;
-    
+
+	$scope.$on('guest', function() {
+        $scope.guest = true;
+    });
+
+    if($scope.guest)
+    {
+        $scope.isAnon = true;
+        User.logout();
+    }
+    else
+    {
+    	$scope.isAnon = $451.isAnon;
+    }
 	$scope.Four51User = Security;
 	if ($scope.isAnon && !Security.isAuthenticated()) {
 		User.login(function () {
