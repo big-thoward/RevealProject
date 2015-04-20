@@ -1,5 +1,5 @@
-<div class="panel panel-default col-md-8 col-md-offset-2 col-sm-12" style="padding:20px;">
-    <div ng-repeat="p in relatedProducts" class="col-lg-2 col-md-2 col sm-12">
+<div class="panel panel-default col-md-8 col-md-offset-2" style="padding:20px;">
+    <div ng-repeat="p in relatedProducts" class="col-md-4">
         <a href="{{subCategoryInteropID ? 'campaigns/' + categoryInteropID + '/' + subCategoryInteropID + '/' + p.InteropID : 'campaigns/' + categoryInteropID + '/' + p.InteropID}}" ng-click="changeProduct()">
             <figure ng-model="active">
                 <img ng-src="{{p.SmallImageUrl}}" class="img-responsive" />

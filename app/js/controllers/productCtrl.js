@@ -16,9 +16,26 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 	$scope.fixedurl = fixedurl;
 	$scope.theurl = theurl;
 
-	var theurl = document.URL;
-	var urlarr = theurl.split("/");
-	$rootScope.productInteropID = urlarr[5];
+	if($rootScope.categoryInteropID)
+    {
+    	$scope.categoryInteropID = $rootScope.categoryInteropID;
+    	$scope.subCategoryInteropID = $rootScope.subCategoryInteropID;
+    	$scope.pagetitle = "Reveal Project | "+ $rootScope.categoryInteropID;
+    }
+    else
+    {
+    	var theurl = document.URL;
+    	var urlarr = theurl.split("/");
+    	$rootScope.categoryInteropID = urlarr[5];
+    	if(urlarr[7])
+    	{
+    		$rootScope.subCategoryInteropID = urlarr[6];
+    	}
+
+    	$scope.categoryInteropID = $rootScope.categoryInteropID;
+    	$scope.subCategoryInteropID = $rootScope.subCategoryInteropID;
+    	$scope.pagetitle = "Reveal Project | "+ $rootScope.categoryInteropID;
+    }
 
 	$scope.calcVariantLineItems = function(i){
 		$scope.variantLineItemsOrderTotal = 0;
@@ -149,7 +166,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 				}
 
 			}
-			
+
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
 	}
 	$scope.$watch('settings.currentPage', function(n, o) {

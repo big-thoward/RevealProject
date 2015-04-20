@@ -36,9 +36,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 				$scope.saveChanges(function() { $location.path('campaigns') });
 		}
 		else
-		{
-			$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
-		}
+			$location.path('campaigns');
 	};
 
 	$scope.cancelOrder = function() {
@@ -50,7 +48,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+						$location.path('projects');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -96,7 +94,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+							$location.path('projects');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
@@ -144,6 +142,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 		);
 	};
 
+
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
@@ -174,8 +173,4 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	$scope.cancelEdit = function() {
 		$location.path('order');
 	};
-
-    $scope.downloadProof = function(item) {
-        window.location = item.Variant.ProofUrl;
-    };
 }]);

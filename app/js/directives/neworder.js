@@ -7,7 +7,7 @@ four51.app.directive('neworder', function() {
 				User.startneworder($scope.user,
 					function(user) {
 						$scope.user = user;
-						$location.path('/catalog');
+						$location.path('/projects');
 					},
 					function(ex) {
 						$scope.actionMessage = ex.Message;

@@ -1,4 +1,4 @@
-four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Error', 'User', function($resource, $rootScope, $451, Security, Error, User) {
+four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Error', function($resource, $rootScope, $451, Security, Error) {
 	var _multipleShip = false;
 	function _then(fn, data, broadcast) {
 		if (angular.isFunction(fn))
@@ -6,7 +6,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 		if (!broadcast)
 			$rootScope.$broadcast('event:orderUpdate', data);
 	}
-	function _extend(order, user) {
+
+	function _extend(order) {
 		order.isEditable = order.Status == 'Unsubmitted' || order.Status == 'Open' || order.Status == 'AwaitingApproval';
 		angular.forEach(order.LineItems, function(item) {
 			item.OriginalQuantity = item.Quantity; //needed to validate qty changes compared to available quantity
@@ -43,20 +44,16 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 				}
 			}
 		});
-        order.BillingEnabled = (order.Total > 0 || (order.Total == 0 && user.Company.BillZeroPriceOrders));
-        //order.PaymentMethod = order.BillingEnabled ? order.PaymentMethod : 'Undetermined';
 	}
 
 	var _get = function(id, success, suppress) {
-        User.get(function(user) {
-            var currentOrder = store.get('451Cache.Order.' + id);
-            currentOrder ? (function() { _extend(currentOrder, user);	_then(success, currentOrder); })() :
-                $resource($451.api('order/:id'), { id: '@id' }).get({ id: id }).$promise.then(function(o) {
-                    _extend(o, user);
-                    store.set('451Cache.Order.' + id, o);
-                    _then(success, o, suppress);
-                });
-        });
+		var currentOrder = store.get('451Cache.Order.' + id);
+		currentOrder ? (function() { _extend(currentOrder);	_then(success, currentOrder); })() :
+			$resource($451.api('order/:id'), { id: '@id' }).get({ id: id }).$promise.then(function(o) {
+				_extend(o);
+				store.set('451Cache.Order.' + id, o);
+				_then(success, o, suppress);
+			});
 	};
 
 	var _save = function(order, success, error) {
@@ -64,10 +61,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 			function(o) {
 				store.set('451Cache.Order.' + o.ID, o);
 				store.remove('451Cache.User' + $451.apiName);
-                User.get(function(user) {
-                    _extend(o, user);
-                    _then(success, o);
-                });
+				_extend(o);
+				_then(success, o);
 			},
 			function(ex) {
 				error(Error.format(ex));
@@ -93,10 +88,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 			function(o) {
 				store.set('451Cache.Order.' + o.ID);
 				store.remove('451Cache.User' + $451.apiName);
-                User.get(function(user) {
-                    _extend(o, user);
-                    _then(success, o);
-                });
+				_extend(o);
+				_then(success,o);
 			},
 			function(ex) {
 				error(Error.format(ex));
@@ -109,10 +102,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 			function(o) {
 				store.set('451Cache.Order.' + o.ID);
 				store.remove('451Cache.User' + $451.apiName);
-                User.get(function(user) {
-                    _extend(o, user);
-                    _then(success, o);
-                });
+				_extend(o);
+				_then(success, o);
 			},
 			function(ex) {
 				error(Error.format(ex));
@@ -123,11 +114,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 	var _approve = function(order, success, error) {
 		$resource($451.api('order/approve/:id'), {'id': order.ID}, { approve: { method: 'PUT', params: { 'comment': order.ApprovalComment}}}).approve().$promise.then(
 			function(o) {
-                store.set('451Cache.Order.' + o.ID, o);
-                User.get(function(user) {
-                    _extend(o, user);
-                    _then(success, o);
-                });
+				_extend(o);
+				_then(success, o);
 			},
 			function(ex) {
 				error(Error.format(ex));
@@ -138,11 +126,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 	var _decline = function(order, success, error) {
 		$resource($451.api('order/decline/:id'), {'id': order.ID}, { decline: { method: 'PUT', params: { 'comment': order.ApprovalComment}}}).decline().$promise.then(
 			function(o) {
-                store.set('451Cache.Order.' + o.ID, o);
-                User.get(function(user) {
-                    _extend(o, user);
-                    _then(success, o);
-                });
+				_extend(o);
+				_then(success, o);
 			},
 			function(ex) {
 				error(Error.format(ex));
@@ -156,10 +141,8 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 			function(o) {
 				if (o.ID) {
 					store.set('451Cache.Order.' + o.ID, o);
-                    User.get(function(user) {
-                        _extend(o, user);
-                        _then(success, o);
-                    });
+					_extend(o);
+					_then(success, o);
 				} else {
 					store.remove('451Cache.User' + $451.apiName);
 					_then(success, null);

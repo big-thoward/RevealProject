@@ -1,55 +1,83 @@
-four51.app.controller('NavCtrl', ['$location', '$route', '$scope', '$451', 'User',
-    function ($location, $route, $scope, $451, User) {
-        $scope.Logout = function(){
+four51.app.controller('NavCtrl', ['$rootScope','$location', '$route', '$scope', '$451', 'User',
+function ($rootScope, $location, $route, $scope, $451, User) {
+
+    if($rootScope.categoryInteropID)
+    {
+        $scope.categoryInteropID = $rootScope.categoryInteropID;
+    }
+
+    $scope.$on('guest', function() {
+        $scope.guest = true;
+    });
+
+    $scope.navLogon = function(){
+        if($scope.guest)
+        {
             User.logout();
-            if ($scope.isAnon) {
-                $location.path("/catalog");
-                User.login(function(user) {
-                    $scope.user = user;
-                });
-            }
-        };
-
-        $scope.refreshUser = function() {
-            store.clear();
         }
+        $rootScope.$broadcast('logon');
+    };
 
-        // http://stackoverflow.com/questions/12592472/how-to-highlight-a-current-menu-item-in-angularjs
-        $scope.isActive = function(path) {
-            var cur_path = $location.path().replace('/', '');
-            var result = false;
+    $scope.navCreate = function(){
+        if($scope.guest)
+        {
+            User.logout();
+        }
+        $rootScope.$broadcast('create');
+    };
 
-            if (path instanceof Array) {
-                angular.forEach(path, function(p) {
-                    if (p == cur_path && !result)
-                        result = true;
-                });
-            }
-            else {
-                if (cur_path == path)
+    $scope.navUser = function(){
+        $rootScope.$broadcast('user');
+    };
+
+    $scope.Logout = function(){
+        User.logout();
+        if ($scope.isAnon) {
+            $location.path("/projects");
+            User.login();
+        }
+    };
+
+	$scope.refreshUser = function() {
+		store.clear();
+	}
+
+    // http://stackoverflow.com/questions/12592472/how-to-highlight-a-current-menu-item-in-angularjs
+    $scope.isActive = function(path) {
+        var cur_path = $location.path().replace('/', '');
+        var result = false;
+
+        if (path instanceof Array) {
+            angular.forEach(path, function(p) {
+                if (p == cur_path && !result)
                     result = true;
-            }
-            return result;
-        };
-        // extension of above isActive in path
-        $scope.isInPath = function(path) {
-            var cur_path = $location.path().replace('/', '');
-            var result = false;
-
-            if(cur_path.indexOf(path) > -1) {
-                result = true;
-            }
-            else {
-                result = false;
-            }
-            return result;
-        };
-
-        $scope.Clear = function() {
-            localStorage.clear();
+            });
         }
+        else {
+            if (cur_path == path)
+                result = true;
+        }
+        return result;
+    };
+    // extension of above isActive in path
+    $scope.isInPath = function(path) {
+        var cur_path = $location.path().replace('/', '');
+        var result = false;
 
-        $scope.$on('event:orderUpdate', function(event, order) {
-            $scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
-        });
-    }]);
+        if(cur_path.indexOf(path) > -1) {
+            result = true;
+        }
+        else {
+            result = false;
+        }
+        return result;
+    };
+
+	$scope.Clear = function() {
+		localStorage.clear();
+	};
+
+	$scope.$on('event:orderUpdate', function(event, order) {
+		$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
+	});
+}]);

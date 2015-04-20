@@ -1,11 +1,5 @@
-four51.app.controller('UserEditCtrl', ['$scope', '$location', '$sce', '$injector', 'User',
-function ($scope, $location, $sce, $injector, User) {
-    var _AnonRouter;
-    $scope.existingUser = $scope.user.Type != 'TempCustomer';
-    try {
-        _AnonRouter = $injector.get('AnonRouter');
-    }
-    catch(ex){}
+four51.app.controller('UserEditCtrl', ['$rootScope','$scope', '$location', '$sce', 'User',
+function ($rootScope, $scope, $location, $sce, User) {
 	User.get(function(user) {
         $scope.user = user;
         $scope.loginasuser = {};
@@ -32,7 +26,7 @@ function ($scope, $location, $sce, $injector, User) {
         });
 
         if ($scope.user.Type != 'TempCustomer')
-            $scope.user.TempUsername = $scope.user.Username;
+            $scope.user.TempUsername = $scope.user.Username
         $scope.getToken = function () {
             $scope.loginasuser.SendVerificationCodeByEmail = true;
             $scope.emailResetLoadingIndicator = true;
@@ -51,7 +45,7 @@ function ($scope, $location, $sce, $injector, User) {
             $scope.emailResetLoadingIndicator = true;
             User.reset($scope.loginasuser, function (user) {
                     delete $scope.loginasuser;
-                    $location.path('catalog');
+                    $location.path('projects');
                 },
                 function (err) {
                     $scope.emailResetLoadingIndicator = false;
@@ -72,7 +66,6 @@ function ($scope, $location, $sce, $injector, User) {
                     $scope.displayLoadingIndicator = false;
                     $scope.actionMessage = 'Your changes have been saved';
                     $scope.user.TempUsername = u.Username;
-                    if (_AnonRouter && !$scope.existingUser) _AnonRouter.route();
                 },
                 function (ex) {
                     $scope.displayLoadingIndicator = false;
@@ -86,7 +79,8 @@ function ($scope, $location, $sce, $injector, User) {
         };
         $scope.loginExisting = function () {
             User.login({Username: $scope.loginasuser.Username, Password: $scope.loginasuser.Password, ID: $scope.user.ID, Type: $scope.user.Type}, function (u) {
-                if (_AnonRouter) _AnonRouter.route();
+                $location.path("/projects");
+
             }, function (err) {
                 $scope.loginAsExistingError = err.Message;
             });

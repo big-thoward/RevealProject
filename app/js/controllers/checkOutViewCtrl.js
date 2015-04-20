@@ -1,14 +1,14 @@
-four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList', 'GoogleAnalytics',
-function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
+four51.app.controller('CheckOutViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'Analytics', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList',
+function ($rootScope, $scope, $routeParams, $location, $filter, $rootScope, $451, Analytics, User, Order, OrderConfig, FavoriteOrder, AddressList) {
 	$scope.errorSection = 'open';
-	$scope.productInteropID = $rootScope.productInteropID;
 	$scope.shipping = true;
 
-	if($rootScope.guest)
+	if($scope.user.Type == "TempCustomer")
 	{
 		$rootScope.$broadcast('guest');
-		$scope.guest = true;
+	    $rootScope.guest = true;
 	}
+	
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
@@ -17,7 +17,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	}
 
 	if (!$scope.currentOrder) {
-        $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+        $location.path('projects');
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
@@ -30,9 +30,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	    $rootScope.guest = true;
         Order.submit($scope.currentOrder,
 	        function(data) {
-				if ($scope.user.Company.GoogleAnalyticsCode) {
-					GoogleAnalytics.ecommerce(data, $scope.user);
-				}
+//				if ($scope.user.Company.GoogleAnalyticsCode) {
+//					Analytics.trackOrder(data, $scope.user);
+//				}
 				$scope.user.CurrentOrderID = null;
 				User.save($scope.user, function(data) {
 			        $scope.user = data;
@@ -86,11 +86,11 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
 	    {
 	    	
-	        saveChanges(function() { $location.path('campaigns/projects/'+$rootScope.productInteropID+'') });
+	        saveChanges(function() { $location.path('campaigns') });
 	    }
         else
         {
-		    $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+		    $location.path('campaigns');
         }
     };
 
@@ -106,8 +106,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			        User.save($scope.user, function(data) {
 				        $scope.user = data;
 				        $scope.displayLoadingIndicator = false;
-				        $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+				        $location.path('campaigns');
 			        });
+
 		        },
 		        function(ex) {
 			        $scope.actionMessage = ex.Message;
