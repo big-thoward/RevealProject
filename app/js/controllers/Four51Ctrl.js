@@ -2,20 +2,10 @@ four51.app.controller('Four51Ctrl', ['$scope', '$route', '$location', '$451', 'U
 function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
-
-	$scope.$on('guest', function() {
-        $scope.guest = true;
-    });
-
-    if($scope.guest)
-    {
-        $scope.isAnon = true;
-        User.logout();
-    }
-    else
-    {
-    	$scope.isAnon = $451.isAnon;
-    }
+	
+    $scope.guest = true;
+    $scope.isAnon = true;
+    
 	$scope.Four51User = Security;
 	if ($scope.isAnon && !Security.isAuthenticated()) {
 		User.login(function () {
