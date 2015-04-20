@@ -140,7 +140,24 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 			}
 		);
 	};
-	
+
+	$scope.checkOutGuest = function() {
+		$scope.displayLoadingIndicator = true;
+		if (!isEditforApproval)
+			OrderConfig.address($scope.currentOrder, $scope.user);
+		Order.save($scope.currentOrder,
+			function(data) {
+				$scope.currentOrder = data;
+				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
+				$scope.displayLoadingIndicator = false;
+			},
+			function(ex) {
+				$scope.errorMessage = ex.Message;
+				$scope.displayLoadingIndicator = false;
+			}
+		);
+	};
+
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
