@@ -48,7 +48,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('/campaigns/projects/$routeParams.productInteropID');
+						$location.path('campaigns/projects/$routeParams.productInteropID');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
