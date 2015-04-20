@@ -3,28 +3,25 @@
         <section>
             <div class="container">
                 <ul class="nav navbar-nav pull-left">
-                    <li id="homelink" class="hidden-xs">
+                    <li id="homelink" style="overflow:visible;">
                         <a ng-show="Four51User.isAuthenticated()" href="http://www.revealproject.com.prod.sportngin.com/" target="_blank">
                             <img src="./img/homeLink.png" alt="Reveal Project">
                         </a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-
-                    <productsearchinputnav></productsearchinputnav>
-                    <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus" style="width:130px;">
-                        <a href="contactus">
-                            <i class="fa fa-question"></i>
-                            {{'Help' | r | xlat}}
-                        </a>
-                    </li>
                     <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
                         <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
                             <span ng-bind="cartCount" class="badge"></span>
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </li>
-                    
+                    <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus" style="width:130px;height: auto;padding: 16px 0;">
+                        <a href="contactus">
+                            <i class="fa fa-question"></i>
+                            {{'Help' | r | xlat}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
