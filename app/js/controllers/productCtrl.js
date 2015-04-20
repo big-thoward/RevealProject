@@ -10,7 +10,6 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 		currentPage: 1,
 		pageSize: 10
 	};
-
 	var theurl = document.URL;
 	var fixedurl = theurl.replace(/\//g,"%2F");
 	$scope.fixedurl = fixedurl;
@@ -19,7 +18,6 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 	var theurl = document.URL;
 	var urlarr = theurl.split("/");
 	$rootScope.productInteropID = urlarr[5];
-
 	$scope.calcVariantLineItems = function(i){
 		$scope.variantLineItemsOrderTotal = 0;
 		angular.forEach($scope.variantLineItems, function(item){
@@ -149,7 +147,6 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 				}
 
 			}
-
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
 	}
 	$scope.$watch('settings.currentPage', function(n, o) {
@@ -176,7 +173,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 				redirect ? $location.path('/product/' + $scope.LineItem.Product.InteropID) : $route.reload();
 			},
 			function(ex) {
-				$scope.lineItemErrors.push(ex.Message);
+				if ($scope.lineItemErrors.indexOf(ex.Message) == -1) $scope.lineItemErrors.unshift(ex.Message);
 				$scope.showAddToCartErrors = true;
 			}
 		);
@@ -213,7 +210,7 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 					$scope.user.CurrentOrderID = o.ID;
 					User.save($scope.user, function(){
 						$scope.addToOrderIndicator = true;
-						$location.path('/cart');
+						$location.path('/cart' + ($scope.isEditforApproval ? '/' + o.ID : ''));
 					});
 				},
 				function(ex) {

@@ -1298,3 +1298,8 @@ span.badge.ng-binding
       display:none;
     }
   }
+
+.col-lg-3 
+{
+  width: 30%;
+}

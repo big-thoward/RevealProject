@@ -1,83 +1,55 @@
-four51.app.controller('NavCtrl', ['$rootScope','$location', '$route', '$scope', '$451', 'User',
-function ($rootScope, $location, $route, $scope, $451, User) {
-
-    if($rootScope.categoryInteropID)
-    {
-        $scope.categoryInteropID = $rootScope.categoryInteropID;
-    }
-
-    $scope.$on('guest', function() {
-        $scope.guest = true;
-    });
-
-    $scope.navLogon = function(){
-        if($scope.guest)
-        {
+four51.app.controller('NavCtrl', ['$location', '$route', '$scope', '$451', 'User',
+    function ($location, $route, $scope, $451, User) {
+        $scope.Logout = function(){
             User.logout();
+            if ($scope.isAnon) {
+                $location.path("/catalog");
+                User.login(function(user) {
+                    $scope.user = user;
+                });
+            }
+        };
+
+        $scope.refreshUser = function() {
+            store.clear();
         }
-        $rootScope.$broadcast('logon');
-    };
 
-    $scope.navCreate = function(){
-        if($scope.guest)
-        {
-            User.logout();
-        }
-        $rootScope.$broadcast('create');
-    };
+        // http://stackoverflow.com/questions/12592472/how-to-highlight-a-current-menu-item-in-angularjs
+        $scope.isActive = function(path) {
+            var cur_path = $location.path().replace('/', '');
+            var result = false;
 
-    $scope.navUser = function(){
-        $rootScope.$broadcast('user');
-    };
-
-    $scope.Logout = function(){
-        User.logout();
-        if ($scope.isAnon) {
-            $location.path("/projects");
-            User.login();
-        }
-    };
-
-	$scope.refreshUser = function() {
-		store.clear();
-	}
-
-    // http://stackoverflow.com/questions/12592472/how-to-highlight-a-current-menu-item-in-angularjs
-    $scope.isActive = function(path) {
-        var cur_path = $location.path().replace('/', '');
-        var result = false;
-
-        if (path instanceof Array) {
-            angular.forEach(path, function(p) {
-                if (p == cur_path && !result)
+            if (path instanceof Array) {
+                angular.forEach(path, function(p) {
+                    if (p == cur_path && !result)
+                        result = true;
+                });
+            }
+            else {
+                if (cur_path == path)
                     result = true;
-            });
-        }
-        else {
-            if (cur_path == path)
+            }
+            return result;
+        };
+        // extension of above isActive in path
+        $scope.isInPath = function(path) {
+            var cur_path = $location.path().replace('/', '');
+            var result = false;
+
+            if(cur_path.indexOf(path) > -1) {
                 result = true;
-        }
-        return result;
-    };
-    // extension of above isActive in path
-    $scope.isInPath = function(path) {
-        var cur_path = $location.path().replace('/', '');
-        var result = false;
+            }
+            else {
+                result = false;
+            }
+            return result;
+        };
 
-        if(cur_path.indexOf(path) > -1) {
-            result = true;
+        $scope.Clear = function() {
+            localStorage.clear();
         }
-        else {
-            result = false;
-        }
-        return result;
-    };
 
-	$scope.Clear = function() {
-		localStorage.clear();
-	};
-
-	$scope.$on('event:orderUpdate', function(event, order) {
-		$scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
-	});
-}]);
+        $scope.$on('event:orderUpdate', function(event, order) {
+            $scope.cartCount = order ? (order.Status == 'Unsubmitted' || order.Status == 'AwaitingApproval') ? order.LineItems.length : null : null;
+        });
+    }]);

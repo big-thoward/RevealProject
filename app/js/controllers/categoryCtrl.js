@@ -1,12 +1,10 @@
-four51.app.controller('CategoryCtrl', ['$rootScope', '$routeParams', '$sce', '$scope', '$451', 'Category', 'Product', 'Nav',
-function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) {
-	$scope.thetitle = "Projects";
+four51.app.controller('CategoryCtrl', ['$routeParams', '$sce', '$scope', '$451', 'Category', 'Product', 'Nav',
+function ($routeParams, $sce, $scope, $451, Category, Product, Nav) {
 	$scope.productLoadingIndicator = true;
 	$scope.settings = {
 		currentPage: 1,
 		pageSize: 40
 	};
-			
 	$scope.trusted = function(d){
 		if(d) return $sce.trustAsHtml(d);
 	}
@@ -32,7 +30,6 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
             $scope.currentCategory = cat;
 	        $scope.categoryLoadingIndicator = false;
         });
-        $rootScope.categoryInteropID = $routeParams.categoryInteropID;
     }
 	else if($scope.tree){
 		$scope.currentCategory ={SubCategories:$scope.tree};
@@ -55,19 +52,4 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 			$scope.sorter = s.replace(' DESC', "");
 		$scope.direction = s.indexOf('DESC') > -1;
 	});
-
-	$scope.setSubCat = function(c)
-	{
-		$rootScope.subCategoryInteropID = c.InteropID;
-		$rootScope.categoryName = c.Name;
-		$routeParams.subCategoryInteropID = c.InteropID;
-		if(!c.InteropID)
-		{
-			$rootScope.subCategoryInteropID = $scope.currentCategory.Description;
-			$routeParams.subCategoryInteropID = $scope.currentCategory.Description;
-			$rootScope.categoryName = c.Name;
-		}
-	};
-	
-
 }]);
