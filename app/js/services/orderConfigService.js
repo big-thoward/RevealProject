@@ -1,4 +1,4 @@
-four51.app.factory('OrderConfig', function() {
+four51.app.factory('OrderConfig', ['Address', function(Address) {
     var user, order;
     var setCostCenter = function() {
         // set the cost center if the user only has 1 assigned to them and the order doesn't already have a cost center assigned
@@ -14,7 +14,7 @@ four51.app.factory('OrderConfig', function() {
     var setPaymentMethod = function(accounts) {
         // logic is that we want to default the payment method to the most likely choice of the user.
         // this order is purely a business requirement. not an api requirement.
-	    if (user.Permissions.contains('SubmitForApproval') && order.Approvals.length > 0) {
+	    if ((user.Permissions.contains('SubmitForApproval') && order.Approvals.length > 0) || (order.Total == 0 && !user.Company.BillZeroPriceOrders)) {
 		    order.PaymentMethod = 'Undetermined'; return;
 	    }
 	    if (user.Permissions.contains('PayByBudgetAccount') && accounts.length > 0) {
@@ -36,14 +36,25 @@ four51.app.factory('OrderConfig', function() {
 		angular.forEach(user.CostCenters, function(c) {
 			if (c.DefaultAddressID) {
 				if (order.CostCenter) {
-					order.ShipAddressID = order.ShipAddressID || order.CostCenter == c.Name ? c.DefaultAddressID : null;
-					angular.forEach(order.LineItems, function(li) {
-						li.ShipAddressID = order.ShipAddressID;
-					});
+                    if (!order.ShipAddressID && order.CostCenter == c.Name) {
+                        Address.get(c.DefaultAddressID, function(address) {
+                            if (address.IsShipping) {
+                                order.ShipAddressID = address.ID;
+                                angular.forEach(order.LineItems, function(li) {
+                                    li.ShipAddressID = order.ShipAddressID;
+                                });
+                            }
+                        });
+                    }
 				}
 				angular.forEach(order.LineItems, function(li) {
-					if (li.CostCenter)
-						li.ShipAddressID = li.ShipAddressID || li.CostCenter == c.Name ? c.DefaultAddressID : null;
+					if (li.CostCenter && !li.ShipAddressID && li.CostCenter == c.Name) {
+                        Address.get(c.DefaultAddressID, function(address) {
+                           if (address.IsShipping) {
+                               li.ShipAddressID = address.ID;
+                           }
+                        });
+                    }
 				});
 			}
 		});
@@ -53,7 +64,7 @@ four51.app.factory('OrderConfig', function() {
 		return (user.Permissions.contains('EditPOID') ||
 			user.Permissions.contains('Comments') ||
 			(user.Permissions.contains('CostCenterPerOrder') && !user.Permissions.contains('CostCenterPerLine')) ||
-			order.OrderFields.length > 0);
+            (order && order.OrderFields.length > 0));
 	}
 
 	function _hasAddress() {
@@ -92,6 +103,6 @@ four51.app.factory('OrderConfig', function() {
 		    return showOrderDetails();
 	    }
     };
-});
+}]);
 
 

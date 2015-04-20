@@ -1,14 +1,5 @@
-four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService',
-function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService) {
-	
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-39234710-27', 'auto');
-      ga('send', 'pageview');
-      
+four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService', 'GoogleAnalytics',
+function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
 
@@ -63,7 +54,7 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 					$scope.currentOrder = null;
 
 				if (user.Company.GoogleAnalyticsCode) {
-					analytics(user.Company.GoogleAnalyticsCode);
+					GoogleAnalytics.analyticsLogin(user.Company.GoogleAnalyticsCode);
 				}
 
 			});
@@ -73,25 +64,6 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 			});
 		}
 	}
-
-	function analytics(id) {
-		if (id.length == 0 || window.ga) return;
-		(function (i, s, o, g, r, a, m) {
-			i['GoogleAnalyticsObject'] = r;
-			i[r] = i[r] || function () {
-				(i[r].q = i[r].q || []).push(arguments)
-			}, i[r].l = 1 * new Date();
-			a = s.createElement(o),
-				m = s.getElementsByTagName(o)[0];
-			a.async = 1;
-			a.src = g;
-			m.parentNode.insertBefore(a, m)
-		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-		ga('create', id, 'four51.com');
-		ga('require', 'ecommerce', 'ecommerce.js');
-	}
-
 	try {
 		trackJs.configure({
 			trackAjaxFail: false

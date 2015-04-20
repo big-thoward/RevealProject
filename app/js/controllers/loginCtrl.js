@@ -26,7 +26,7 @@ function ($scope, $sce, $route, $location, User) {
 				delete $scope.PasswordReset;
 				delete $scope.credentials;
                 $scope.buttonText = "Logon";
-				$location.path('projects');
+				$location.path('catalog');
 			},
 			function(ex) {
 				$scope.loginMessage = $sce.trustAsHtml(ex.Message);
