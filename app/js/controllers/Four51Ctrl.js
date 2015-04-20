@@ -1,6 +1,5 @@
 four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService',
 function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService) {
-	slider();
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
 
