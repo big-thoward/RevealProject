@@ -10,18 +10,19 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                    <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
-                        <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
-                            <span ng-bind="cartCount" class="badge"></span>
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </li>
                     <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus" style="width:130px;height: auto;padding: 16px 0;">
                         <a href="contactus">
                             <i class="fa fa-question"></i>
                             {{'Help' | r | xlat}}
                         </a>
                     </li>
+                    <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
+                        <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
+                            <span ng-bind="cartCount" class="badge"></span>
+                            <i class="fa fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
         </section>
