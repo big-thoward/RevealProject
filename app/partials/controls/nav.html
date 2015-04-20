@@ -8,15 +8,14 @@
                             <img src="./img/homeLink.png" alt="Reveal Project">
                         </a>
                     </li>
-                    
+                </ul>
+                <ul class="nav navbar-nav pull-right">
                     <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
                         <a href="contactus">
                             <i class="fa fa-support"></i>
                             {{'Help' | r | xlat}}
                         </a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
                     <productsearchinputnav></productsearchinputnav>
                     <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
                         <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart" href="cart">
@@ -24,12 +23,7 @@
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </li>
-                    <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
-                        <a href="contactus">
-                            <i class="fa fa-support"></i>
-                            {{'Help' | r | xlat}}
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </section>
