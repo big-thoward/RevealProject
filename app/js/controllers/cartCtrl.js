@@ -1,11 +1,6 @@
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.proudctInteropID = $rootScope.productInteropID;
-	$scope.guest = false;
-
-    $scope.$on('guest', function() {
-        $scope.guest = true;
-    });
 
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if (isEditforApproval) {
