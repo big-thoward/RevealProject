@@ -63,6 +63,7 @@ four51.app.factory('Order', ['$resource', '$rootScope', '$451', 'Security', 'Err
 		$resource($451.api('order')).save(order).$promise.then(
 			function(o) {
 				store.set('451Cache.Order.' + o.ID, o);
+				store.remove('451Cache.User' + $451.apiName);
                 User.get(function(user) {
                     _extend(o, user);
                     _then(success, o);
