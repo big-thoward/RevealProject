@@ -1,10 +1,10 @@
-four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService', 'GoogleAnalytics',
-function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
+four51.app.controller('Four51Ctrl', ['$scope', '$route', '$location', '$451', 'User', 'Order', 'Security', 'OrderConfig', 'Category', 'AppConst','XLATService', 'GoogleAnalytics',
+function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
 	
     $scope.guest = true;
-    $scope.isAnon = true;
+    $scope.isAnon = $451.isAnon;
     
 	$scope.Four51User = Security;
 	if ($scope.isAnon && !Security.isAuthenticated()) {
@@ -28,7 +28,6 @@ function ($rootScope, $scope, $route, $location, $451, User, Order, Security, Or
 		if (Security.isAuthenticated()) {
 			User.get(function (user) {
 				$scope.user = user;
-				$rootScope.user = user;
                 $scope.user.Culture.CurrencyPrefix = XLATService.getCurrentLanguage(user.CultureUI, user.Culture.Name)[1];
                 $scope.user.Culture.DateFormat = XLATService.getCurrentLanguage(user.CultureUI, user.Culture.Name)[2];
 
