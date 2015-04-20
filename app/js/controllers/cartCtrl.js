@@ -127,6 +127,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	$scope.checkOutGuest = function() {
 		$scope.displayLoadingIndicator = true;
 		$rootScope.guest = true;
+		$scope.user.Type = "Temp Customer";
 		if (!isEditforApproval)
 			OrderConfig.address($scope.currentOrder, $scope.user);
 		Order.save($scope.currentOrder,
