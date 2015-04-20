@@ -1,6 +1,11 @@
-four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', 'Order', 'FavoriteOrder', 'Address', 'User', 'Variant',
-	function ($scope, $location, $routeParams, Order, FavoriteOrder, Address, User, Variant) {
+four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', 'Order', 'FavoriteOrder', 'Address', 'User',
+	function ($scope, $location, $routeParams, Order, FavoriteOrder, Address, User) {
 		$scope.loadingIndicator = true;
+
+		$scope.$on('guest', function() {
+	        $scope.guest = true;
+	    });
+
 
 		Order.get($routeParams.id, function(data){
 			$scope.loadingIndicator = false;
@@ -93,6 +98,7 @@ four51.app.controller('OrderViewCtrl', ['$scope', '$location', '$routeParams', '
 		$scope.onPrint = function()  {
 			window.print();
 		};
+
 
 		if($scope.guest && User.Type == "Customer")
 		{

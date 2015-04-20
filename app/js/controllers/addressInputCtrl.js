@@ -52,6 +52,7 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
             );
             $rootScope.$broadcast('guest');
         }
+
     };
     $scope.delete = function() {
         Address.delete(this.address, function() {

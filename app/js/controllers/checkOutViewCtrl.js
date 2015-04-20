@@ -1,14 +1,14 @@
 four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList', 'GoogleAnalytics',
 function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
 	$scope.errorSection = 'open';
-	$scope.productInteropID = $rootScope.productInteropID;
 	$scope.shipping = true;
 
-	if($rootScope.guest)
+	if($scope.user.Type == "TempCustomer")
 	{
 		$rootScope.$broadcast('guest');
-		$scope.guest = true;
+	    $rootScope.guest = true;
 	}
+	
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
