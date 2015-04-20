@@ -1,7 +1,6 @@
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
-	$scope.categoryInteropID = $rootScope.categoryInteropID;
-
+	$scope.proudctInteropID = $rootScope.productInteropID;
 	$scope.guest = false;
 
     $scope.$on('guest', function() {
