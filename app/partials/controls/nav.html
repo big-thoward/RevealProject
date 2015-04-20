@@ -24,6 +24,12 @@
                             <i class="fa fa-shopping-cart"></i>
                         </a>
                     </li>
+                    <li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
+                        <a href="contactus">
+                            <i class="fa fa-support"></i>
+                            {{'Help' | r | xlat}}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
