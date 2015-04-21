@@ -29,20 +29,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				    {
 				        if($scope.shipaddress.Country == "US")
 				        {
-				        	delete($scope.shippers[1]);
-				        	delete($scope.shippers[2]);
+				        	$scope.shippers.splice(1,2);
 				        	alert("USA");
 				        }
 				        else if($scope.shipaddress.Country == "CA")
 				        {
-				        	delete($scope.shippers[0]);
-				        	delete($scope.shippers[2]);
 				        	alert("CAN");
 				        }
 				        else
 				        {
-				        	delete($scope.shippers[1]);
-				        	delete($scope.shippers[0]);
 				        	alert("OTHER");
 				        }
 				    }
