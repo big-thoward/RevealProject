@@ -27,26 +27,22 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shippers)
 				    {
-				        var options = document.getElementsByTagName('SELECT').options;
 				        if($scope.shipaddress.Country == "US")
 				        {
-				        	options[0].remove();
-				        	options[2].remove();
-				        	options[3].remove();
+				        	delete($scope.shippers[1]);
+				        	delete($scope.shippers[2]);
 				        	alert("USA");
 				        }
 				        else if($scope.shipaddress.Country == "CA")
 				        {
-				        	options[0].remove();
-				        	options[1].remove();
-				        	options[3].remove();
+				        	delete($scope.shippers[0]);
+				        	delete($scope.shippers[2]);
 				        	alert("CAN");
 				        }
 				        else
 				        {
-				        	options[0].remove();
-				        	options[2].remove();
-				        	options[1].remove();
+				        	delete($scope.shippers[1]);
+				        	delete($scope.shippers[0]);
 				        	alert("OTHER");
 				        }
 				    }
