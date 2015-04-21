@@ -27,8 +27,9 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shippers)
 				    {
-				        document.getElementsByTagName('SELECT')[0].id = "shippersselect";
+				        var options = document.getElementsByTagName('SELECT').options;
 				        alert($scope.shipaddress.Country);
+				        alert(options.length);
 				    }
 				}
 
@@ -171,6 +172,12 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 								$scope.shippingFetchIndicator = false;
 							}
 						);
+						if($scope.shippers)
+					    {
+					        var options = document.getElementsByTagName('SELECT').options;
+					        alert($scope.shipaddress.Country);
+					        alert(options.length);
+					    }
 					},
 					function(ex) {
 						$scope.currentOrder.ShipAddressID = null;
