@@ -117,6 +117,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	    }
     };
 
+
     $scope.saveChanges = function() {
         saveChanges();
     };

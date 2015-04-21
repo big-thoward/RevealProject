@@ -52,7 +52,21 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
             );
             $rootScope.$broadcast('guest');
         }
-
+        if($scope.shippers)
+        {
+            if($scope.shipaddress.Country == "US")
+            {
+                validShipper = shippers[0];
+            }
+            else if($scope.shipaddress.Country == "CA")
+            {
+                validShipper = shippers[1];
+            }
+            else
+            {
+                validShipper = shipers[2];
+            }
+        }
     };
     $scope.delete = function() {
         Address.delete(this.address, function() {
