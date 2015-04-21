@@ -27,15 +27,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shipaddress.Country == "US")
 					{
-						$scope.shipperindex = 0;
-					}
+						$scope.validShipper[0] = $scope.shippers[0];
+					}					
 					else if($scope.shipaddress.Country == "CA")
 					{
-						$scope.shipperindex = 1;
+						$scope.validShipper[0] = $scope.shippers[1];
 					}
 					else
 					{
-						$scope.shipperindex = 2;
+						$scope.validShipper[0] = $scope.shippers[2];
 					}
 				}
 
@@ -89,19 +89,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				if (!exists) {
 					Order.clearshipping($scope.currentOrder);
 				}
-				if($scope.shipaddress.Country == "US")
-		        {
-		        	$scope.shippers.splice(2,1);
-		        	alert("USA");
-		        }
-		        else if($scope.shipaddress.Country == "CA")
-		        {
-		        	alert("CAN");
-		        }
-		        else
-		        {
-		        	alert("OTHER");
-		        }
 			});
 
 			$scope.setMultipleShipAddress = function() {
