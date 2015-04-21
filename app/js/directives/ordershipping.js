@@ -172,12 +172,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 								$scope.shippingFetchIndicator = false;
 							}
 						);
-						if($scope.shippers)
-					    {
-					        var options = document.getElementsByTagName('SELECT').options;
-					        alert($scope.shipaddress.Country);
-					        alert(options.length);
-					    }
 					},
 					function(ex) {
 						$scope.currentOrder.ShipAddressID = null;
