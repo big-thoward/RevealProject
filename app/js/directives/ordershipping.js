@@ -35,18 +35,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 				});
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
-				if($scope.shipaddress.Country == "US")
-				{
-					$scope.validshippers = {0:$scope.shippers[0]};
-				}					
-				else if($scope.shipaddress.Country == "CA")
-				{
-					$scope.validshippers = {0:$scope.shippers[0]};
-				}
-				else
-				{
-					$scope.validshippers = {0:$scope.shippers[0]};
-				}
 			});
 
 			var saveChanges = function(callback, error) {
@@ -77,7 +65,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 			};
 
 			Shipper.query($scope.currentOrder, function(list) {
-				$scope.shippers = list;
+				if($scope.shipaddress.Country == "US")
+				{
+					$scope.shippers = {0:list[0]};
+				}					
+				else if($scope.shipaddress.Country == "CA")
+				{
+					$scope.shippers = {0:list[0]};
+				}
+				else
+				{
+					$scope.shippers = {0:list[0]};
+				}
 				// sometimes the current shipper is not longer available. we need to clear the shipping information in that case
 				var exists = false;
 				angular.forEach(list, function(s) {
