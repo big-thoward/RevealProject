@@ -137,6 +137,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					var shipper = $scope.shippers[1];
 					$scope.shippers = [];
 					$scope.shippers = {0:shipper};
+				}
 				else
 				{
 					var shipper = $scope.shippers[2];
