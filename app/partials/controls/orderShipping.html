@@ -133,7 +133,7 @@
                                         <label ng-class="{required: currentOrder.IsMultipleShip() && user.ShipMethod != null}">{{('Shipping' | r) + ' ' + ('Method' | r) | xlat}}</label>
                                         <select class="form-control" ng-change="updateShipper(item)"
                                                 ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
-                                                ng-options="shipaddress.Country == 'US' ? shipper.Name as (shipper.Name) for shippers[0] : shipaddress.Country == 'CA' ? shipper.Name as (shipper.Name) for shippers[1] : shipper.Name as (shipper.Name) for shippers[2]"
+                                                ng-options="shipper.Name as (shipper.Name) for validShipper"
                                                 ng-model="item.ShipperName"
                                                 ng-required="currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value=""></option>

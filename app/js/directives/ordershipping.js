@@ -126,6 +126,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                         $scope.setShipAddressAtOrderLevel();
                     }
 				}
+				if($scope.shipaddress.Country == "US")
+				{
+					validShipper = shippers[0];
+				}
+				else if($scope.shipaddress.Country == "CA")
+				{
+					validShipper = shippers[1];
+				}
+				else
+				{
+					validShipper = shipers[2];
+				}
 			});
 
 			$scope.setShipAddressAtLineItem = function(item) {
