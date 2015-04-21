@@ -54,17 +54,22 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
         }
         if($scope.shippers)
         {
+            var shipperselect = document.getElementById('shippersselect');
+            var options = shipperselect.options;
+            for (var i = 0; i < options.length; i++) {
+                options[i].className("ng-hide");
+            };
             if($scope.shipaddress.Country == "US")
             {
-                validShipper = shippers[0];
+               options[0].className("");
             }
             else if($scope.shipaddress.Country == "CA")
             {
-                validShipper = shippers[1];
+                options[1].className("");
             }
             else
             {
-                validShipper = shipers[2];
+                options[2].className("");
             }
         }
     };
