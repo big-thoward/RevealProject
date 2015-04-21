@@ -25,6 +25,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					if (!$scope.shipToMultipleAddresses)
 						$scope.setShipAddressAtOrderLevel();
 					$scope.shipaddressform = false;
+					if($scope.shipaddress.Country == "US")
+					{
+						$scope.shipperindex = 0;
+					}
+					else if($scope.shipaddress.Country == "CA")
+					{
+						$scope.shipperindex = 1;
+					}
+					else
+					{
+						$scope.shipperindex = 2;
+					}
 				}
 
 				AddressList.shipping(function(list) {
@@ -69,26 +81,27 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				// sometimes the current shipper is not longer available. we need to clear the shipping information in that case
 				var exists = false;
 				angular.forEach(list, function(s) {
-					if($scope.shipaddress.Country == "US" && s.ID == "vGSVwcjTMTwhYr6EZsp3mw-e-e")
+					if (!exists && $scope.currentOrder.LineItems[0].ShipperID == s.ID)
 					{
 						exists = true;
-					}
-					else if($scope.shipaddress.Country == "CA" && s.ID == "4sFEsvy0p-syIO6el-pdpmfg-e-e")
-					{
-						exists = true;
-					}
-					else if($scope.shipaddress.Country != "CA" && $scope.shipaddress.Country != "US" && s.ID == "zh-skLA9xRuGHl1dxXIsxbA-e-e")
-					{
-						exists = true;
-					}
-					else
-					{
-						exists = false;
 					}
 				});
 				if (!exists) {
 					Order.clearshipping($scope.currentOrder);
 				}
+				if($scope.shipaddress.Country == "US")
+		        {
+		        	$scope.shippers.splice(2,1);
+		        	alert("USA");
+		        }
+		        else if($scope.shipaddress.Country == "CA")
+		        {
+		        	alert("CAN");
+		        }
+		        else
+		        {
+		        	alert("OTHER");
+		        }
 			});
 
 			$scope.setMultipleShipAddress = function() {
