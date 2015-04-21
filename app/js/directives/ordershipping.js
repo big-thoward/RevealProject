@@ -27,15 +27,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shipaddress.Country == "US")
 					{
-						$scope.validShipper[0] = $scope.shippers[0];
+						$scope.validShipper = $scope.shippers[0];
 					}					
 					else if($scope.shipaddress.Country == "CA")
 					{
-						$scope.validShipper[0] = $scope.shippers[1];
+						$scope.validShipper = $scope.shippers[1];
 					}
 					else
 					{
-						$scope.validShipper[0] = $scope.shippers[2];
+						$scope.validShipper = $scope.shippers[2];
 					}
 				}
 
