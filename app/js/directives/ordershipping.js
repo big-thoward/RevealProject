@@ -37,15 +37,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
 				if($scope.shipaddress.Country == "US")
 				{
-					$scope.currentOrder.LineItems[0].shipid="WztWj9oMRXBSYbKk-pM0nug-e-e";
+					$scope.currentOrder.shipid="WztWj9oMRXBSYbKk-pM0nug-e-e";
 				}					
 				else if($scope.shipaddress.Country == "CA")
 				{
-					$scope.currentOrder.LineItems[0].shipid="m35UNNRNJALjz9YIIr6DmQ-e-e";
+					$scope.currentOrder.shipid="m35UNNRNJALjz9YIIr6DmQ-e-e";
 				}
 				else
 				{
-					$scope.currentOrder.LineItems[0].shipid="YHTJNi-smVo0DXDluTeXb3w-e-e";
+					$scope.currentOrder.shipid="YHTJNi-smVo0DXDluTeXb3w-e-e";
 				}
 			});
 
