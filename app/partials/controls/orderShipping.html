@@ -131,7 +131,7 @@
                                 <div class="view-form-icon" ng-show="currentOrder.LineItems[0].ShipperName || currentOrder.IsMultipleShip() && user.ShipMethod != null">
                                     <div ng-class="{'view-form-select': !item.ShipperName, '' : item.ShipperName }">
                                         <label ng-class="{required: currentOrder.IsMultipleShip() && user.ShipMethod != null}">{{('Shipping' | r) + ' ' + ('Method' | r) | xlat}}</label>
-                                        <select class="form-control" ng-change="updateShipper(item)"
+                                        <select id="shippers" class="form-control" ng-change="updateShipper(item)"
                                                 ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
                                                 ng-options="shipper.Name as (shipper.Name) for shipper in shippers"
                                                 ng-model="item.ShipperName"

@@ -126,23 +126,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                         $scope.setShipAddressAtOrderLevel();
                     }
 				}
-				if($scope.shipaddress.Country == "US")
+				document.getElementById('shippers').children('option').addClass('ng-hide');
+				if($scope.shipaddress.Country == "US" && $scope.shipaddress.IsShipping)
 				{
-					var shipper = $scope.shippers[0];
-					$scope.shippers = null;
-					$scope.shippers = {0:shipper};
+					document.getElementById('shippers').children('option').contains('US').removeClass('ng-hide');
 				}
-				else if($scope.shipaddress.Country == "CA")
+				else if($scope.shipaddress.Country == "CA" && $scope.shipaddress.IsShipping)
 				{
-					var shipper = $scope.shippers[1];
-					$scope.shippers = [];
-					$scope.shippers = {0:shipper};
+					document.getElementById('shippers').children('option').contains('Canada').removeClass('ng-hide');
 				}
 				else
 				{
-					var shipper = $scope.shippers[2];
-					$scope.shippers = [];
-					$scope.shippers = {0:shipper};
+					document.getElementById('shippers').children('option').contains('International').removeClass('ng-hide');
 				}
 			});
 
