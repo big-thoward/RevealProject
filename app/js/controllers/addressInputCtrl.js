@@ -58,6 +58,7 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
             var options = shipperselect.options;
             for (var i = 0; i < options.length; i++) {
                 options[i].className("ng-hide");
+                alert("ran");
             };
             if($scope.shipaddress.Country == "US")
             {
