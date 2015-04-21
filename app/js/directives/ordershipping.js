@@ -27,23 +27,8 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shippers)
 				    {
-				        var theselect = document.getElementsByTagName('SELECT')[1];
-				        var theoptions = theselect.options;
-				        if($scope.shipaddress.Country == "US")
-				        {
-				           theoptions[2].remove();
-				           theoptions[3].remove();
-				        }
-				        else if($scope.shipaddress.Country == "CA")
-				        {
-				           theoptions[1].remove();
-				           theoptions[3].remove();
-				        }
-				        else
-				        {
-				           theoptions[1].remove();
-				           theoptions[2].remove();
-				        }
+				        document.getElementsByTagName('SELECT')[1].id = "shippersselect";
+				        alert("ran");
 				    }
 				}
 
