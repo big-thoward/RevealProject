@@ -52,27 +52,6 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
             );
             $rootScope.$broadcast('guest');
         }
-        if($scope.shippers)
-        {
-            var shipperselect = document.getElementById('shippersselect');
-            var options = shipperselect.options;
-            for (var i = 0; i < options.length; i++) {
-                options[i].className("ng-hide");
-                alert("ran");
-            };
-            if($scope.shipaddress.Country == "US")
-            {
-               options[0].className("");
-            }
-            else if($scope.shipaddress.Country == "CA")
-            {
-                options[1].className("");
-            }
-            else
-            {
-                options[2].className("");
-            }
-        }
     };
     $scope.delete = function() {
         Address.delete(this.address, function() {
