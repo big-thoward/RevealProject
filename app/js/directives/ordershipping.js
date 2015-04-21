@@ -27,7 +27,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shippers)
 				    {
-				        document.getElementsByTagName('SELECT')[1].id = "shippersselect";
+				        document.getElementsByTagName('SELECT')[0].id = "shippersselect";
 				        alert("ran");
 				    }
 				}
