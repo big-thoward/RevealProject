@@ -126,19 +126,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                         $scope.setShipAddressAtOrderLevel();
                     }
 				}
-				document.getElementById('shippers').children('option').addClass('ng-hide');
-				if($scope.shipaddress.Country == "US" && $scope.shipaddress.IsShipping)
-				{
-					document.getElementById('shippers').children('option').contains('US').removeClass('ng-hide');
-				}
-				else if($scope.shipaddress.Country == "CA" && $scope.shipaddress.IsShipping)
-				{
-					document.getElementById('shippers').children('option').contains('Canada').removeClass('ng-hide');
-				}
-				else
-				{
-					document.getElementById('shippers').children('option').contains('International').removeClass('ng-hide');
-				}
 			});
 
 			$scope.setShipAddressAtLineItem = function(item) {
