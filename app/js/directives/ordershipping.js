@@ -37,7 +37,8 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
 				if($scope.shipaddress.Country == "US")
 				{
-					angular.extend($scope.shipaddress,{shipid:"WztWj9oMRXBSYbKk-pM0nug-e-e"});
+					$scope.shipid="WztWj9oMRXBSYbKk-pM0nug-e-e";
+					alert($scope.shipid);
 				}					
 				else if($scope.shipaddress.Country == "CA")
 				{
