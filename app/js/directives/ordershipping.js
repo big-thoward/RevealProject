@@ -27,10 +27,9 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					$scope.shipaddressform = false;
 					if($scope.shippers)
 				    {
-				        var shipperselect = document.getElementById('shippersselect');
-				        var select = shiperselect.getElementsByTagName('SELECT');
+				        var select = document.getElementsByTagName('SELECT')[1];
 				        var options = select.options;
-				        for (var i = 0; i < options.length; i++) {
+				        for (var i = 1; i < options.length; i++) {
 				            options[i].className("ng-hide");
 				            alert("ran");
 				        };
