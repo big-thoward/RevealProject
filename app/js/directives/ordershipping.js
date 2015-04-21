@@ -35,6 +35,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 				});
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
+				if($scope.shipaddress.Country == "US")
+				{
+					$scope.shipaddress.shipid = "WztWj9oMRXBSYbKk-pM0nug-e-e";
+				}					
+				else if($scope.shipaddress.Country == "CA")
+				{
+					$scope.shipaddress.shipid = "m35UNNRNJALjz9YIIr6DmQ-e-e";
+				}
+				else
+				{
+					$scope.shipaddress.shipid = "YHTJNi-smVo0DXDluTeXb3w-e-e";
+				}
 			});
 
 			var saveChanges = function(callback, error) {
@@ -76,18 +88,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				});
 				if (!exists) {
 					Order.clearshipping($scope.currentOrder);
-				}
-				if($scope.shipaddress.Country == "US")
-				{
-					$filter('filter')($scope.shippers, {ID: "WztWj9oMRXBSYbKk-pM0nug-e-e"}, true);
-				}					
-				else if($scope.shipaddress.Country == "CA")
-				{
-					$filter('filter')($scope.shippers, {ID: "m35UNNRNJALjz9YIIr6DmQ-e-e"}, true);
-				}
-				else
-				{
-					$filter('filter')($scope.shippers, {ID: "YHTJNi-smVo0DXDluTeXb3w-e-e"}, true);
 				}
 			});
 
