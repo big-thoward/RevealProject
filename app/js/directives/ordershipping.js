@@ -83,7 +83,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 					else
 					{
-						exist = false;
+						exists = false;
 					}
 				});
 				if (!exists) {
