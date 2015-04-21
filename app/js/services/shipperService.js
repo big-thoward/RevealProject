@@ -5,10 +5,7 @@ four51.app.factory('Shipper', ['$resource', '$451', function($resource, $451) {
 	}
 
 	function buildCacheID(order) {
-		var cacheID = "451Cache.Shippers." + order.ID;
-		angular.forEach(order.LineItems, function(item) {
-			cacheID += item.Quantity + item.Product.InteropID + item.ShipAddressID;
-		});
+		var cacheID = "";
 		return cacheID;
 	}
 
