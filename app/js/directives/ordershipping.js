@@ -30,20 +30,20 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				        var select = document.getElementsByTagName('SELECT')[1];
 				        var options = select.options;
 				        for (var i = 1; i < options.length; i++) {
-				            options[i].className("ng-hide");
+				            options[i].className="ng-hide";
 				            alert("ran");
 				        };
 				        if($scope.shipaddress.Country == "US")
 				        {
-				           options[0].className("");
+				           options[0].className="";
 				        }
 				        else if($scope.shipaddress.Country == "CA")
 				        {
-				            options[1].className("");
+				            options[1].className="";
 				        }
 				        else
 				        {
-				            options[2].className("");
+				            options[2].className="";
 				        }
 				    }
 				}
