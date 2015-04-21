@@ -25,18 +25,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					if (!$scope.shipToMultipleAddresses)
 						$scope.setShipAddressAtOrderLevel();
 					$scope.shipaddressform = false;
-					if($scope.shipaddress.Country == "US")
-					{
-						$scope.validShipper = $scope.shippers[0];
-					}					
-					else if($scope.shipaddress.Country == "CA")
-					{
-						$scope.validShipper = $scope.shippers[1];
-					}
-					else
-					{
-						$scope.validShipper = $scope.shippers[2];
-					}
 				}
 
 				AddressList.shipping(function(list) {
@@ -88,6 +76,18 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				});
 				if (!exists) {
 					Order.clearshipping($scope.currentOrder);
+				}
+				if($scope.shipaddress.Country == "US")
+				{
+					$scope.validShipper = $scope.shippers[0];
+				}					
+				else if($scope.shipaddress.Country == "CA")
+				{
+					$scope.validShipper = $scope.shippers[1];
+				}
+				else
+				{
+					$scope.validShipper = $scope.shippers[2];
 				}
 			});
 
