@@ -25,22 +25,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					if (!$scope.shipToMultipleAddresses)
 						$scope.setShipAddressAtOrderLevel();
 					$scope.shipaddressform = false;
-					if($scope.shippers)
-				    {
-				        if($scope.shipaddress.Country == "US")
-				        {
-				        	$scope.shippers.splice(1,2);
-				        	alert("USA");
-				        }
-				        else if($scope.shipaddress.Country == "CA")
-				        {
-				        	alert("CAN");
-				        }
-				        else
-				        {
-				        	alert("OTHER");
-				        }
-				    }
 				}
 
 				AddressList.shipping(function(list) {
@@ -85,8 +69,22 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				// sometimes the current shipper is not longer available. we need to clear the shipping information in that case
 				var exists = false;
 				angular.forEach(list, function(s) {
-					if (!exists && $scope.currentOrder.LineItems[0].ShipperID == s.ID)
+					if($scope.shipaddress.Country == "US" && s.ID == "vGSVwcjTMTwhYr6EZsp3mw-e-e")
+					{
 						exists = true;
+					}
+					else if($scope.shipaddress.Country == "CA" && s.ID == "4sFEsvy0p-syIO6el-pdpmfg-e-e")
+					{
+						exists = true;
+					}
+					else if($scope.shipaddress.Country != "CA" && $scope.shipaddress.Country != "US" && s.ID == "zh-skLA9xRuGHl1dxXIsxbA-e-e")
+					{
+						exists = true;
+					}
+					else
+					{
+						exist = false;
+					}
 				});
 				if (!exists) {
 					Order.clearshipping($scope.currentOrder);
