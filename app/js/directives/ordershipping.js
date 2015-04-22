@@ -40,11 +40,11 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				{
 					var element = document.getElementById("shipperslist");
 					var selectelement = element.getElementsByTagName('SELECT')[1];
-					var selectoption = selectelement.getElementsByTagName('OPTIONx');
+					var selectoption = selectelement.getElementsByTagName('OPTION');
 					if(selectoption)
 					{
+						alert("yes");
 						for (var i = 1; i < selectoption.length; i++) {
-							alert(selectoption[i].text);
 							selectoption[i].css("display","none");
 						};
 					}
