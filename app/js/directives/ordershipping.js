@@ -188,7 +188,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 				);
 			};
-
+			
 			$scope.updateShipper = function(li) {
 				$scope.shippingUpdatingIndicator = true;
 				$scope.shippingFetchIndicator = true;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="451order" ng-jq ng-controller="Four51Ctrl">
+<html lang="en" ng-app="451order" ng-controller="Four51Ctrl">
 <head>
 	<!--baseTagToken-->
 	<!--headscriptToken-->
@@ -31,35 +31,6 @@
         if (iesplit[0] == "7.0")
         {
             document.write('<link rel="stylesheet" href="css/ie.css" data-group="source" />');
-        }
-    </script>
-    <script>
-        if($("#shipcountry").contains("US"))
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 1) || (this.attr("value") == 2))
-                {
-                    this.hide();
-                }
-            });
-        }
-        else if($("#shipcountry").contains("CA"))
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 0) || (this.attr("value") == 2))
-                {
-                    this.hide();
-                }
-            });
-        }
-        else
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 0) || (this.attr("value") == 1))
-                {
-                    this.hide();
-                }
-            });
         }
     </script>
 </head>
