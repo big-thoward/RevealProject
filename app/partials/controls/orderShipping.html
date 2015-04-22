@@ -1,3 +1,35 @@
+<script>
+    jQuery(document).ready(function($) {\
+        if($("#shipcountry").contains("US"))
+        {
+            $("#shipperslist select option").each(function(index, el) {
+                if((this.attr("value") == 1) || (this.attr("value") == 2))
+                {
+                    this.hide();
+                }
+            });
+        }
+        else if($("#shipcountry").contains("CA"))
+        {
+            $("#shipperslist select option").each(function(index, el) {
+                if((this.attr("value") == 0) || (this.attr("value") == 2))
+                {
+                    this.hide();
+                }
+            });
+        }
+        else
+        {
+            $("#shipperslist select option").each(function(index, el) {
+                if((this.attr("value") == 0) || (this.attr("value") == 1))
+                {
+                    this.hide();
+                }
+            });
+        }
+        
+    });
+</script>
 <div class="panel panel-default panel-order">
     <div class="panel-heading" ng-class="{'no': cart_shipping.$invalid, 'yes': !cart_shipping.$invalid, 'open': checkOutSection == 'shipping' }" ng-click="showSuccessAlert = false">
         <h3 ng-click="shippingToggle()" class="panel-title panel-primary">
@@ -12,6 +44,7 @@
         </div>
         <div ng-show="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <addressinput address='shipaddress' user='user'></addressinput>
+            <div id="shipcountry" style="display:none;">{{shipaddresss.Country}}</div>
         </div>
         <div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <form name="cart_shipping" novalidate="">
@@ -35,7 +68,7 @@
                     <div>
                         <loadingindicator ng-show="shippingUpdatingIndicator" title="{{'Please wait while ' + ('Shipping' | rc) + ' costs are updated' | r | xlat}}" />
                         <loadingindicator ng-show="shippingFetchIndicator" title="{{'Please wait while available shippers are updated' | r | xlat}}" />
-                        <div>
+                        <div id="shipperslist">
                             <div ng-show="!currentOrder.IsMultipleShip()" class="view-form-icon">
                                 <div ng-show="shipaddresses" ng-class="{'view-form-select': !currentOrder.ShipAddressID, '': currentOrder.ShipAddressID }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip()}" ng-show="currentOrder.ShipAddressID || !currentOrder.IsMultipleShip()">{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}</label>
