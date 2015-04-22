@@ -1,35 +1,3 @@
-<script>
-    jQuery(document).ready(function($) {\
-        if($("#shipcountry").contains("US"))
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 1) || (this.attr("value") == 2))
-                {
-                    this.hide();
-                }
-            });
-        }
-        else if($("#shipcountry").contains("CA"))
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 0) || (this.attr("value") == 2))
-                {
-                    this.hide();
-                }
-            });
-        }
-        else
-        {
-            $("#shipperslist select option").each(function(index, el) {
-                if((this.attr("value") == 0) || (this.attr("value") == 1))
-                {
-                    this.hide();
-                }
-            });
-        }
-        
-    });
-</script>
 <div class="panel panel-default panel-order">
     <div class="panel-heading" ng-class="{'no': cart_shipping.$invalid, 'yes': !cart_shipping.$invalid, 'open': checkOutSection == 'shipping' }" ng-click="showSuccessAlert = false">
         <h3 ng-click="shippingToggle()" class="panel-title panel-primary">

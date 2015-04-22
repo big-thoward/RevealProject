@@ -33,6 +33,38 @@
             document.write('<link rel="stylesheet" href="css/ie.css" data-group="source" />');
         }
     </script>
+    <script>
+        jQuery(document).ready(function($) {
+            if($("#shipcountry").contains("US"))
+            {
+                $("#shipperslist select option").each(function(index, el) {
+                    if((this.attr("value") == 1) || (this.attr("value") == 2))
+                    {
+                        this.hide();
+                    }
+                });
+            }
+            else if($("#shipcountry").contains("CA"))
+            {
+                $("#shipperslist select option").each(function(index, el) {
+                    if((this.attr("value") == 0) || (this.attr("value") == 2))
+                    {
+                        this.hide();
+                    }
+                });
+            }
+            else
+            {
+                $("#shipperslist select option").each(function(index, el) {
+                    if((this.attr("value") == 0) || (this.attr("value") == 1))
+                    {
+                        this.hide();
+                    }
+                });
+            }
+            
+        });
+    </script>
 </head>
 <body ng-cloak ng-class="ng-cloak">
     <section>
