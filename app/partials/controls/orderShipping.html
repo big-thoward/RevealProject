@@ -12,8 +12,8 @@
         </div>
         <div ng-show="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <addressinput address='shipaddress' user='user'></addressinput>
-            <div id="shipcountry" style="display:none;">{{shipaddresss.Country}}</div>
         </div>
+        <div id="shipcountry" style="visibility:hidden;">{{shipaddresss.Country}}</div>
         <div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <form name="cart_shipping" novalidate="">
                 <div>
