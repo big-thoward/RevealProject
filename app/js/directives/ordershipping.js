@@ -139,6 +139,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                         $scope.setShipAddressAtOrderLevel();
                     }
 				}
+				var shipcountry = document.getElementById("shipcountry").innerHTML;
+				if(shipcountry == "US")
+				{
+					var element = document.getElementById("shipperslist");
+					var selectelement = element.getElementsByTagName('SELECT');
+					selectelement.each(function() {
+						alert(this.text + ' ' + this.value);
+					});
+				}
 			});
 
 			$scope.setShipAddressAtLineItem = function(item) {
@@ -171,6 +180,15 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					li.Shipper = null;
 					li.ShipperID = null;
 				});
+				var shipcountry = document.getElementById("shipcountry").innerHTML;
+				if(shipcountry == "US")
+				{
+					var element = document.getElementById("shipperslist");
+					var selectelement = element.getElementsByTagName('SELECT');
+					selectelement.each(function() {
+						alert(this.text + ' ' + this.value);
+					});
+				}
 				$rootScope.$broadcast('shipChange');
 				saveChanges(
 					function(order) {
@@ -179,15 +197,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 								$scope.shippingFetchIndicator = false;
 							}
 						);
-						var shipcountry = document.getElementById("shipcountry").innerHTML;
-						if(shipcountry == "US")
-						{
-							var element = document.getElementById("shipperslist");
-							var selectelement = element.getElementsByTagName('SELECT');
-							selectelement.each(function() {
-								alert(this.text + ' ' + this.value);
-							});
-						}
 					},
 					function(ex) {
 						$scope.currentOrder.ShipAddressID = null;
