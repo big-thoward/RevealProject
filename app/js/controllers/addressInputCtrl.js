@@ -1,14 +1,17 @@
 four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 'User', 'Address', 'Resources',
 function ($scope, $rootScope, $location, User, Address, Resources) {
-    if($scope.user.Type == "TempCustomer")
-    {
-        $scope.guest = true;
-        $rootScope.$broadcast('guest');     
-        $rootScope.guest = true;
-    }
     $scope.save = function() {
-        $scope.objectExists = false;
-        
+	    $scope.objectExists = false;
+        Address.save(this.address,
+	        function(address) {
+                $rootScope.$broadcast('event:AddressSaved', address);
+                $location.path($scope.return);
+            },
+	        function(ex) {
+	            if (ex.Code.is('ObjectExistsException'))
+	                $scope.objectExists = true;
+            }
+        );
     };
     $scope.delete = function() {
         Address.delete(this.address, function() {
