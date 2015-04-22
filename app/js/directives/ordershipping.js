@@ -42,9 +42,9 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					var selectelement = element.getElementsByTagName('OPTION');
 					if(selectelement)
 					{
-						selectelement.each(function() {
-							alert(this.text + ' ' + this.value);
-						});
+						for (var i = 0; i < selectelement.length; i++) {
+							alert(selectelement[i].text + ' ' + selectelement[i].value);
+						};
 					}
 					else
 					{
