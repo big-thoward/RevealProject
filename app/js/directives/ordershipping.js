@@ -43,7 +43,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					var selectoption = selectelement.getElementsByTagName('OPTION');
 					if(selectoption)
 					{
-						alert(selectoption.length);
+						alert(selectelement.length);
 						for (var i = 1; i < selectoption.length; i++) {
 							selectoption[i].css("display","none");
 						};
