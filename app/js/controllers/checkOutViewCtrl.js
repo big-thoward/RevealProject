@@ -145,21 +145,4 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		$scope.currentOrder.copyShipAddress = true;
 		$rootScope.$broadcast('shipChange');
 	};
-
-	$scope.$on('event:shipChange', function(event) {
-		if(document.getElementById("shipcountry").innerHTML == "US")
-		{
-			alert("yes");
-			var element = document.getElementById("shipperslist");
-			var selectelement = element.getElementsByTagName('SELECT');
-			var selectoptions = selectelement.getElementsByTagName('OPTION');
-			for (var i = 0; i < selectoptions.length; i++) {
-				if(selectoptions[i].value == "1" || selectoptions[i].value == "2")
-				{
-					selectoptions[i].css('display', 'none');
-					alert("ran");
-				}
-			};
-		}
-	});
 }]);
