@@ -21,7 +21,12 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 		if (lineitem.PriceSchedule && lineitem.PriceSchedule.DefaultQuantity != 0)
 			$scope.LineItem.Quantity = lineitem.PriceSchedule.DefaultQuantity;
 	}
-	$.getScript("./js/custom/goalSold/productCtrl-24.js", function(){});
+	function commaSeparateNumber(val){
+	    while (/(\d+)(\d{3})/.test(val.toString())){
+	      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+	    }
+	    return val;
+	}
 	function init(searchTerm, callback) {
 		ProductDisplayService.getProductAndVariant($routeParams.productInteropID, $routeParams.variantInteropID, function (data) {
 			$scope.LineItem.Product = data.product;
@@ -34,7 +39,106 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 			$scope.setAddToOrderErrors();
 			if (angular.isFunction(callback))
 				callback();
-   			$.getScript("./js/custom/goalSold/productCtrl-37.js", function(){});
+   			$scope.goal = commaSeparateNumber(data.product.StaticSpecGroups.Goal.Specs.Goal.Value)
+			if(data.product.RelatedProductsGroupID)
+			{
+				Product.search(null, null, data.product.RelatedProductsGroupID, function(products)
+				{
+					var sum = 0;
+					for (var i = 0; i < products.length; i++)
+					{
+						var quantity = products[i].QuantityAvailable;
+						var goal = products[i].StaticSpecGroups.Goal.Specs.Goal.Value;
+						var newsum = goal - quantity;
+						sum = sum + newsum;
+					}
+
+					sum = commaSeparateNumber(sum);
+					$scope.totalSold = sum;
+				});
+			}
+			else
+			{
+				var sum = 0;
+				var quantity = data.product.QuantityAvailable;
+				var goal = data.product.StaticSpecGroups.Goal.Specs.Goal.Value;
+				sum = goal - quantity;
+				sum = commaSeparateNumber(sum);
+				$scope.totalSold = sum;
+			}
+			if(data.product.StaticSpecGroups.Countdown)
+			{
+				var theyear = parseInt(data.product.StaticSpecGroups.Countdown.Specs.Year.Value,10);
+				var themonth = parseInt(data.product.StaticSpecGroups.Countdown.Specs.Month.Value,10);
+				var theday = parseInt(data.product.StaticSpecGroups.Countdown.Specs.Day.Value,10);
+				themonth = themonth-1;
+				var newItem = document.createElement("SPAN");
+				var newItem2 = document.createElement("SPAN");
+				var newItem3 = document.createElement("SPAN");
+				var newItem4 = document.createElement("SPAN");
+				var textnode = document.createTextNode(":");
+				var textnode2 = document.createTextNode(":");
+				var textnode3 = document.createTextNode(":");
+				var textnode4 = document.createTextNode(":");
+				newItem.appendChild(textnode);
+				newItem2.appendChild(textnode2);
+				newItem3.appendChild(textnode3);
+				newItem4.appendChild(textnode4);
+				newItem.className = "deliminator";
+				newItem2.className = "deliminator";
+				newItem3.className = "deliminator";
+				newItem4.className = "deliminator";
+
+				var clock = document.getElementById("clock")
+						    , targetDate = new Date(theyear, themonth, theday);
+
+						clock.innerHTML = countdown(targetDate).toHTML();
+						setInterval(function()
+						{
+						 	clock.innerHTML = countdown(targetDate).toHTML();
+							if(count > 1)
+							{
+								countdowntext.insertBefore(newItem, countdowntext.childNodes[1]);
+							}
+
+							if(count > 2)
+							{
+								countdowntext.insertBefore(newItem2, countdowntext.childNodes[3]);
+							}
+
+							if(count > 3)
+							{
+								countdowntext.insertBefore(newItem3, countdowntext.childNodes[5]);
+							}
+
+							if(count > 4)
+							{
+								countdowntext.insertBefore(newItem4, countdowntext.childNodes[7]);
+							}
+						  }, 1000);
+				var countdowntext = document.getElementById("clock");
+				var count = countdowntext.childElementCount;
+				if(count > 1)
+				{
+					countdowntext.insertBefore(newItem, countdowntext.childNodes[1]);
+				}
+
+				if(count > 2)
+				{
+					countdowntext.insertBefore(newItem2, countdowntext.childNodes[3]);
+				}
+
+				if(count > 3)
+				{
+					countdowntext.insertBefore(newItem3, countdowntext.childNodes[5]);
+				}
+
+				if(count > 4)
+				{
+					countdowntext.insertBefore(newItem4, countdowntext.childNodes[7]);
+				}
+
+			}
    			$.getScript("./js/custom/countDown/productCtrl-38.js", function(){});
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
 	}

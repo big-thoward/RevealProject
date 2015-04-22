@@ -126,6 +126,23 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
 	};
-	$.getScript("./js/custom/checkoutToggle/checkOutViewCtrl-129.js", function(){});
-	$.getScript("./js/custom/shippingAsBilling/checkOutViewCtrl-129.js", function(){});
+	
+	$scope.orderToggle = function() {
+		$scope.order = !$scope.order;
+	};
+
+	$scope.billingToggle = function() {
+		$scope.billing = !$scope.billing;
+	};
+
+	$scope.shippingToggle = function() {
+		$scope.shipping = !$scope.shipping;
+	};
+	
+	$scope.shippinasbilling = function()
+	{
+		$scope.shipaddress.IsBilling = true;
+		$scope.currentOrder.copyShipAddress = true;
+		$rootScope.$broadcast('shipChange');
+	};
 }]);
