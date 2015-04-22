@@ -35,6 +35,16 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					}
 				});
 				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
+				var shipcountry = document.getElementById("shipcountry").innerHTML;
+				if(shipcountry == "US")
+				{
+					alert("US");
+					var element = document.getElementById("shipperslist");
+					var selectelement = element.getElementsByTagName('SELECT');
+					selectelement.each(function() {
+						alert(this.text + ' ' + this.value);
+					});
+				}
 			});
 
 			var saveChanges = function(callback, error) {
@@ -65,18 +75,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 			};
 
 			Shipper.query($scope.currentOrder, function(list) {
-				if($scope.shipaddress.Country == "US")
-				{
-					$scope.shippers = {0:list[0]};
-				}					
-				else if($scope.shipaddress.Country == "CA")
-				{
-					$scope.shippers = {0:list[0]};
-				}
-				else
-				{
-					$scope.shippers = {0:list[0]};
-				}
 				// sometimes the current shipper is not longer available. we need to clear the shipping information in that case
 				var exists = false;
 				angular.forEach(list, function(s) {
@@ -138,15 +136,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
                     if (!$scope.currentOrder.IsMultipleShip()) {
                         $scope.setShipAddressAtOrderLevel();
                     }
-				}
-				var shipcountry = document.getElementById("shipcountry").innerHTML;
-				if(shipcountry == "US")
-				{
-					var element = document.getElementById("shipperslist");
-					var selectelement = element.getElementsByTagName('SELECT');
-					selectelement.each(function() {
-						alert(this.text + ' ' + this.value);
-					});
 				}
 			});
 
