@@ -121,8 +121,6 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 		);
 	};
 
-	$.getScript("./js/custom/guestCheckout04222015/cartCtrl-124.js", function(){});
-
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;
