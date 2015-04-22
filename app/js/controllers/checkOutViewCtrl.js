@@ -147,7 +147,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	};
 
 	$scope.$on('event:shipChange', function(event) {
-		if(document.getElementById("shipcountry").text() == "US")
+		if(document.getElementById("shipcountry").innerHTML == "US")
 		{
 			alert("yes");
 			var element = document.getElementById("shipperslist");
