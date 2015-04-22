@@ -180,15 +180,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					li.Shipper = null;
 					li.ShipperID = null;
 				});
-				var shipcountry = document.getElementById("shipcountry").innerHTML;
-				if(shipcountry == "US")
-				{
-					var element = document.getElementById("shipperslist");
-					var selectelement = element.getElementsByTagName('SELECT');
-					selectelement.each(function() {
-						alert(this.text + ' ' + this.value);
-					});
-				}
 				$rootScope.$broadcast('shipChange');
 				saveChanges(
 					function(order) {
