@@ -38,16 +38,8 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				var shipcountry = document.getElementById("shipcountry").innerHTML;
 				if(shipcountry == "US")
 				{
-					var element = document.getElementById("shipperslist");
-					var selectelement = element.getElementsByTagName('SELECT')[2];
-					var selectoption = selectelement.getElementsByTagName('OPTION');
-					if(selectoption)
-					{
-						alert(selectelement.length);
-						for (var i = 1; i < selectoption.length; i++) {
-							selectoption[i].css("display","none");
-						};
-					}
+					var x = document.getElementById("shipperslist");
+					x.remove(1);
 				}
 			});
 
