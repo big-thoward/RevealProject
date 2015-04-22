@@ -2,12 +2,6 @@ four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
 
-	$scope.guest = false;
-
-    $scope.$on('guest', function() {
-        $scope.guest = true;
-    });
-
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if (isEditforApproval) {
 		Order.get($routeParams.id, function(order) {
@@ -127,22 +121,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 		);
 	};
 
-	$scope.checkOutGuest = function() {
-		$scope.displayLoadingIndicator = true;
-		if (!isEditforApproval)
-			OrderConfig.address($scope.currentOrder, $scope.user);
-		Order.save($scope.currentOrder,
-			function(data) {
-				$scope.currentOrder = data;
-				$location.path(isEditforApproval ? 'checkout/' + $routeParams.id : 'checkout');
-				$scope.displayLoadingIndicator = false;
-			},
-			function(ex) {
-				$scope.errorMessage = ex.Message;
-				$scope.displayLoadingIndicator = false;
-			}
-		);
-	};
+	$.getScript("./js/custom/guestCheckout04222015/cartCtrl-124.js", function(){});
 
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;

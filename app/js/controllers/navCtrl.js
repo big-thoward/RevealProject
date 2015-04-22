@@ -6,23 +6,11 @@ function ($rootScope, $location, $route, $scope, $451, User) {
         $scope.categoryInteropID = $rootScope.categoryInteropID;
     }
 
-    $scope.$on('guest', function() {
-        $scope.guest = true;
-    });
-
     $scope.navLogon = function(){
-        if($scope.guest)
-        {
-            User.logout();
-        }
         $rootScope.$broadcast('logon');
     };
 
     $scope.navCreate = function(){
-        if($scope.guest)
-        {
-            User.logout();
-        }
         $rootScope.$broadcast('create');
     };
 

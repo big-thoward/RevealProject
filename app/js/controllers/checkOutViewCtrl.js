@@ -2,11 +2,6 @@ four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location'
 function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
 	$scope.errorSection = 'open';
 	$scope.shipping = true;
-	if($scope.user.Type == "TempCustomer")
-	{
-		$rootScope.$broadcast('guest');
-	    $rootScope.guest = true;
-	}
     
 	$scope.isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
 	if ($scope.isEditforApproval) {
@@ -25,8 +20,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
     function submitOrder() {
 	    $scope.displayLoadingIndicator = true;
 	    $scope.errorMessage = null;
-	    $rootScope.$broadcast('guest');
-	    $rootScope.guest = true;
+	    
         Order.submit($scope.currentOrder,
 	        function(data) {
 				if ($scope.user.Company.GoogleAnalyticsCode) {
@@ -96,8 +90,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
     $scope.cancelOrder = function() {
 	    if (confirm('Are you sure you wish to cancel your order?') == true) {
 		    $scope.displayLoadingIndicator = true;
-		    $rootScope.$broadcast('guest');
-	    	$rootScope.guest = true;
+
 	        Order.delete($scope.currentOrder,
 		        function() {
 		            $scope.user.CurrentOrderID = null;
@@ -116,7 +109,6 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	    }
     };
 
-
     $scope.saveChanges = function() {
         saveChanges();
     };
@@ -134,23 +126,6 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
 	};
-
-	$scope.orderToggle = function() {
-		$scope.order = !$scope.order;
-	};
-
-	$scope.billingToggle = function() {
-		$scope.billing = !$scope.billing;
-	};
-
-	$scope.shippingToggle = function() {
-		$scope.shipping = !$scope.shipping;
-	};
-
-	$scope.shippinasbilling = function()
-	{
-		$scope.shipaddress.IsBilling = true;
-		$scope.currentOrder.copyShipAddress = true;
-		$rootScope.$broadcast('shipChange');
-	};
+	$.getScript("./js/custom/checkoutToggle/checkOutViewCtrl-129.js", function(){});
+	$.getScript("./js/custom/shippingAsBilling/checkOutViewCtrl-129.js", function(){});
 }]);
