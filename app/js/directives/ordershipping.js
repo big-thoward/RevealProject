@@ -34,13 +34,6 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 						$scope.shipaddresses.push($scope.currentOrder.BillAddress);
 					}
 				});
-				$scope.shipaddress = { Country: 'US', IsShipping: true, IsBilling: true };
-				var shipcountry = document.getElementById("shipcountry").innerHTML;
-				if(shipcountry == "US")
-				{
-					var x = document.getElementById("shipperslist");
-					var xselect = x.querySelector(".shipMethod");}
-				}
 			});
 
 			var saveChanges = function(callback, error) {
