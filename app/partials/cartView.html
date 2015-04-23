@@ -225,22 +225,10 @@
                             <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
                         </button>
                     </li>
-                    <li ng-show="user.Type=='TempCustomer'">
-                        <a class="btn btn-primary" href="admin" style="text-transform:uppercase;" style="text-transform:uppercase;">
-                            <span>{{'Create an Account' | r | xlat}} {{window.outerWidth}}</span>
-                        </a>
-                        
-                    </li>
-                    <li ng-show="user.Type=='Customer'" style="width: 40% !important;">
+                    <li style="width: 40% !important;">
                         <button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOut()" ng-disabled="cart.$invalid || kitValidation" style="text-transform:uppercase;">
                             <i ng-show="cart.$invalid || kitValidation" class="fa fa-warning"></i>
                             <span>{{'CHECK OUT' | r | xlat}} {{window.outerWidth}}</span>
-                        </button>
-                    </li>
-                    <li ng-show="user.Type=='TempCustomer'">
-                        <button type="button" class="btn" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="checkOutGuest()" ng-disabled="cart.$invalid || kitValidation">
-                            <i ng-show="cart.$invalid || kitValidation" class="fa fa-warning"></i>
-                            <span>{{'Check Out as Guest' | r | xlat}} {{window.outerWidth}}</span>
                         </button>
                     </li>
                 </ul>
