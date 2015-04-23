@@ -42,7 +42,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					var xselect = x.querySelector(".shipMethod");
 					if(xselect)
 					{
-						xselect.options[2].style.display = 'none';
+						alert(xselect.toSource());
 					}
 				}
 			});
