@@ -13,7 +13,6 @@
         <div ng-show="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <addressinput address='shipaddress' user='user'></addressinput>
         </div>
-        <div id="shipcountry" style="visibility:hidden;">{{shipaddress.Country}}</div>
         <div ng-hide="shipaddressform || (shipaddresses.length == 0 && user.Permissions.contains('CreateShipToAddress'))">
             <form name="cart_shipping" novalidate="">
                 <div>
@@ -36,7 +35,7 @@
                     <div>
                         <loadingindicator ng-show="shippingUpdatingIndicator" title="{{'Please wait while ' + ('Shipping' | rc) + ' costs are updated' | r | xlat}}" />
                         <loadingindicator ng-show="shippingFetchIndicator" title="{{'Please wait while available shippers are updated' | r | xlat}}" />
-                        <div id="shipperslist">
+                        <div>
                             <div ng-show="!currentOrder.IsMultipleShip()" class="view-form-icon">
                                 <div ng-show="shipaddresses" ng-class="{'view-form-select': !currentOrder.ShipAddressID, '': currentOrder.ShipAddressID }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip()}" ng-show="currentOrder.ShipAddressID || !currentOrder.IsMultipleShip()">{{('Shipping' | r) + ' ' + ('Address' | r) | xlat}}</label>
