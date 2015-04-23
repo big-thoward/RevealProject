@@ -29,6 +29,18 @@
                     <input name="companyname" class="form-control" type="text" ng-model="address.CompanyName" autocomplete="off" placeholder="{{('Company' | r) + ' ' + ('Name' | r) | xlat}}" ng-disabled="address.IsCustEditable == false" />
                     <i class="fa fa-user"></i>
                 </div>
+                <div ng-show="guest">
+                    <label class="required">{{'Email' | r | xlat}}</label>
+                    <input name="email" class="form-control" type="email" ng-model="address.Email" ng-required="guest" placeholder="{{'Email' | r | xlat}}" autocomplete="off" />
+                    <i class="fa fa-envelope-o"></i>
+                    <inlineerror ng-show="addressEdit.email.$invalid" title="{{'Please enter a valid' + ' ' +  ('Email' | rl) + ' ' + ('Address' | rl) | xlat}}" />
+                </div>
+                <div ng-show="guest">
+                    <label class="required">{{'Confirm Email' | r | xlat}}</label>
+                    <input name="confirm_email" ng-match="address.Email" class="form-control" type="email" ng-model="address.ConfirmEmail" ng-required="guest" placeholder="{{'Confirm Email' | r | xlat}}" autocomplete="off" />
+                    <i class="fa fa-envelope-o"></i>
+                    <inlineerror ng-show="addressEdit.confirm_email.$error.match" title="{{('Email' | r) + 's do not match!' | xlat}}" />
+                </div>
                 <div>
                     <label ng-show="isPhoneRequired()" ng-class="{required: isPhoneRequired()}">{{'Phone' | r | xlat}}</label>
                     <input name="phone" class="form-control" type="text" ng-model="address.Phone" placeholder="{{'Phone' | r | xlat}}" autocomplete="off" ng-required="isPhoneRequired() && address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
