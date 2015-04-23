@@ -1,5 +1,6 @@
 four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 'User', 'Address', 'Resources',
 function ($scope, $rootScope, $location, User, Address, Resources) {
+    $scope.guest = true;
     $scope.save = function() {
 	    $scope.objectExists = false;
         if($scope.user.Type == "Customer")
