@@ -42,6 +42,8 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 					var xselect = x.querySelector(".shipMethod");
 					if(xselect)
 					{
+						xselect.remove(2);
+						xselect.remove(3);
 						alert(xselect.length);
 					}
 				}

@@ -11,3 +11,4 @@ node_modules/*
 *resources.js
 *source.css
 localcdn
+app/producttemplate.html
