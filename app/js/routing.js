@@ -21,6 +21,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/campaigns/:categoryInteropID/:productInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
         when('/campaigns/projects/:productInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
         when('/campaigns/projects/:productInteropID/:variantInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
+        when('/product/:productInteropID/:variantInteropID', {templateUrl: concatProductView, controller: 'ProductCtrl'}).
 		when('/campaigns/projects/:productInteropID/:variantInteropID/edit', {templateUrl: concatSpecFormView, controller: 'SpecFormCtrl'}).
 		when('/order', { templateUrl: 'partials/orderSearchView.html', controller: 'OrderSearchCtrl' }).
 		when('/order/:id', { templateUrl: 'partials/Reporting/orderHistoryView.html', controller: 'OrderViewCtrl' }).

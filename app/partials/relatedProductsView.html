@@ -1,9 +1,7 @@
-<div class="panel panel-default" style="padding:10px;">
+<div class="panel panel-default col-md-8 col-md-offset-2 col-sm-12" style="padding:20px;">
     <div ng-repeat="p in relatedProducts" class="col-lg-2 col-md-2 col-sm-12">
-        <a ng-click="changeProduct()">
-            <figure ng-model="active">
-                <img ng-src="{{p.SmallImageUrl}}" class="img-responsive" />
-            </figure>
+        <a href="{{product + '/' + p.InteropID}}" ng-click="changeProduct()" style="max-width:25% !important;">
+            <img ng-src="{{p.SmallImageUrl}}" class="img-responsive" style="width:100%;height:auto;" />
         </a>
     </div>
 </div>
