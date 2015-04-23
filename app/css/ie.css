@@ -8,3 +8,15 @@
 {
   max-width: 168px;
 }
+
+ @media(max-width: 1070px){
+	  .relatedproduct img,
+	  .relatedproduct
+	  {
+	  	clear:both !important;
+	  	width:100px !important;
+	  	height:100px !important;
+	  	display:block !important;
+	  	float:left !important;
+	  }
+  }
