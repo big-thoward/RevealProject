@@ -1,5 +1,5 @@
 <div class="panel panel-default col-md-8 col-md-offset-2 col-sm-3" style="padding:20px;">
-    <div ng-repeat="p in relatedProducts" class="col-lg-2 col-md-2 relatedproduct">
+    <div ng-repeat="p in relatedProducts" class="col-lg-2 col-md-2 col-sm-12 relatedproduct">
         <a href="product/{{p.InteropID}}" ng-click="changeProduct()">
             <img ng-src="{{p.SmallImageUrl}}" class="img-responsive" style="width:100%;height:auto;" />
         </a>
