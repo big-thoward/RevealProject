@@ -39,11 +39,7 @@ four51.app.directive('ordershipping', ['$rootScope', 'Order', 'Shipper', 'Addres
 				if(shipcountry == "US")
 				{
 					var x = document.getElementById("shipperslist");
-					var xselect = x.querySelector(".shipMethod");
-					if(xselect)
-					{
-						alert(xselect.toSource());
-					}
+					var xselect = x.querySelector(".shipMethod");}
 				}
 			});
 
