@@ -883,10 +883,10 @@ span.badge.ng-binding
 #acm
 {
   font-size:130%;
-  color:#000;
+  color:#fff;
   font-weight:bold;
   position:absolute;
-  left:30%;
+  left:40%;
   top:15%;
 }
 
@@ -1089,7 +1089,7 @@ span.badge.ng-binding
   {
      height:240px;
      padding:10px 0;
-     background-color:#abdfda;
+     background-color:#000;
      margin-bottom:60px;
      position:relative;
   }
