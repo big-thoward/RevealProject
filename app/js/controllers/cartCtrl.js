@@ -45,7 +45,7 @@ $scope.guest = true;
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('products/'+$rootScope.productInteropID+'');
+						$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
