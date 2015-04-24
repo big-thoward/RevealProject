@@ -10,7 +10,7 @@
             width: 20%;
         }
         .navbar-fixed-bottom ul li:last-child {
-            width: 40%;
+            width: 60%;
         }
     </style>
     <li ng-if="continue">
@@ -23,12 +23,6 @@
         <button class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
             <small ng-show="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
             <small ng-show="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
-        </button>
-    </li>
-    <li>
-        <button class="btn btn-primary"  ng-click="saveChanges()">
-            <loadingindicator ng-show="displayLoadingIndicator" />
-            {{('Save' | r) + ' ' + ('Order' | r) | xlat}}
         </button>
     </li>
     <li>
