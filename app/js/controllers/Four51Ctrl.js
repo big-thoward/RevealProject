@@ -2,6 +2,8 @@ four51.app.controller('Four51Ctrl', ['$rootScope', '$scope', '$route', '$locatio
 function ($rootScope, $scope, $route, $location, $451, User, Order, Security, OrderConfig, Category, AppConst, XLATService, GoogleAnalytics) {
 	$scope.AppConst = AppConst;
 	$scope.scroll = 0;
+	$rootScope.productInteropID = document.URL.split('/')[5];
+	alert($rootScope.productInteropID);
 	$scope.$on('guest', function() {
     $scope.guest = true;
 });
