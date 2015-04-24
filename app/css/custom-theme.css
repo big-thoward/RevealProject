@@ -1236,7 +1236,6 @@ span.badge.ng-binding
   @media (max-width:600px){
     #urgent_info,
     .hide-xxs,
-    #clockcontainer,
     #banner
     {
       display:none;
