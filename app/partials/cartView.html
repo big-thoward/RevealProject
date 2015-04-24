@@ -208,7 +208,7 @@
                     </ul>
                 </div>
                 <ul class="cart">
-                    <li>
+                    <li style="width: 40% !important;">
                         <a class="btn btn-primary back" href back-step style="text-transform:uppercase;">
                             <small ng-if="currentOrder.Status != 'AwaitingApproval'">Continue Shopping</small>
                         </a>
@@ -217,12 +217,6 @@
                         <button type="button" class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()" style="text-transform:uppercase;">
                             <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
                             <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="btn btn-primary" ng-click="saveChanges()" style="text-transform:uppercase;">
-                            <loadingindicator  ng-show="displayLoadingIndicator" />
-                            <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
                         </button>
                     </li>
                     <li style="width: 40% !important;">
