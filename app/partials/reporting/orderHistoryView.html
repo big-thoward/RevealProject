@@ -10,7 +10,25 @@
                 <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
             </ul>
         </nav>
-        <div class="col-md-4">
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title panel-primary">
+                        {{order.LineItems.length}} {{'Item' + (order.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in this' | rl | xlat:(currentOrder.LineItems.length)}} {{'Order' | rl | xlat}}
+                    </h3>
+                </div>
+                <lineitemhistorygrid />
+
+                <div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
+                    <b>Shipper:</b> {{s.Shipper}}<br/>
+                    <b>Tracking number:</b> {{s.TrackingNumber}}<br/>
+                    <b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
+                    <b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
             <div class="row">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -21,12 +39,6 @@
                     <div class="panel-body">
                         <orderhistorydetails></orderhistorydetails>
                         <orderhistorysummary ng-if="!(user.Permissions.contains('HidePricing'))"></orderhistorysummary>
-                    </div>
-                    <div class="panel-footer" ng-if="order.FromUserID == user.ID && order.Status != 'Unsubmitted' && !guest">
-                        <button ng-disabled="currentOrder" class="btn btn-primary pull-right" ng-click="repeatOrder()">
-                            <i ng-show="currentOrder" class="fa fa-warning"></i>
-                            {{('Repeat' | r) + ' ' + ('Order' | r) | xlat}}
-                        </button>
                     </div>
                 </div>
             </div>
@@ -40,20 +52,13 @@
                 </div>
                 <lineitemhistorygrid />
 
-				<div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
-					<b>Shipper:</b> {{s.Shipper}}<br/>
-					<b>Tracking number:</b> {{s.TrackingNumber}}<br/>
-					<b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
-					<b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
-					<hr>
-				</div>
-        </div>
-        <div class="navbar-fixed-bottom">
-            <div class="view-response-message alert-success text-center" alert-show="actionMessage">
-                <p>{{actionMessage | r | xlat}}</p>
-            </div>
-            <div class="view-response-message alert-danger text-center" alert-show="errorMessage">
-                <p>{{errorMessage | r | xlat}}</p>
+    			<div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
+    				<b>Shipper:</b> {{s.Shipper}}<br/>
+    				<b>Tracking number:</b> {{s.TrackingNumber}}<br/>
+    				<b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
+    				<b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
+    				<hr>
+    			</div>
             </div>
         </div>
     </div>
