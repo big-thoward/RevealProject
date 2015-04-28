@@ -43,24 +43,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title panel-primary">
-                        {{order.LineItems.length}} {{'Item' + (order.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in this' | rl | xlat:(currentOrder.LineItems.length)}} {{'Order' | rl | xlat}}
-                    </h3>
-                </div>
-                <lineitemhistorygrid />
-
-    			<div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
-    				<b>Shipper:</b> {{s.Shipper}}<br/>
-    				<b>Tracking number:</b> {{s.TrackingNumber}}<br/>
-    				<b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
-    				<b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
-    				<hr>
-    			</div>
-            </div>
-        </div>
     </div>
     <orderprint class="visible-print" />
 </section>
