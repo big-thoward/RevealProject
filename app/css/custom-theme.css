@@ -1275,6 +1275,10 @@ span.badge.ng-binding
       display:inline-block !important;
       clear:none !important;
     }
+    .navbar-nav.pull-right
+    {
+      width:60%;
+    }
   }
   @media (max-width:420px){
     #share
