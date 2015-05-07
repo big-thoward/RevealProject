@@ -1277,12 +1277,16 @@ span.badge.ng-binding
     }
     .navbar-nav.pull-right
     {
-      width:50%;
+      width:40%;
     }
     .navbar-nav.pull-right li
     {
       width: 50%;
       float:left;
+    }
+    #cartview
+    {
+      margin-top:-40px;
     }
   }
   @media (max-width:420px){

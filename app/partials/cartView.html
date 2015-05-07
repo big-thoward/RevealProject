@@ -1,4 +1,4 @@
-<section>
+<section id="cartview">
     <div ng-show="currentOrder" class="hidden-print">
         <nav class="nav">
             <ul>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-xs-6">
+                                    <div class="col-md-6 col-s-12">
                                         <div ng-if="!(user.Permissions.contains('HidePricing'))">
                                             <small>{{'Total' | r | xlat}}</small>
                                             <h2 class="text-success">
@@ -70,7 +70,7 @@
                                             </h2>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6" ng-if="!(user.Permissions.contains('HidePricing'))">
+                                    <div class="col-md-6 col-s-12" ng-if="!(user.Permissions.contains('HidePricing'))">
                                         <p>
                                             <small>{{'Unit Price' | r | xlat}}</small>
                                             <br/>
