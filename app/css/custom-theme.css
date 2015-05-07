@@ -1277,7 +1277,12 @@ span.badge.ng-binding
     }
     .navbar-nav.pull-right
     {
-      width:60%;
+      width:50%;
+    }
+    .navbar-nav.pull-right li
+    {
+      width: 50%;
+      float:left;
     }
   }
   @media (max-width:420px){
