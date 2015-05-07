@@ -16,7 +16,6 @@ four51.app.directive('orderdetails', function() {
 				}
 			}
             $scope.updateCostCenter = updateCostCenter;
-            $scope.currentOrder.CostCenter = "AvrilLavigne";
             function updateCostCenter() {
                 angular.forEach($scope.user.CostCenters, function(cc) {
                    if (cc.Name == $scope.currentOrder.CostCenter && cc.DefaultAddressID) {
