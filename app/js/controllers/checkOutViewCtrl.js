@@ -13,6 +13,11 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			$scope.currentOrder = order;
 		});
 	}
+	if($scope.currentOrder)
+	{
+		$scope.currentOrder.CostCenter = "AvrilLavigne";
+	}
+	
 
 	if (!$scope.currentOrder) {
         $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
