@@ -13,11 +13,12 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			$scope.currentOrder = order;
 		});
 	}
-	if($scope.currentOrder)
+	if($scope.user.Permissions.contains('CostCenterPerOrder') && !$scope.user.Permissions.contains('CostCenterPerLine') && $scope.user.CostCenters.length > 0)
 	{
-		$scope.currentOrder.CostCenter = "AvrilLavigne";
+		var input = document.getElementById("thecostcenter");
+		input.css('visiblity', 'hidden');
+		input.text('AvrilLavigne');
 	}
-	
 
 	if (!$scope.currentOrder) {
         $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
