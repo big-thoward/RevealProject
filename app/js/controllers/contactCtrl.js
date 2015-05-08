@@ -1,52 +1,7 @@
 four51.app.controller('ContactCtrl', ['$rootScope', '$routeParams', '$sce', '$scope', '$451', 'Category', 'Product', 'Nav',
 function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) {
-	$scope.faqanswer[0] = false;
-	$scope.faqanswer[1] = false;
-	$scope.faqanswer[2] = false;
-	$scope.faqanswer[3] = false;
-	$scope.faqanswer[4] = false;
-	$scope.faqanswer[5] = false;
-	$scope.faqanswer[6] = false;
-	$scope.faqanswer[7] = false;
-	$scope.faqanswer[8] = false;
-	$scope.faqanswer[9] = false;
-	$scope.faqanswer[0] = false;
-	$scope.faqanswer[11] = false;
-	$scope.faqanswer[12] = false;
-	$scope.faqanswer[13] = false;
-	$scope.faqanswer[14] = false;
-	$scope.faqanswer[15] = false;
-	$scope.faqanswer[16] = false;
-	$scope.faqanswer[17] = false;
-	$scope.faqanswer[18] = false;
-	$scope.faqanswer[19] = false;
-	$scope.faqanswer[20] = false;
-	$scope.faqanswer[21] = false;
-	$scope.reveal = function(divid) {
-		$scope.faqanswer[0] = false;
-		$scope.faqanswer[1] = false;
-		$scope.faqanswer[2] = false;
-		$scope.faqanswer[3] = false;
-		$scope.faqanswer[4] = false;
-		$scope.faqanswer[5] = false;
-		$scope.faqanswer[6] = false;
-		$scope.faqanswer[7] = false;
-		$scope.faqanswer[8] = false;
-		$scope.faqanswer[9] = false;
-		$scope.faqanswer[0] = false;
-		$scope.faqanswer[11] = false;
-		$scope.faqanswer[12] = false;
-		$scope.faqanswer[13] = false;
-		$scope.faqanswer[14] = false;
-		$scope.faqanswer[15] = false;
-		$scope.faqanswer[16] = false;
-		$scope.faqanswer[17] = false;
-		$scope.faqanswer[18] = false;
-		$scope.faqanswer[19] = false;
-		$scope.faqanswer[20] = false;
-		$scope.faqanswer[21] = false;
-		var dividint = parseInt(divid,10);
-		var divindex = dividint - 1;
-		$scope.faqanswer[divindex] = true;
-    };
+	$scope.faq = '0';
+	$scope.togglefaq = function(id) {
+		$scope.faq = id;
+	};
 }]);
