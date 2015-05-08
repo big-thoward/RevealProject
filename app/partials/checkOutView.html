@@ -1,10 +1,10 @@
 <section>
     <loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
-    <div class="col-md-4 col-md-offset-1 col-collapse">
+    <div class="col-md-4 col-md-offset-1 col-sm-12 col-collapse">
         <ordersummary />
     </div>
 
-    <div class="col-md-7 ol-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
+    <div class="col-md-7  col-sm-12 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
         <orderdetails ng-show="hasOrderConfig" />
         <ordershipping />
         <orderbilling />
