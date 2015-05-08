@@ -1,96 +1,296 @@
 <section>
 	<div class="panel panel-default col-md-6">
 	 <div class="panel-heading">
-	  <h3 class="panel-title">
-	  Contact Us
-	  </h3>
+	 <h3 class="panel-title">
+	 Contact Us
+	 </h3>
 	 </div>
 	 <div class="panel-body">
-	  <p>
-	  		Customer Service Representatives are available to answer your questions from 8:00 am to 5:00 pm U.S. Central Time, Monday through Friday. Please call Reveal Support at: (952) 278-7800 or email us at: <a href="mailto:reveal@impactgroup.us">reveal@impactgroup.us</a>.
-	  </p>
+	 <p>
+	 		Customer Service Representatives are available to answer your questions from 8:00 am to 5:00 pm U.S. Central Time, Monday through Friday. Please call Reveal Support at: (952) 278-7800 or email us at: <a href="mailto:reveal@impactgroup.us">reveal@impactgroup.us</a>.
+	 </p>
 	 </div>
 	 <div class="panel-heading">
-	  <h3 class="panel-title">
-	  Shipping Information
-	  </h3>
+	 <h3 class="panel-title">
+	 Shipping Information
+	 </h3>
 	 </div>
-	 <div class="panel-body" id="shippinginfo">
-	  	<ul>
-	  		<li>All orders will ship via USPS within 14 days of the close of the Project.</li>
-	  		<li>Shipping charges are based on the total weight of your order and the location the order is being shipped to.</li>
-	  		<li>Shipping charges will appear on the cart page prior to submitting your order.</li>
-	  	</ul>
-	  	<p style="font-weight:bold;">
-	  		Orders will ship via the following time frame based on location:
-	  	</p>
-	  	<ul>
-	  		<li>Orders to US Addresses will arrive within 2-4 business days of shipping</li>
-	  		<li>Orders to all other addresses will arrive in 4-10 business days of shipping</li>
-	  	</ul>
-	  	<p>
-	  		All Reveal Project items are offered as limited time custom products.  Based on order volume, orders may be released to production prior to the Project close date. Once your order has moved to production you will receive a notification email with tracking information. Your order will be in production for approximately 7 to 10 business days before shipping.  Once your order has shipped your tracking information will be updated.
-	  	</p>
-	  	<p>
-	  		If you have any questions about your order or if you feel your order is overdue please <a href="mailto:reveal@impactgroup.us">contact us</a> and provide your order number and contact information.
-	  	</p>
+	 <div class="panel-body shippinginfo">
+	 	<ul>
+	 		<li>All orders will ship via USPS within 14 days of the close of the Project.</li>
+	 		<li>Shipping charges are based on the total weight of your order and the location the order is being shipped to.</li>
+	 		<li>Shipping charges will appear on the cart page prior to submitting your order.</li>
+	 	</ul>
+	 	<p style="font-weight:bold;">
+	 		Orders will ship via the following time frame based on location:
+	 	</p>
+	 	<ul>
+	 		<li>Orders to US Addresses will arrive within 2-4 business days of shipping</li>
+	 		<li>Orders to all other addresses will arrive in 4-10 business days of shipping</li>
+	 	</ul>
+	 	<p>
+	 		All Reveal Project items are offered as limited time custom products. Based on order volume, orders may be released to production prior to the Project close date. Once your order has moved to production you will receive a notification email with tracking information. Your order will be in production for approximately 7 to 10 business days before shipping. Once your order has shipped your tracking information will be updated.
+	 	</p>
+	 	<p>
+	 		If you have any questions about your order or if you feel your order is overdue please <a href="mailto:reveal@impactgroup.us">contact us</a> and provide your order number and contact information.
+	 	</p>
+	 </div>
+	 <div class="panel-heading">
+	 <h3 class="panel-title">
+	 Frequently Asked Questions (F.A.Q)
+	 </h3>
+	 </div>
+	 <div class="panel-body">
+	 	<div id="faq1">
+	 		<p ng-click="reveal('faq1')" class="question">How much is shipping?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Shipping is based on the total weight of your order and what country you live in. All shipping and handling charges will appear on the cart page before checkout.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq2">
+	 		<p ng-click="reveal('faq2')" class="question">How long will shipping take?</p>
+	 		<div class="answer">
+	 			<div class="shippinginfo">
+				 	<ul>
+				 		<li>All orders will ship via USPS within 14 days of the close of the Project.</li>
+				 		<li>Shipping charges are based on the total weight of your order and the location the order is being shipped to.</li>
+				 		<li>Shipping charges will appear on the cart page prior to submitting your order.</li>
+				 	</ul>
+				 	<p style="font-weight:bold;">
+				 		Orders will ship via the following time frame based on location:
+				 	</p>
+				 	<ul>
+				 		<li>Orders to US Addresses will arrive within 2-4 business days of shipping</li>
+				 		<li>Orders to all other addresses will arrive in 4-10 business days of shipping</li>
+				 	</ul>
+				 	<p>
+				 		All Reveal Project items are offered as limited time custom products. Based on order volume, orders may be released to production prior to the Project close date. Once your order has moved to production you will receive a notification email with tracking information. Your order will be in production for approximately 7 to 10 business days before shipping. Once your order has shipped your tracking information will be updated.
+				 	</p>
+				 	<p>
+				 		If you have any questions about your order or if you feel your order is overdue please <a href="mailto:reveal@impactgroup.us">contact us</a> and provide your order number and contact information.
+				 	</p>
+				 </div>
+	 		</div>
+	 	</div>
+	 	<div id="faq3">
+	 		<p ng-click="reveal('faq3')" class="question">Is there combined shipping for multiple orders?</p>
+	 		<div class="answer">
+	 			<p>
+	 				All orders will ship individually.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq4">
+	 		<p ng-click="reveal('faq4')" class="question">Do you ship to my house?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Yes, we ship worldwide.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq5">
+	 		<p ng-click="reveal('faq5')" class="question">Do you ship to PO boxes?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Yes
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq6">
+	 		<p ng-click="reveal('faq6')" class="question">When will my credit card be charged?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Your credit card will be charged at the time you place your order.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq7">
+	 		<p ng-click="reveal('faq7')" class="question">What payment options are available?</p>
+	 		<div class="answer">
+	 			<p>
+	 				We accept all major credit cards.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq8">
+	 		<p ng-click="reveal('faq8')" class="question">Do you have gift cards?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Unfortunately at this time we do not offer gift cards.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq9">
+	 		<p ng-click="reveal('faq9')" class="question">How do I confirm my order went thru?</p>
+	 		<div class="answer">
+	 			<p>
+	 				You will see a confirmation page upon submitting your order and also receive a confirmation email after your purchase is completed. If you do not receive an email, please check your spam folder or <a href="mailto:reveal@impactgroup.us">contact us</a> with questions.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq10">
+	 		<p ng-click="reveal('faq10')" class="question">I have not received my order, what can I do?</p>
+	 		<div class="answer">
+	 			<p>
+	 				If you have any questions about your order or if you feel your order is overdue please <a href="mailto:reveal@impactgroup.us">contact us</a> and provide your order # and contact information.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq11">
+	 		<p ng-click="reveal('faq11')" class="question">I ordered the wrong size, now what?</p>
+	 		<div class="answer">
+	 			<p>
+	 				If your order has not gone into production please <a href="mailto:reveal@impactgroup.us">contact us</a> and provide your order # and contact information. Any orders that have already gone into production cannot be altered.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq12">
+	 		<p ng-click="reveal('faq12')" class="question">Can I cancel or return?</p>
+	 		<div class="answer">
+	 			<p>
+	 				This is a custom decorated product and, unfortunately, is not available for return. If a product has been proven to be defective or damaged, you can return the product to us for a full refund. Please <a href="mailto:reveal@impactgroup.us">contact us</a> within 15 days of receiving your order to obtain a return authorization number. We will not accept any returns without a return authorization number.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq13">
+	 		<p ng-click="reveal('faq13')" class="question">Can I get group discount?</p>
+	 		<div class="answer">
+	 			<p>
+	 				We do not offer group discounts. All net proceeds go to the charity involved with the Project.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq14">
+	 		<p ng-click="reveal('faq14')" class="question">What should I do if I'm having problems with the website?</p>
+	 		<div class="answer">
+	 			<p>
+	 					Please <a href="mailto:reveal@impactgroup.us">contact us</a> and let us know the issue you are having.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq15">
+	 		<p ng-click="reveal('faq15')" class="question">Is my purchase tax deductible?</p>
+	 		<div class="answer">
+	 			<p>
+	 				It is not since your payment does not exceed a" fair market value "of the merchandise purchased.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq16">
+	 		<p ng-click="reveal('faq16')" class="question">If a Project has ended, can I still get a shirt/hoodie?</p>
+	 		<div class="answer">
+	 			<p>
+	 				All Merchandise is custom made and offered for a limited time and is not available after the closing of the project.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq17">
+	 		<p ng-click="reveal('faq17')" class="question">What percentage of my purchase goes to charity?</p>
+	 		<div class="answer">
+	 			<p>
+	 				The percentage will vary by program but all charities receive all net proceeds from the program.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq1">
+	 		<p ng-click="reveal('faq18')" class="question">Do some charities get more than others?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Factors that affect a charity's percentage are the number of items sold, the types of product sold, and If more than one non-profit is involved.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq19">
+	 		<p ng-click="reveal('faq19')" class="question">What size should I order?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Please check out the Size Chart in the Description section of each product.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq20">
+	 		<p ng-click="reveal('faq20')" class="question">How do sizes compare in us to Eu,EK, JP?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Please refer to our sizing charts.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq21">
+	 		<p ng-click="reveal('faq21')" class="question">Where are your product manufactured?</p>
+	 		<div class="answer">
+	 			<p>
+	 				All of our products are made in the United States of America.
+	 			</p>
+	 		</div>
+	 	</div>
+	 	<div id="faq22">
+	 		<p ng-click="reveal('faq22')" class="question">Does the manufacturer adhere to human rights standards?</p>
+	 		<div class="answer">
+	 			<p>
+	 				Yes, we use only suppliers and manufacturers that abide by the <a href="http://www.ppai.org/inside-ppai/corporate-responsibility/product-responsibility/PPAI-Code-Of-Conduct/Documents/PPAI%20Code%20of%20Conduct.pdf" target="_blank">PPAI Code of Conduct</a>.
+	 			</p>
+	 		</div>
+	 	</div>
 	 </div>
 	</div>
 	<div class="panel panel-default col-md-6">
 	 <div class="panel-heading">
-	  <h3 class="panel-title">
-	  How To Buy
-	  </h3>
+	 <h3 class="panel-title">
+	 How To Buy
+	 </h3>
 	 </div>
 	 <div class="panel-body" style="margin-bottom:40px;">
-		  <ol>
-			  	<li>
-			  		<p>
-			  			Browse the product page to choose your product.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss1.jpg" alt="">
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Add product(s) to cart.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss2.jpg" alt="">
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Continue to shop, or proceed to checkout.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss3.jpg" alt="">
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Enter in your shipping address.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss4.jpg" alt="">
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Choose your desired shipping method.
-			  		</p>
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Enter in your billing address or choose from a pre-existing billing address.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss6.jpg" alt="">
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Enter in your credit card information.
-			  		</p>
-			  	</li>
-			  	<li>
-			  		<p>
-			  			Click the Submit Order button. You will receive an order email confirmation.
-			  		</p>
-			  		<img class="img-responsive" src="./img/howtobuy/ss8.jpg" alt="">
-			  	</li>
-		  </ol>
+		 <ol>
+			 	<li>
+			 		<p>
+			 			Browse the product page to choose your product.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss1.jpg" alt="">
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Add product(s) to cart.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss2.jpg" alt="">
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Continue to shop, or proceed to checkout.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss3.jpg" alt="">
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Enter in your shipping address.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss4.jpg" alt="">
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Choose your desired shipping method.
+			 		</p>
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Enter in your billing address or choose from a pre-existing billing address.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss6.jpg" alt="">
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Enter in your credit card information.
+			 		</p>
+			 	</li>
+			 	<li>
+			 		<p>
+			 			Click the Submit Order button. You will receive an order email confirmation.
+			 		</p>
+			 		<img class="img-responsive" src="./img/howtobuy/ss8.jpg" alt="">
+			 	</li>
+		 </ol>
 	 </div>
 	</div>
 </section>
