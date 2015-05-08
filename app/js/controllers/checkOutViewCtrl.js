@@ -2,7 +2,8 @@ four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location'
 function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
 	$scope.errorSection = 'open';
 	$scope.shipping = true;
-    	if($scope.user.Type == "TempCustomer")
+
+    if($scope.user.Type == "TempCustomer")
 	{
 		$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
