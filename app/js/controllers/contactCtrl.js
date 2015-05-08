@@ -2,11 +2,7 @@ four51.app.controller('ContactCtrl', ['$rootScope', '$routeParams', '$sce', '$sc
 function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) {
 
 	$scope.reveal = function(divid) {
-
-		var element = document.getElementById(divid);
-      	if(element)
-      	{
-      		element.css('display', 'block');
-      	}
+		$scope.collapseanswers = true;
+		$scope.+divid = true;
     };
 }]);
