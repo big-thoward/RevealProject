@@ -2,6 +2,7 @@ four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location'
 function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
 	$scope.errorSection = 'open';
 	$scope.shipping = true;
+	$scope.order = true;
 
     if($scope.user.Type == "TempCustomer")
 	{
@@ -14,7 +15,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			$scope.currentOrder = order;
 		});
 	}
-	
+
 	$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
 
 	if (!$scope.currentOrder) {
@@ -86,7 +87,7 @@ $rootScope.guest = true;
 	    $rootScope.guest = true;
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
 	    {
-	    	
+
 	        saveChanges(function() { $location.path('campaigns/projects/'+$rootScope.productInteropID+'') });
 	    }
         else
@@ -135,7 +136,7 @@ $rootScope.guest = true;
 		$rootScope.$broadcast('guest');
 	    $rootScope.guest = true;
 	};
-	
+
 	$scope.orderToggle = function() {
 		$scope.order = !$scope.order;
 	};
@@ -147,7 +148,7 @@ $rootScope.guest = true;
 	$scope.shippingToggle = function() {
 		$scope.shipping = !$scope.shipping;
 	};
-	
+
 	$scope.shippinasbilling = function()
 	{
 		$scope.shipaddress.IsBilling = true;
