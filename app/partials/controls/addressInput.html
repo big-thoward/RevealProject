@@ -81,7 +81,7 @@
                 </div>
                 <div style="display:none;">
                     <label ng-class="{'required': address.IsCustEditable != false}">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="addressname" type="text" ng-model="address.AddressName" value="address.Street1" ng-required />
+                    <input name="addressname" type="text" ng-model="address.AddressName" value="{{address.Street1}}" ng-required />
                 </div>
             </div>
         </div>
