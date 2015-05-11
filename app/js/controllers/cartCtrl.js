@@ -7,7 +7,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	}
 	else
 	{
-		$scope.path = "''+";
+		$scope.path = "";
 	}
 	
 $scope.guest = true;
