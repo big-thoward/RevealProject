@@ -9,7 +9,7 @@
     <form name="addressEdit" ng-submit="save()">
         <div class="row">
             <div class="col-sm-6 view-form-icon">
-                <div>
+                <div style="visibility:hidden;z-index:-2;position:absolute;;">
                     <label ng-class="{'required': address.IsCustEditable != false}">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
                     <input name="addressname" type="text" ng-model="address.AddressName" value="{{address.AddressName}}" required />
                 </div>
