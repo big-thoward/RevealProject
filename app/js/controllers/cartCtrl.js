@@ -1,4 +1,4 @@
-four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'vOrderConfig', 'User',
+four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
 	if($rootScope.productInteropiD)
@@ -7,7 +7,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	}
 	else
 	{
-		$scope.path = "v";
+		$scope.path = "";
 	}
 	
 $scope.guest = true;
