@@ -3,6 +3,7 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
     $scope.guest = true;
     $scope.save = function() {
 	    $scope.objectExists = false;
+        $scope.address.AddressName = "TEMP ADDRESS";
         if($scope.user.Type == "Customer")
         {
             Address.save(this.address,
