@@ -3,11 +3,11 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
 	if(rootScope.productInteropiD)
 	{
-		$scope.path = 'product/'+$rootScope.productInteropiD+'';
+		$scope.path = $rootScope.productInteropiD;
 	}
 	else
 	{
-		$scope.path = "/";
+		$scope.path = "''+";
 	}
 	
 $scope.guest = true;
@@ -37,11 +37,11 @@ $scope.guest = true;
 	$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
-				$scope.saveChanges(function() { $location.path('campaigns') });
+				$scope.saveChanges(function() { $location.path('product/'+$scope.path+'') });
 		}
 		else
 		{
-			$location.path($scope.path);
+			$location.path('product/'+$scope.path+'');
 		}
 	};
 
@@ -54,7 +54,7 @@ $scope.guest = true;
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path($scope.path);
+						$location.path('product/'+$scope.path+'');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -100,7 +100,7 @@ $scope.guest = true;
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path($scope.path);
+							$location.path('product/'+$scope.path+'');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
