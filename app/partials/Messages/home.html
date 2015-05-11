@@ -34,9 +34,9 @@
                             </div>
                             
                         </a>
-                        <a ng-show="c.SubCategories" ng-href="campaigns/{{c.InteropID}}" ng-click="clickCampaign()" style="margin:0;padding:0;">
+                        <a ng-show="c.SubCategories" ng-href="campaigns/{{c.InteropID}}" ng-click="clickCampaign(c)" style="margin:0;padding:0;">
                         <h4 ng-bind-html="c.Name" style="text-align:center;text-transform:uppercase;color:#000" /></a>
-                        <a ng-hide="c.SubCategories" ng-href="product/{{c.Description}}" ng-click="clickCampaign()" style="margin:0;padding:0;">
+                        <a ng-hide="c.SubCategories" ng-href="product/{{c.Description}}" ng-click="clickCampaign(c)" style="margin:0;padding:0;">
                             <figure ng-show="c.Image.URL">
                                 <img class="img-responsive" ng-src="{{c.Image.URL}}" />
                             </figure>
@@ -45,7 +45,7 @@
                             </div>
                             
                         </a>
-                        <a ng-hide="c.SubCategories" ng-href="product/{{c.Description}}" ng-click="clickCampaign()" style="margin:0;padding:0;">
+                        <a ng-hide="c.SubCategories" ng-href="product/{{c.Description}}" ng-click="clickCampaign(c)" style="margin:0;padding:0;">
                         <h4 ng-bind-html="c.Name" style="text-align:center;text-transform:uppercase;color:#000;" /></a>
                     </div>
                     <div style="clear:both;width:100px;border-top:2px solid #17BFAF;margin:0 auto;height:15px;">&nbsp;</div>

@@ -67,4 +67,9 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 
 		}
 	};
+
+	$scope.clickCampaign = function(c)
+	{
+		$rootScope.productInteropID = c.Description;
+	}
 }]);

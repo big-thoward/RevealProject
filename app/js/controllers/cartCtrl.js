@@ -1,6 +1,7 @@
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
+	$scope.productInteropiD = $rootScope.productInteropID;
 $scope.guest = true;
 
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
@@ -32,7 +33,7 @@ $scope.guest = true;
 		}
 		else
 		{
-			$location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+			$location.path('product/'+$scope.productInteropiD+'');
 		}
 	};
 
@@ -45,7 +46,7 @@ $scope.guest = true;
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('product/'+$rootScope.productInteropID+'');
+						$location.path('product/'+$scope.productInteropiD+'');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -91,7 +92,7 @@ $scope.guest = true;
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('product/'+$rootScope.productInteropID+'');
+							$location.path('product/'+$scope.productInteropiD+'');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
