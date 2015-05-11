@@ -1,6 +1,7 @@
 four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 'User', 'Address', 'Resources',
 function ($scope, $rootScope, $location, User, Address, Resources) {
     $scope.guest = true;
+    $scope.address.AddressName = "Address1";
     $scope.save = function() {
 	    $scope.objectExists = false;
         if($scope.user.Type == "Customer")
@@ -53,6 +54,10 @@ function ($scope, $rootScope, $location, User, Address, Resources) {
             $location.path($scope.return);
         });
     };
+
+    $scope.streetAdded = function() {
+        $scope.address.AddressName = $scope.address.Street1;
+    }
 
 	$scope.cancel = function() {
 		$scope.return ? $location.path($scope.return) : $rootScope.$broadcast('event:AddressCancel');

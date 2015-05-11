@@ -9,9 +9,9 @@
     <form name="addressEdit" ng-submit="save()">
         <div class="row">
             <div class="col-sm-6 view-form-icon">
-                <div style="display:none;">
+                <div>
                     <label ng-class="{'required': address.IsCustEditable != false}">{{('Address' | r) + ' ' + ('Name' | r) | xlat}}</label>
-                    <input name="addressname" type="text" ng-model="address.AddressName" value="Address 1" ng-required />
+                    <input name="addressname" type="text" ng-model="address.AddressName" value="{{address.AddressName}}" required />
                 </div>
                 <div>
                     <label ng-show="address.FirstName || address.IsBilling" ng-class="{required: address.IsBilling && address.IsCustEditable != false}">{{('First' | r) + ' ' + ('Name' | r) | xlat}}</label>
@@ -49,7 +49,7 @@
             <div class="col-sm-6 view-form-icon">
                 <div>
                     <label ng-class="{'required': address.IsCustEditable != false}">{{'Address Line 1' | r | xlat}}</label>
-                    <input name="street1" class="form-control" type="text" ng-model="address.Street1" placeholder="{{'Address Line 1' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
+                    <input name="street1" ng-blur="streetAdded()" class="form-control" type="text" ng-model="address.Street1" placeholder="{{'Address Line 1' | r | xlat}}" autocomplete="off" ng-required="address.IsCustEditable != false" ng-disabled="address.IsCustEditable == false" />
                     <i class="fa fa-map-marker"></i>
                 </div>
                 <div>
