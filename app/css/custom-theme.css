@@ -1279,7 +1279,7 @@ span.badge.ng-binding {
     .navbar-nav.pull-right li {
         width:50% !important;
     }
-    .col-md-6.cart
+    #cartview .cart
     {
         width:100% !important;
     }
