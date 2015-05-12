@@ -9,7 +9,7 @@ function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig,
 	{
 		$scope.path = "";
 	}
-	
+
 $scope.guest = true;
 
 	var isEditforApproval = $routeParams.id != null && $scope.user.Permissions.contains('EditApprovalOrder');
@@ -37,11 +37,11 @@ $scope.guest = true;
 	$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
-				$scope.saveChanges(function() { $location.path('product/'+$scope.path+'') });
+				$scope.saveChanges(function() { $location.path('product/RVL010') });
 		}
 		else
 		{
-			$location.path('product/'+$scope.path+'');
+			$location.path('product/RVL010');
 		}
 	};
 
@@ -54,7 +54,7 @@ $scope.guest = true;
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('product/'+$scope.path+'');
+						$location.path('product/RVL010');
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -100,7 +100,7 @@ $scope.guest = true;
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('product/'+$scope.path+'');
+							$location.path('product/RVL010');
 						});
 					}
 					$scope.displayLoadingIndicator = false;
@@ -147,7 +147,7 @@ $scope.guest = true;
 			}
 		);
 	};
-	
+
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
 		if (!$scope.currentOrder) return newTotal;

@@ -213,7 +213,7 @@
                             <small ng-if="currentOrder.Status != 'AwaitingApproval'">Continue Shopping</small>
                         </a>
                     </li>
-                    <li>
+                    <li id="cancelorderbutton">
                         <button type="button" class="btn btn-danger" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()" style="text-transform:uppercase;">
                             <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
                             <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>

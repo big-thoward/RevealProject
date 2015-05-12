@@ -1287,5 +1287,9 @@ span.badge.ng-binding {
       width: 60%;
       left: 25%;
     }
+    #cancelorderbutton
+    {
+        font-size:9px;
+    }
 }
 
