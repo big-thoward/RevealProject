@@ -1278,7 +1278,11 @@ span.badge.ng-binding {
     }
     .navbar-nav.pull-right li {
         width:50%;
-        float:left
+    }
+    .col-md-6.cart
+    {
+        width:100%;
+        clear:both;
     }
 
 }
