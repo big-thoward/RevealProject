@@ -645,7 +645,8 @@ span.badge.ng-binding {
 #clockcontainer {
     position: relative;
     top: -70px;
-    left: 35px
+    left: 35px;
+    background:transparent !important;
 }
 @media (min-width: 1900px) {
     .product-image-large {
@@ -1131,6 +1132,29 @@ span.badge.ng-binding {
         width:90%!important
     }
 }
+.shippinginfo ul li {
+    list-style-type:disc;
+    margin-left:10px;
+    padding-left:5px;
+    padding-bottom:5px;
+}
+.shippinginfo ul {
+    margin-left:10px;
+    padding:0 0 10px 5px
+}
+.question {
+    font-weight:700;
+    color:#17BFAF;
+    cursor:pointer;
+    padding-top:10px;
+}
+.question:hover {
+    color:#000;
+    text-decoration:underline;
+}
+.answer {
+    margin-left:10px;
+}
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (max-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (                min-resolution: 120dpi) and (max-width: 600px) {
 
     .contactus {
@@ -1249,27 +1273,13 @@ span.badge.ng-binding {
         clear:none;
         max-height:900px
     }
+    .navbar-nav.pull-right {
+        width:50%
+    }
+    .navbar-nav.pull-right li {
+        width:50%;
+        float:left
+    }
+
 }
-.shippinginfo ul li {
-    list-style-type:disc;
-    margin-left:10px;
-    padding-left:5px;
-    padding-bottom:5px;
-}
-.shippinginfo ul {
-    margin-left:10px;
-    padding:0 0 10px 5px
-}
-.question {
-    font-weight:700;
-    color:#17BFAF;
-    cursor:pointer;
-    padding-top:10px;
-}
-.question:hover {
-    color:#000;
-    text-decoration:underline;
-}
-.answer {
-    margin-left:10px;
-}
+
