@@ -969,11 +969,7 @@ span.badge.ng-binding {
         font-size:120%
     }
 }
-@media (max-width: 360px) {
-    #descriptionpanel {
-        display:none
-    }
-}
+
 .col-lg-3,
 .col-md-3 {
     width:30%!important
