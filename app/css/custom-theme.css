@@ -1274,15 +1274,14 @@ span.badge.ng-binding {
         max-height:900px
     }
     .navbar-nav.pull-right {
-        width:50%
+        width:50% !important;
     }
     .navbar-nav.pull-right li {
-        width:50%;
+        width:50% !important;
     }
     .col-md-6.cart
     {
-        width:100%;
-        clear:both;
+        width:100% !important;
     }
 
 }
