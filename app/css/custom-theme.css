@@ -1289,7 +1289,11 @@ span.badge.ng-binding {
     }
     #cancelorderbutton
     {
-        font-size:9px;
+        font-size:9px !important;
+    }
+    .contactus
+    {
+        left:0% !important;
     }
 }
 
