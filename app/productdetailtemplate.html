@@ -1,4 +1,8 @@
 <style>
+#sharemobile
+{
+	display:none;
+}
 #clockcontainer {
     background:transparent !important;
 }
@@ -19,19 +23,23 @@
 	@media(max-width:600px){
 		#bottomblock{height:360px !important;}
 		#acm{left:0%;width:95% !important;padding-top:40px !important;}
-		#descriptionpanel{padding-bottom:30px !important;}\
+		#descriptionpanel{padding-bottom:30px !important;}
 		#prodtitle{position:relative;left:-30px !important;}
 	}
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (max-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (                min-resolution: 120dpi) and (max-width: 600px) {
 
 	#info
 	{
-		top:440px !important;
+		top:340px !important;
 	}
 	#thesong img
 	{
 		width:80% !important;
 	}
+	#sharemobile{display:block;}
+	.voffset-sm-1 {
+    margin-top:0;
+}
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (min-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (                min-resolution: 120dpi) and (min-width: 600px) {
 
@@ -234,6 +242,9 @@
 	</div>
 </section>
 <section class="col-lg-12 col-md-12 col-sm-12 voffset-sm-1" id="info" style="top:60px">
+<div id="sharemobile" class="col-lg-12 col-md-12 col-sm-12">
+		<iframe src="//clients.impactgroup.us/reveal-project-avril-lavigne-share-buttons/" frameborder="0" width="500" height="100"></iframe>
+</div>
 	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 text-center">
 		<h3 style="color:#000;text-align:center;margin:0 auto;margin-bottom:20px;">AVRIL LAVIGNE</h3>
 		<div>
