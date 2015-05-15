@@ -139,7 +139,6 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 				}
 
 			}
-   			$.getScript("./js/custom/countDown/productCtrl-38.js", function(){});
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
 	}
 	$scope.$watch('settings.currentPage', function(n, o) {
