@@ -6,6 +6,7 @@
 #clockcontainer {
     background:transparent !important;
 }
+
 	@media(max-width:1070px){
 		#acm{left:55%;width:400px;}
 		#bottomblock{left:0%;width:95%;}
@@ -40,6 +41,11 @@
 	.voffset-sm-1 {
     margin-top:0;
 }
+#largeimage {left:0% !important;}
+#bottomblock
+{
+	top:-150px;
+}
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (min-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (                min-resolution: 120dpi) and (min-width: 600px) {
 
@@ -66,7 +72,7 @@
 	</div>
 	<!-- PRODUCT IMAGE PANEL!-->
 	<div class="col-lg-6 col-md-6 col-sm-12" id="imagePanel">
-		<section class="col-md-12 col-sm-9 col-xs-12">
+		<section class="col-md-12 col-sm-9 col-xs-12" id="largeimage">
 			<loadingindicator ng-show="loadingImage && LineItem.Variant.IsMpowerVariant" />
 			<figure>
 				<img id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
@@ -302,6 +308,7 @@ This video was created by Avril Lavigne and Special Olympics in celebration of t
 		</div>
 	</div>
 </section>
-<section class="col-md-10 col-md-offset-1 col-sm-12">
+<div class="clearfix" style="height:100px"> &nbsp; </div>
+<section class="col-md-12 col-sm-12" style="background:#fff;display:block;position:relative;bottom:-200px">
 	<p>*<em>The following percentages of the purchase price will benefit The Avril Lavigne Foundation, 76% of Unisex Crewneck Tee, 74% of Women's V Neck Tee, 46% of Premium Hoodie, 58% of Value Hoodie.</em></p>
 </section>
