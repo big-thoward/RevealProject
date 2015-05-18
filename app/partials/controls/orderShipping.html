@@ -63,7 +63,7 @@
                                     <select class="form-control" ng-change="updateShipper()" name="shipMethod"
                                             ng-model="currentOrder.LineItems[0].ShipperName"
                                             ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
-                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Canada Shipping - Reveal'}"
+                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Canada & Mexico Shipping - Reveal'}"
                                             ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value="">-- Select A Shipping Method --</option>
                                     </select>
