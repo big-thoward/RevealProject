@@ -1,0 +1,49 @@
+<section>
+    <loadingindicator ng-show="loadingIndicator" title="{{'Please wait while we fetch your order' | r | xlat}}"></loadingindicator>
+    <div class="hidden-print">
+        <div class="text-center">
+            <p style="font-size:18px;"><strong>Thanks for you order and for supporting one of our REVEAL projects.</strong></p>
+        </div>
+
+        <nav class="nav">
+            <ul>
+                <li><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
+                <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
+            </ul>
+        </nav>
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title panel-primary">
+                        {{order.LineItems.length}} {{'Item' + (order.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in this' | rl | xlat:(currentOrder.LineItems.length)}} {{'Order' | rl | xlat}}
+                    </h3>
+                </div>
+                <lineitemhistorygrid />
+
+                <div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
+                    <b>Shipper:</b> {{s.Shipper}}<br/>
+                    <b>Tracking number:</b> {{s.TrackingNumber}}<br/>
+                    <b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
+                    <b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{('Order' | r) + ' ' + ('Details' | r) | xlat}}
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <orderhistorydetails></orderhistorydetails>
+                        <orderhistorysummary ng-if="!(user.Permissions.contains('HidePricing'))"></orderhistorysummary>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <orderprint class="visible-print" />
+</section>

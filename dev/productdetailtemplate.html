@@ -1,0 +1,316 @@
+<style>
+#sharemobile
+{
+	display:none;
+}
+#clockcontainer {
+    background:transparent !important;
+}
+
+	@media(max-width:1070px){
+		#acm{left:55%;width:400px;}
+		#bottomblock{left:0%;width:95%;}
+		#panel{left:0;max-width:98% !important;}
+		.col-md-offset-1{left:0 !important;}
+	}
+	@media(max-width:960px){
+		#acm{left:45%;width:45% !important;}
+		#bottomblock{left:0%;width:95%;height:200px !important;}
+	}
+	@media(max-width:767px){
+		#bottomblock{height:250px !important;}
+		#acmimage{width:50% !important;}
+	}
+	@media(max-width:600px){
+		#bottomblock{height:360px !important;}
+		#acm{left:0%;width:95% !important;padding-top:40px !important;}
+		#descriptionpanel{padding-bottom:30px !important;}
+		#prodtitle{position:relative;left:-30px !important;}
+	}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (max-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (max-width: 600px), only screen and (                min-resolution: 120dpi) and (max-width: 600px) {
+
+	#info
+	{
+		top:340px !important;
+	}
+	#thesong img
+	{
+		width:80% !important;
+	}
+	#sharemobile{display:block;}
+	.voffset-sm-1 {
+    margin-top:0;
+}
+#largeimage {left:0% !important;}
+#bottomblock
+{
+	top:-150px;
+}
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (   min--moz-device-pixel-ratio: 1.25)      and (min-width: 600px),only screen and (        min-device-pixel-ratio: 1.25)      and (min-width: 600px), only screen and (                min-resolution: 120dpi) and (min-width: 600px) {
+
+	#info
+	{
+		top:140px !important;
+	}
+}
+</style>
+<section class="product-detail-default col-md-12 col-sm-12">
+	<loadingindicator ng-show="loadingIndicator" title="{{'Please wait while we fetch product information' | r | xlat}}" />
+	<!-- BREADCRUMB!-->
+	<div id="banner">
+				<img src="./img/avrillavigne/banner.jpg" width="80" height="80" style="border:5px solid #fff;position:relative;top:-7px;left:50px;">
+				<span style="color:#000;position:absolute;top:25px;left:150px;font-size:108%"><strong><em>REVEAL Project - Avril Lavigne Foundation</em></strong></span>
+	</div>
+	<div id="prodtitle" class="show-sm col-md-11 col-md-offset-1">
+		<h2 id="451qa_prod_name" style="margin-bottom:0 !important;padding-bottom:0 !important;">
+			{{LineItem.Product.Name}}
+		</h2>
+		<h2 class="text-success" ng-show="LineItem.PriceSchedule.PriceBreaks.length == 1" ng-if="!(user.Permissions.contains('HidePricing'))" style="margin-top:0 !important;padding-top:0 !important;padding-bottom:0 !important;">
+			{{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+		</h2>
+	</div>
+	<!-- PRODUCT IMAGE PANEL!-->
+	<div class="col-lg-6 col-md-6 col-sm-12" id="imagePanel">
+		<section class="col-md-12 col-sm-9 col-xs-12" id="largeimage">
+			<loadingindicator ng-show="loadingImage && LineItem.Variant.IsMpowerVariant" />
+			<figure>
+				<img id="451_img_prod_lg" class="product-image-large img-responsive" ng-src="{{LineItem.Variant.PreviewUrl || LineItem.Variant.LargeImageUrl || LineItem.Product.LargeImageUrl}}" imageonload />
+			</figure>
+		</section>
+		<section class="col-md-12 col-sm-3 col-xs-12" id="relatedproducts">
+			<relatedproducts ng-if="LineItem.Product.RelatedProductsGroupID" relatedgroupid="LineItem.Product.RelatedProductsGroupID"/>
+		</section>
+		<section class="panel col-md-12 col-sm-12">
+			<div id="share" class="pull-right" style="clear:both;z-index:500">
+				<iframe src="//clients.impactgroup.us/reveal-project-avril-lavigne-share-buttons/" frameborder="0" width="500" height="100"></iframe>
+			</div>
+			<div id="clockcontainer" class="panel panel-default col-lg-10 col-lg-offset-1 col-md-12">
+				<div id="clockTitle">
+					<h4>TIME LEFT ON THIS CAMPAIGN</h4>
+					<div id="clock" class="clock"></div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="col-md-6 col-sm-12" id="productInfo">
+		<!-- PRODUCT INFO!-->
+		<div class="row hide-sm">
+			<h2 id="451qa_prod_name" style="margin-bottom:0 !important;padding-bottom:0 !important;">
+				{{LineItem.Product.Name}}
+			</h2>
+			<h2 class="text-success" ng-show="LineItem.PriceSchedule.PriceBreaks.length == 1" ng-if="!(user.Permissions.contains('HidePricing'))" style="margin-top:0 !important;padding-top:0 !important;padding-bottom:0 !important;">
+				{{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+			</h2>
+		</div>
+		<!-- PRODUCT DESCRIPTION PANEL! --->
+		<div id="descriptionpanel">
+			<div class="panel panel-primary">
+				<div class="panel-body" id="451_area_prod_desc">
+					<h6 ng-show="LineItem.Product.ExternalID" class="text-info">
+						{{'ID' | r | xlat}}: {{LineItem.Product.ExternalID}}
+					</h6>
+					<p id="451qa_prod_desc" ng-bind-html="trustedDescription(LineItem.Product)" />
+					<p ng-show="LineItem.Variant.Description" ng-bind-html="trustedDescription(LineItem.Variant)" />
+				</div>
+				<!-- PRICE SCHEDULE PANEL! --->
+				<priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1" ps='LineItem.PriceSchedule' p='LineItem.Product'/>
+			</div>
+		</div>
+		<!-- STATIC SPECS PANEL! -->
+		<staticspecstable ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')" specgroups="StaticSpecGroups" length="LineItem.Product.StaticSpecLength"/>
+		<!-- ORDER PANEL! -->
+		<form name="addToOrderForm" novalidate="" id="addToOrderForm">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="alert alert-danger" ng-show="(!allowAddToOrder && !canCreateVariant && (!allowAddFromVariantList && (LineItem.Product.Variants.length == 0 || LineItem.Variant)))">
+						<p>
+							<i class="fa fa-ban" />
+							{{'Your current order does not allow this product to be added to your cart' | r | xlat}}
+						</p>
+					</div>
+					<!-- VARIANT LIST! -->
+					<div ng-if="!LineItem.Variant">
+						<div class="row" style="margin-top:-20px">
+							<div class="panel-title col-xs-9" ng-show="(allowAddToOrder && LineItem.Product.Variants.length > 0) || canCreateVariant">
+								<h4 class="text-info">
+									{{('Product' | r) + ' ' + ('Variants' | r) | xlat}}
+								</h4>
+							</div>
+							<div class="col-xs-3" ng-show="canCreateVariant">
+								<button type="button" ng-show="!LineItem.Variant" class="btn btn-info pull-right" redirect="/product/{{LineItem.Product.InteropID}}/new/edit" tabindex="-1">
+									{{'Create New' | r | xlat}}
+								</button>
+							</div>
+						</div>
+						<div class="view-form-icon" ng-if="LineItem.Product.VariantCount > settings.pageSize || searchTerm">
+							<div>
+								<div class="input-group">
+									<input ng-model="searchTerm" type="text" class="form-control" placeholder="{{'Search' | r | xlat}}" />
+									<i class="fa fa-search"></i>
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="searchVariants(searchTerm)">{{'Search' | r | xlat}}</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="product-variants">
+							<ul id="451qa_list_variants">
+								<loadingindicator ng-show="searchIndicator" />
+								<li ng-repeat="v in LineItem.Product.Variants | paginate:(settings.currentPage-1) * settings.pageSize | limitTo:settings.pageSize">
+									<div class="row">
+										<a ng-class="{'col-sm-6': allowAddFromVariantList, 'col-sm-11': !allowAddFromVariantList }" href=#/product/{{LineItem.Product.InteropID}}/{{v.InteropID}}>
+											<h5>
+												<strong>{{v.ExternalID}}</strong>
+											</h5>
+											<p ng-show="v.Description" ng-bind-html="trustedDescription(v)" />
+											<p ng-show="LineItem.Product.DisplayInventory && LineItem.Product.IsVariantLevelInventory">
+												{{'Quantity Available' | r | xlat}}: {{v.QuantityAvailable}}
+											</p>
+										</a>
+										<div class="col-sm-2" ng-show="allowAddFromVariantList && !(user.Permissions.contains('HidePricing'))">
+											<div class="quantity-total-variants text-center" ng-show="variantLineItems[v.InteropID].LineTotal > 0">
+												<small><span class="text-info">{{'Total' | r | xlat}}</span><br /><span class=" text-success">{{variantLineItems[v.InteropID].LineTotal | culturecurrency}}</span></small>
+											</div>
+										</div>
+										<div class="col-sm-3 view-form-icon" ng-show="allowAddFromVariantList">
+											<quantityfield required="false" calculated="calcVariantLineItems" lineitem="variantLineItems[v.InteropID]" class="quantity" />
+										</div>
+										<div class="col-sm-1" ng-show="v.IsMpowerVariant">
+											<button type="button" ng-click="deleteVariant(v, false)" class="btn btn-default btn-block">
+												<i class="fa fa-trash-o text-warning"></i> <span class="visible-xs text-warning">{{'Delete' | r | xlat}}</span>
+											</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div ng-show="LineItem.Product.VariantCount > settings.pageSize">
+							<pagination ng-change="paged()" ng-model="settings.currentPage" page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="LineItem.Product.VariantCount"
+							            items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
+						</div>
+					</div>
+					<ordertypeselector ng-show="(canAddToStandardOrder && canAddToReplenishmentOrder && !currentOrder.ID)"></ordertypeselector>
+					<addtoorderspecs ng-show="allowAddToOrder"></addtoorderspecs>
+					<div class="form-group" ng-show="allowAddToOrder">
+						<p ng-show="LineItem.Product.DisplayInventory && (LineItem.Variant || LineItem.Product.Variants.length == 0)">
+							<span class="text-info">{{'Quantity Available' | r | xlat}}</span> {{inventoryDisplay(LineItem.Product, LineItem.Variant)}}
+						</p>
+						<p ng-show="LineItem.PriceSchedule.MinQuantity > 1 && !LineItem.PriceSchedule.RestrictedQuantity">
+							<span class="text-info">{{'Minimum Quantity' | r | xlat}}</span> {{LineItem.PriceSchedule.MinQuantity}}
+						</p>
+						<p ng-show="LineItem.PriceSchedule.MaxQuantity && !LineItem.PriceSchedule.RestrictedQuantity">
+							<span class="text-info">{{'Maximum Quantity' | r | xlat}}</span> {{LineItem.PriceSchedule.MaxQuantity}}
+						</p>
+						<div class="view-form-icon" ng-if="!allowAddFromVariantList">
+							<div>
+								<label ng-class="{required: !allowAddFromVariantList}" ng-hide="allowAddFromVariantList">{{('Order' | r) + ' ' + ('Quantity' | r) | xlat}}</label>
+								<quantityfield required="true" lineitem="LineItem" class="quantity" style="margin-top:5px" />
+							</div>
+						</div>
+						<button class="btn btn-primary btn-block btn-lg" type="button" id="451_btn_orderadd" ng-click="addToOrder()">
+							<loadingindicator ng-show="addToOrderIndicator" />
+							<i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
+							{{addToOrderText | r | xlat}}
+                            <span id="451qa_lineitem_total" class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
+                                {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
+                            </span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- ERROR MESSAGING! -->
+	<div class="navbar-fixed-bottom">
+		<div class="view-error-message" ng-show="showAddToCartErrors && lineItemErrors.length > 0">
+			<ul class="alert-warning">
+				<li class="text-center">
+                    <span class="badge">
+                        <i class="fa fa-exclamation-circle fa-inverse"></i>
+                        {{lineItemErrors.length}}
+                    </span>
+				</li>
+				<li class="text-center">
+					<ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+						<li class="alert-warning" ng-repeat="e in lineItemErrors">{{e | xlat}}</li>
+						<li class="alert-warning" ng-show="variantLineItems[v.InteropID].qtyError">{{variantLineItems[v.InteropID].qtyError}}</li>
+					</ul>
+				</li>
+				<li class="text-center">
+					<a ng-show="lineItemErrors.length > 1">
+						<i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+						<i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section class="col-lg-12 col-md-12 col-sm-12 voffset-sm-1" id="info" style="top:60px">
+<div id="sharemobile" class="col-lg-12 col-md-12 col-sm-12">
+		<iframe src="//clients.impactgroup.us/reveal-project-avril-lavigne-share-buttons/" frameborder="0" width="500" height="100"></iframe>
+</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 text-center">
+		<h3 style="color:#000;text-align:center;margin:0 auto;margin-bottom:20px;">AVRIL LAVIGNE</h3>
+		<div>
+			<img src="./img/avrillavigne/artist.jpg" class="img-responsive" style="-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.4); box-shadow: 0 0 5px 0 rgba(0,0,0,.4);max-width:100% !important;margin:0 auto;">
+		</div>
+		<div>
+			<p style="padding:30px 0;margin:0 auto;">International, award-winning singer-songwriter and philanthropist Avril Lavigne debuted her song “Fly” to benefit Special Olympics.  The inspiring music video for “Fly”, features Avril Lavigne and Special Olympics athletes from around the world. <a href="http://www.theavrillavignefoundation.org/" target="_blank" style="font-weight:bold;">Learn more about the Avril Lavigne Foundation</a></p>
+		</div>
+	</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 text-center">
+		<h3 style="color:#000;text-align:center;margin:0 auto;margin-bottom:20px;">THE CAUSE</h3>
+		<div style="text-align:center;">
+			<img src="./img/avrillavigne/cause.jpg" class="img-responsive" style="-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.4); box-shadow: 0 0 5px 0 rgba(0,0,0,.4);max-width:100% !important;margin:0 auto;">
+		</div>
+		<div>
+			<p style="padding:30px 0;margin:0 auto;">Special Olympics is the world's largest sports organization for children and adults with intellectual disabilities, providing year-round training and competitions to more than 4.4 million athletes in 170 countries. For more info visit <a href="http://www.specialolympics.org/" target="_blank" style="font-weight:bold;">Special Olympics Website </a></p>
+		</div>
+	</div>
+	<div class="col-md-10 panel panel-default col-sm-12 col-sm-offset-0 hide-xs" style="margin-top:-70px !important;padding-bottom:30px;z-index:-2;margin-left:5%;">
+		<div class="panel-heading">
+			<h3 class="panel-title">&nbsp;</h3>
+		</div>
+	</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 hide-xxs text-center">
+		<div style="text-align:center;"><a href="http://www.vevo.com/watch/avril-lavigne/Fly-for-Special-Olympics/TIVEV1555888" id="movie" target="_blank">
+			<img id="movhover" src="./img/avrillavigne/movie_hover.png" alt="" class="img-responsive" style="max-width:600px !important;width:100%;">
+			<img src="./img/avrillavigne/movie.jpg" class="img-responsive" style="-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.4); box-shadow: 0 0 5px 0 rgba(0,0,0,.4);max-width:600px !important;width:100%;"></a>
+		</div>
+		<div>
+			<p style="padding:30px 0;margin:0 auto;"><a href="http://www.vevo.com/watch/avril-lavigne/Fly-for-Special-Olympics/TIVEV1555888" id="movietitle" style="text-transform:uppercase;font-weight:bold;clear:none;max-width:100% !important;" target="_blank">
+			Watch Avril’s “Fly” Music Video For Special Olympics</a><br>
+This video was created by Avril Lavigne and Special Olympics in celebration of the Special Olympics World Games Los Angeles 2015, and inspired by the Avril Lavigne Foundation.<a href="http://www.theavrillavignefoundation.org/news/246133" target="_blank" style="font-weight:bold;">READ MORE</a></p>
+		</div>
+	</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 hide-xxs text-center" style="height:680px !important;">
+		<div style="text-align:center;" id="thesong">
+			<img src="./img/avrillavigne/song.jpg" class="img-responsive" style="-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,.4); box-shadow: 0 0 5px 0 rgba(0,0,0,.4);max-width:500px !important;margin:0 auto;">
+		</div>
+		<div style="padding-top:30px;text-align:left;max-width:500px !important;margin:0 auto;">
+			<div class="col-md-3 col-sm-3" style="padding-right:5px;"><a href="http://smarturl.it/avrilflysingle" target="_blank"><img src="./img/itunes.jpg" class="img-responsive pull-right" style="width:100% !important;"></a></div>
+			<div class="col-md-8 col-sm-7 text-center">
+				<a href="http://smarturl.it/avrilflysingle" target="_blank" style="float:left;">Avril Lavigne's Latest Release:<br><span style="font-size:22px;text-align:center;width:100%">“FLY”</span></a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 text-center">
+		<iframe src="//clients.impactgroup.us/avril-fly-shirts/" frameborder="0" width="500" height="410"></iframe>
+	</div>
+	<div class="panel panel-default col-md-4 col-md-offset-1 col-sm-12 text-center" style="background-color:#000;min-height:320px">
+		<div class="col-md-12 col-sm-12">
+			<img src="./img/avrillavigne/foundation.jpg" class="img-responsive" style="max-width:500px !important;width:100%;margin:0 auto;padding:20px 20px 0" id="acmimage">
+		</div>
+		<div class="col-md-12 col-sm-12" style="text-align:left;padding:20px;color:#fff">
+			<p><em>The Avril Lavigne Foundation R.O.C.K.S.: Respect, Opportunity, Choices, Knowledge, and Strength in support of children and youth living with serious illnesses or disabilities</em></p>
+
+			<p><em>For more information about the organization, please visit the <a href="http://www.theavrillavignefoundation.org/" target="_blank" style="color:#17BFAF;"> Avril Lavigne Foundation Website</a>.</em></p>
+		</div>
+	</div>
+</section>
+<div class="clearfix" style="height:100px"> &nbsp; </div>
+<section class="col-md-12 col-sm-12" style="background:#fff;display:block;position:relative;bottom:-200px">
+	<p>*<em>The following percentages of the purchase price will benefit The Avril Lavigne Foundation, 76% of Unisex Crewneck Tee, 74% of Women's V Neck Tee, 46% of Premium Hoodie, 58% of Value Hoodie.</em></p>
+</section>
