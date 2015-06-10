@@ -16,7 +16,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		});
 	}
 
-	if($rootScope.productInteropeID == "RVL014")
+	if($scope.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice")
 	{
 		$scope.currentOrder.OrderFields[0].Value = "leebrice";
 	}
