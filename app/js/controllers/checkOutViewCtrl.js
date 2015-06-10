@@ -16,7 +16,15 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		});
 	}
 
-	$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
+	if($rootScope.productInteropeID == "RVL014")
+	{
+		$scope.currentOrder.OrderFields[0].Value = "leebrice";
+	}
+	else
+	{
+		$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
+	}
+	
 
 	if (!$scope.currentOrder) {
         $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
