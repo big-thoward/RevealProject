@@ -52,7 +52,7 @@
             <strong>{{'Total' | r | xlat}}</strong>
             <span class="text-success pull-right"><strong>{{currentOrder.Total | culturecurrency}}</strong></span>
         </h4>
-        <p class="text-info text-left" ng-if="user.Company.TaxMethod != 'NoTax' && !user.Permissions.contains('HidePricing')"><strong>*Shipping (and tax when applicable) will be added to subtotal</strong></p>
+        <p class="text-info text-left" ng-if="user.Company.TaxMethod != 'NoTax' && !user.Permissions.contains('HidePricing')"><strong>*Shipping (and tax when applicable) will be added to the total</strong></p>
     </div>
     <div class="panel-footer">
         <div class="view-form-icon" ng-show="user.Permissions.contains('SendOrderNotificationToOthers') && !(cart_shipping.$invalid || cart_order.$invalid || cart_billing.$invalid)" >

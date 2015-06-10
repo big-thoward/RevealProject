@@ -16,7 +16,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		});
 	}
 
-	if($scope.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice")
+	if($scope.currentOrder.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice")
 	{
 		$scope.currentOrder.OrderFields[0].Value = "leebrice";
 	}

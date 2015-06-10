@@ -16,7 +16,15 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 		});
 	}
 
-	$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
+	if($scope.currentOrder.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice")
+	{
+		$scope.currentOrder.OrderFields[0].Value = "leebrice";
+	}
+	else
+	{
+		$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
+	}
+	
 
 	if (!$scope.currentOrder) {
         $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
