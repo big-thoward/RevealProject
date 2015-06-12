@@ -1,9 +1,9 @@
 four51.app.controller('CartViewCtrl', ['$rootScope', '$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User',
 function ($rootScope, $scope, $routeParams, $location, $451, Order, OrderConfig, User) {
 	$scope.categoryInteropID = $rootScope.categoryInteropID;
-	if($rootScope.productInteropiD)
+	if($rootScope.baseProduct)
 	{
-		$scope.path = $rootScope.productInteropiD;
+		$scope.path = "product/"+$rootScope.baseProduct;
 	}
 	else
 	{
@@ -37,11 +37,11 @@ $scope.guest = true;
 	$scope.continueShopping = function() {
 		if (!$scope.cart.$invalid) {
 			if (confirm('Do you want to save changes to your order before continuing?') == true)
-				$scope.saveChanges(function() { $location.path('product/RVL010') });
+				$scope.saveChanges(function() { $location.path($scope.path) });
 		}
 		else
 		{
-			$location.path('product/RVL010');
+			$location.path($scope.path);
 		}
 	};
 
@@ -54,7 +54,7 @@ $scope.guest = true;
 					$scope.currentOrder = null;
 					$scope.user.CurrentOrderID = null;
 					User.save($scope.user, function(){
-						$location.path('product/RVL010');
+						$location.path($scope.path);
 					});
 					$scope.displayLoadingIndicator = false;
 					$scope.actionMessage = 'Your Changes Have Been Saved';
@@ -100,7 +100,7 @@ $scope.guest = true;
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
 						User.save($scope.user, function(){
-							$location.path('product/RVL010');
+							$location.path($scope.path);
 						});
 					}
 					$scope.displayLoadingIndicator = false;

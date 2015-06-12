@@ -39,6 +39,14 @@ function ($rootScope, $scope, $routeParams, $route, $location, $451, Product, Pr
 			$scope.setAddToOrderErrors();
 			if (angular.isFunction(callback))
 				callback();
+			if(data.product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice")
+			{
+				$rootScope.baseProduct = "RVL018";
+			}
+			else
+			{
+				$rootScope.baseProduct = "RVL010";
+			}
    			$scope.goal = commaSeparateNumber(data.product.StaticSpecGroups.Goal.Specs.Goal.Value)
 			if(data.product.RelatedProductsGroupID)
 			{

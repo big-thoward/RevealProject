@@ -3,8 +3,13 @@
         <section>
             <div class="container">
                 <ul class="nav navbar-nav pull-left">
-                    <li id="homelink" style="overflow:visible;">
+                    <li id="homelink" style="overflow:visible;" ng-hide="isInPath('REVComingSoon')">
                        <a class="back" href back-step>
+                            <img src="./img/homeLink.png" alt="Reveal Project">
+                        </a>
+                    </li>
+                    <li id="homelink" style="overflow:visible;" ng-show="isInPath('REVComingSoon')">
+                        <a href="http://www.revealproject.com/">
                             <img src="./img/homeLink.png" alt="Reveal Project">
                         </a>
                     </li>
