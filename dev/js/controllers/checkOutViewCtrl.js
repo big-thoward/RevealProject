@@ -4,6 +4,14 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	$scope.shipping = true;
 	$scope.order = true;
 
+	if($rootScope.baseProduct)
+	{
+		$scope.path = "product/"+$rootScope.baseProduct;
+	}
+	else
+	{
+		$scope.path = "";
+	}
     if($scope.user.Type == "TempCustomer")
 	{
 		$rootScope.$broadcast('guest');
@@ -27,7 +35,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	
 
 	if (!$scope.currentOrder) {
-        $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+        $location.path($scope.path);
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
@@ -96,11 +104,11 @@ $rootScope.guest = true;
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
 	    {
 
-	        saveChanges(function() { $location.path('campaigns/projects/'+$rootScope.productInteropID+'') });
+	        saveChanges(function() { $location.path($scope.path) });
 	    }
         else
         {
-		    $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+		    $location.path($scope.path);
         }
     };
 
@@ -116,7 +124,7 @@ $rootScope.guest = true;
 			        User.save($scope.user, function(data) {
 				        $scope.user = data;
 				        $scope.displayLoadingIndicator = false;
-				        $location.path('campaigns/projects/'+$rootScope.productInteropID+'');
+				        $location.path($scope.path);
 			        });
 		        },
 		        function(ex) {
