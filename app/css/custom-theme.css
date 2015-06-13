@@ -981,7 +981,8 @@ span.badge.ng-binding {
 #relatedproducts .col-md-2 {
     width:20%!important
 }
-#movhover {
+#movhover,
+.mobhover {
     opacity:0;
     position:absolute;
     top:0;
@@ -991,6 +992,7 @@ span.badge.ng-binding {
 .col-md-offset-1 {
     margin-left:10%
 }
+.movie:hover .movhover,
 #movie:hover #movhover {
     opacity:1
 }
