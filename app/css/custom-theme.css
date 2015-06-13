@@ -982,7 +982,7 @@ span.badge.ng-binding {
     width:20%!important
 }
 #movhover,
-.mobhover {
+.movhover {
     opacity:0;
     position:absolute;
     top:0;
