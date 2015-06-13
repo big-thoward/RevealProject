@@ -1299,8 +1299,8 @@ span.badge.ng-binding {
     }
 }
 
-select
+select.form-control
 {
-    padding-left:15px !important;
+    padding-left:30px !important;
 }
 
