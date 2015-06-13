@@ -47,34 +47,45 @@
                                         </select>
                                         <i class="fa fa-map-marker"></i>
                                 </div>
-                                <div ng-show="user.ShipMethod != null && shippers && orderShipAddress.Country == 'US'" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+                                <div ng-show="user.ShipMethod != null && shippers && orderShipAddress.Country == 'US' && orderShipAddress.Name != 'BIG'" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
                                     <select class="form-control" ng-change="updateShipper()" name="shipMethod"
                                             ng-model="currentOrder.LineItems[0].ShipperName"
                                             ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
-                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'US Shipping - Reveal'}"
+                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'US Shipping - Reveal (LB)'}"
                                             ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value="">-- Select A Shipping Method --</option>
                                     </select>
                                     <i class="fa fa-truck"></i>
                                 </div>
-                                <div ng-show="user.ShipMethod != null && shippers && orderShipAddress.Country == 'CA'" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+                                <div ng-show="user.ShipMethod != null && shippers && orderShipAddress.Name == 'BIG'" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
                                     <select class="form-control" ng-change="updateShipper()" name="shipMethod"
                                             ng-model="currentOrder.LineItems[0].ShipperName"
                                             ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
-                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Canada & Mexico Shipping - Reveal'}"
+                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Pick-Up at BIG'}"
                                             ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value="">-- Select A Shipping Method --</option>
                                     </select>
                                     <i class="fa fa-truck"></i>
                                 </div>
-                                <div ng-show="user.ShipMethod != null && shippers && (orderShipAddress.Country != 'US' && orderShipAddress.Country != 'CA')" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+                                <div ng-show="user.ShipMethod != null && shippers && (orderShipAddress.Country == 'CA' || orderShipAddress.Country == 'MX')" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
                                     <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
                                     <select class="form-control" ng-change="updateShipper()" name="shipMethod"
                                             ng-model="currentOrder.LineItems[0].ShipperName"
                                             ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
-                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'International Shipping - Reveal'}"
+                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Canada & Mexico Shipping - Reveal (LB)'}"
+                                            ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
+                                            <option value="">-- Select A Shipping Method --</option>
+                                    </select>
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div ng-show="user.ShipMethod != null && shippers && (orderShipAddress.Country != 'US' && orderShipAddress.Country != 'CA' && orderShipAddress.Country != 'MX')" ng-class="{'view-form-select': !currentOrder.LineItems[0].ShipperName, '': currentOrder.LineItems[0].ShipperName }">
+                                    <label ng-class="{required: !currentOrder.IsMultipleShip() && user.ShipMethod != null}" ng-show="currentOrder.LineItems[0].ShipperName || !currentOrder.IsMultipleShip() && user.ShipMethod != null">{{('Shipping' | r) + ' Method' | xlat}}</label>
+                                    <select class="form-control" ng-change="updateShipper()" name="shipMethod"
+                                            ng-model="currentOrder.LineItems[0].ShipperName"
+                                            ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
+                                            ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'International Shipping - Reveal (LB)'}"
                                             ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
                                             <option value="">-- Select A Shipping Method --</option>
                                     </select>
