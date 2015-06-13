@@ -1299,3 +1299,8 @@ span.badge.ng-binding {
     }
 }
 
+select
+{
+    padding-left:15px !important;
+}
+

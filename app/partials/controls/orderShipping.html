@@ -64,7 +64,7 @@
                                             ng-model="currentOrder.LineItems[0].ShipperName"
                                             ng-show="user.ShipMethod.ShipperSelectionType == 'UserDropDown'"
                                             ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | filter: { Name: 'Pick-Up at BIG'}"
-                                            ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null" >
+                                            ng-required="!currentOrder.IsMultipleShip() && user.ShipMethod != null">
                                             <option value="">-- Select A Shipping Method --</option>
                                     </select>
                                     <i class="fa fa-truck"></i>
