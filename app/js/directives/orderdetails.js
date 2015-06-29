@@ -16,6 +16,9 @@ four51.app.directive('orderdetails', function() {
                 }
             }
             $scope.updateCostCenter = updateCostCenter;
+            $scope.$on('event:usercreated', function(event, email) {
+                $scope.currentOrder.OrderFields[1].Value = email;
+            });
 
             function updateCostCenter() {
                 angular.forEach($scope.user.CostCenters, function(cc) {

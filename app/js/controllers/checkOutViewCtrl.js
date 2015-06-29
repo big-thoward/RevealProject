@@ -31,8 +31,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	else
 	{
 		$scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
+
 	}
-	
+
 
 	if (!$scope.currentOrder) {
         $location.path($scope.path);
