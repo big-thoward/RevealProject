@@ -4,10 +4,10 @@
         <div class="text-center">
             <p style="font-size:18px;"><strong>Thanks for your order and for supporting one of our REVEAL projects.</strong></p>
         </div>
-
         <nav class="nav">
             <ul>
-                <li><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span></li>
+                <li><span class="text-primary">{{(order.Type) + ' ' + ('Order' | r) | xlat}}<span ng-show="order.ExternalID"> {{'ID' | r}}: </span>{{order.ExternalID}}</span>
+                </li>
                 <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}"></i></span></li>
             </ul>
         </nav>
@@ -19,12 +19,17 @@
                     </h3>
                 </div>
                 <lineitemhistorygrid />
-
                 <div class="panel-body" ng-show="shipments" ng-repeat="s in shipments">
-                    <b>Shipper:</b> {{s.Shipper}}<br/>
-                    <b>Tracking number:</b> {{s.TrackingNumber}}<br/>
-                    <b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a><br>
-                    <b>Items: </b> <ul><li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li></ul>
+                    <b>Shipper:</b> {{s.Shipper}}
+                    <br/>
+                    <b>Tracking number:</b> {{s.TrackingNumber}}
+                    <br/>
+                    <b>URL:</b> <a href="{{s.TrackingURL}}">{{s.TrackingURL}}</a>
+                    <br>
+                    <b>Items: </b>
+                    <ul>
+                        <li ng-repeat="item in s.Items">{{item.ProductID}} - {{item.QuantityShipped}}</li>
+                    </ul>
                     <hr>
                 </div>
             </div>

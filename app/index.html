@@ -36,6 +36,29 @@
         document.write('<link rel="stylesheet" href="css/ie.css" data-group="source" />');
     }
     </script>
+    <!-- Facebook Conversion Code for Lee Brice - Reveal Project -->
+    <script>
+    var theurl = window.URL.split('');
+
+    if (theurl.contains('order')) {
+        (function() {
+            var _fbq = window._fbq || (window._fbq = []);
+            if (!_fbq.loaded) {
+                var fbds = document.createElement('script');
+                fbds.async = true;
+                fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(fbds, s);
+                _fbq.loaded = true;
+            }
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', '6026732266289', {
+            'value': '0.01',
+            'currency': 'USD'
+        }]);
+    }
+    </script>
 </head>
 
 <body ng-cloak ng-class="ng-cloak">
