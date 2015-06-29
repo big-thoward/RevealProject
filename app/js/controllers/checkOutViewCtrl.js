@@ -27,10 +27,9 @@ four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location'
 
         }
         $scope.currentOrder.OrderFields[1].Value = "pending";
-        $scope.$on('event:usercreated', function(event, email) {
-            $scope.currentOrder.OrderFields[1].Value = email;
+        $scope.$on('event:AddressSaved', function(event, address) {
+            $scope.currentOrder.OrderFields[1].Value = $rootScope.User.email;
         });
-
         if (!$scope.currentOrder) {
             $location.path($scope.path);
         }

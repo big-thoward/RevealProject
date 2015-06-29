@@ -19,13 +19,12 @@ four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 
                 $scope.user.FirstName = this.address.FirstName;
                 $scope.user.LastName = this.address.LastName;
                 $scope.user.Email = this.address.Email;
-                var email = this.address.Email;
                 $scope.user.TempUsername = "test!12345";
                 $scope.user.ConfirmPassword = "test!12345";
                 $scope.user.Password = "test!12345";
                 $scope.user.ConvertFromTempUser = true;
                 $rootScope.$broadcast("guest");
-                $rootScope.$broadcast('event:usercreated', email);
+                $rootScope.User.email = this.address.Email;
                 User.save($scope.user,
                     function(u) {
                         $scope.securityWarning = false;
