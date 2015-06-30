@@ -41,9 +41,7 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 
 	$scope.$on("treeComplete", function(data) {
 	    if (!$routeParams.categoryInteropID) {
-	        $scope.currentCategory = {
-	            SubCategories: $scope.tree
-	        };
+	        $scope.currentCategory={SubCategories: $scope.tree};
 	    }
 	});
 
