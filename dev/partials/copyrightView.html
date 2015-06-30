@@ -1,0 +1,20 @@
+<footer class="container copyright-view" style="position:absolute;bottom:-700px;right:0;color:#888;font-size:9px;">
+    <div class="col-md-4 col-md-offset-1 col-md-push-7">
+        <div class="row">
+            <p class="text-center">
+                <a href="http://www.four51.com" target="_blank" style="color:#888;font-size:9px;">
+                    <i class="fa fa-cloud"></i><br />
+                    <strong>{{'Powered by' | xlat}} Four51°</strong>
+                </a>
+            </p>
+            <p class="text-center">
+                {{'Copyright' | xlat}} © {{year}}<br /> Four51 Inc. <br>{{'All Rights Reserved' | xlat}}.<br />
+                <span ng-if="!(user.Permissions.contains('HideTerms'))">
+                    <a class="btn btn-default btn-xs" href="conditions" style="margin-top:10px;font-size:8px;background:#fff;color:#888;border:1px dotted #dadada;">
+                        {{'Conditions of Use' | xlat}}
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+</footer>
