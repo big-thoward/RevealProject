@@ -6,7 +6,7 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 		currentPage: 1,
 		pageSize: 40
 	};
-			
+
 	$scope.trusted = function(d){
 		if(d) return $sce.trustAsHtml(d);
 	}
@@ -39,11 +39,14 @@ function ($rootScope, $routeParams, $sce, $scope, $451, Category, Product, Nav) 
 	}
 
 
-	$scope.$on("treeComplete", function(data){
-		if (!$routeParams.categoryInteropID) {
-			$scope.currentCategory ={SubCategories:$scope.tree};
-		}
+	$scope.$on("treeComplete", function(data) {
+	    if (!$routeParams.categoryInteropID) {
+	        $scope.currentCategory = {
+	            SubCategories: $scope.tree
+	        };
+	    }
 	});
+
 
     // panel-nav
     $scope.navStatus = Nav.status;
