@@ -24,7 +24,6 @@ four51.app.controller('AddressInputCtrl', ['$scope', '$rootScope', '$location', 
                 $scope.user.Password = "test!12345";
                 $scope.user.ConvertFromTempUser = true;
                 $rootScope.$broadcast("guest");
-                $scope.$broadcast("saved");
                 User.save($scope.user,
                     function(u) {
                         $scope.securityWarning = false;
