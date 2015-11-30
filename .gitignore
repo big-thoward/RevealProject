@@ -13,3 +13,4 @@ node_modules/*
 localcdn
 app/producttemplate.html
 app/img/avrillavigne/movie_hover.jpg
+*.db
