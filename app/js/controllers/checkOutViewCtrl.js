@@ -22,7 +22,11 @@ four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location'
 
         if ($scope.currentOrder.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "leebrice") {
             $scope.currentOrder.OrderFields[0].Value = "leebrice";
-        } else {
+        }
+        if ($scope.currentOrder.LineItems[0].Product.StaticSpecGroups.costcenter.Specs.costcenter.Value == "nashhayes") {
+            $scope.currentOrder.OrderFields[0].Value = "FNV";
+        }
+        else {
             $scope.currentOrder.OrderFields[0].Value = "AvrilLavigne";
 
         }
